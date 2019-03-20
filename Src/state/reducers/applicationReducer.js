@@ -334,7 +334,7 @@ const applicationReducer = (state = initState, action)=> {
         console.log('Player wins');
       }
       if(computerResult[0].score > userResult.score) {
-        console.log(`Computer hand number ${computerResult.computerHand} won`);
+        console.log(`Computer hand number ${computerResult[0].computerHand} won`);
       }
 
       if(userResult.score === computerResult[0].score) {
@@ -349,7 +349,7 @@ const applicationReducer = (state = initState, action)=> {
               break;
             }
             if(userResult.highPairs[i] < computerResult[0].highPairs[i]) {
-              console.log(`a pair or two pair computer hand number ${computerResult.computerHand} won`);
+              console.log(`a pair or two pair computer hand number ${computerResult[0].computerHand} won`);
               tie = false;
               break;
             }
@@ -362,7 +362,7 @@ const applicationReducer = (state = initState, action)=> {
                 break;
               }
               if(userResult.bestFiveCards[i] < computerResult[0].bestFiveCards[i]) {
-                console.log(`one pair or two pair high card computer hand number ${computerResult.computerHand} won`)
+                console.log(`one pair or two pair high card computer hand number ${computerResult[0].computerHand} won`)
                 tie = false;
                 break;
               }
@@ -380,7 +380,7 @@ const applicationReducer = (state = initState, action)=> {
           console.log(`Player wins three of a kind ${userResult.highThreeOfAKind[0]}`);
         }
         if(userResult.highThreeOfAKind[0] < computerResult[0].highThreeOfAKind[0]) {
-          console.log(`computer hand number ${computerResult.computerHand} won with three of a kind ${computerResult[0].highThreeOfAKind[0]}`)
+          console.log(`computer hand number ${computerResult[0].computerHand} won with three of a kind ${computerResult[0].highThreeOfAKind[0]}`)
         }
         if(userResult.highThreeOfAKind[0] === computerResult[0].highThreeOfAKind[0]) {
           var tie = true;
@@ -391,7 +391,7 @@ const applicationReducer = (state = initState, action)=> {
               break;
             }
             if(userResult.bestFiveCards[i] < computerResult[0].bestFiveCards[i]) {
-              console.log(`Computer hand number ${computerResult.computerHand} won with three of a kind ${computerResult[0].highThreeOfAKind[0]}`)
+              console.log(`Computer hand number ${computerResult[0].computerHand} won with three of a kind ${computerResult[0].highThreeOfAKind[0]}`)
               tie = false;
               break;
             }

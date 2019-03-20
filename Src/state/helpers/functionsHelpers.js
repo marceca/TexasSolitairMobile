@@ -305,7 +305,8 @@ function getComputerResults(computerResults) {
       highThreeOfAKind: [],
       highFourOfAKind: [],
       wholeHand: [],
-      bestFiveCards: []
+      bestFiveCards: [],
+      computerHand: i + 1
     };
     let compCardCount = {}
     let compFlush = {};
