@@ -198,15 +198,15 @@ const applicationReducer = (state = initState, action)=> {
         // 1st comp hand
         [
           [{
-          value: 12,
+          value: 10,
           name: 'Two of Clubs',
-          suit: 'Clubs',
+          suit: 'Spades',
           img: '/cards/2C.png'
         }],
         [{
-          value: 10,
+          value: 11,
           name: 'Three of Clubs',
-          suit: 'Hearts',
+          suit: 'Spades',
           img: '/cards/3C.png'
         }]],
         [
@@ -241,25 +241,25 @@ const applicationReducer = (state = initState, action)=> {
       // // // Changing community card value for testing
       resultsState.communityCardsValue = [
         [{
-          value: 2,
+          value: 12,
           name: 'Four of Clubs',
           suit: 'Spades',
           img: '/cards/2C.png'
         }],
         [{
-          value: 3,
+          value: 13,
           name: 'Five of Clubs',
           suit: 'Spades',
           img: '/cards/3C.png'
         }],
         [{
-          value: 4,
+          value: 14,
           name: 'Nine of Clubs',
           suit: 'Spades',
           img: '/cards/4C.png'
         }],
         [{
-          value: 5,
+          value: 15,
           name: 'Fve of Clubs',
           suit: 'Spades',
           img: '/cards/5C.png'
@@ -275,31 +275,31 @@ const applicationReducer = (state = initState, action)=> {
       // // For testing user results
       resultsState.userHand = [
         [{
-          value: 7,
+          value: 10,
           name: 'Two of Clubs',
-          suit: 'Hearts',
+          suit: 'Spades',
           img: '/cards/2C.png'
         }],
         [{
-          value: 16,
+          value: 11,
           name: 'Three of Clubs',
-          suit: 'Clubs',
+          suit: 'Spades',
           img: '/cards/3C.png'
         }],
         [{
-          value: 2,
+          value: 12,
           name: 'Four of Clubs',
           suit: 'Spades',
           img: '/cards/2C.png'
         }],
         [{
-          value: 3,
+          value: 13,
           name: 'Five of Clubs',
           suit: 'Spades',
           img: '/cards/3C.png'
         }],
         [{
-          value: 4,
+          value: 14,
           name: 'Nine of Clubs',
           suit: 'Spades',
           img: '/cards/4C.png'
@@ -442,6 +442,73 @@ const applicationReducer = (state = initState, action)=> {
           if(tie === true) {
             console.log(`Tie hand with a flush to the ${userResult.bestFiveCards[4]}`)
           }
+        }
+      }
+
+      // Check winning had full house
+      if(userResult.score === 6000) {
+        var tie = true;
+        if(userResult.highThreeOfAKind[0] > computerResult[0].highThreeOfAKind[0]) {
+          console.log(`Player won with a full house ${userResult.highThreeOfAKind[0]}'s full of ${Math.max(userResult.highPairs)}'s`);
+          tie = false;
+        }
+        if(userResult.highThreeOfAKind[0] < computerResult[0].highThreeOfAKind[0]) {
+          console.log(`Computer won with a full house ${computerResult[0].highThreeOfAKind[0]}'s full of ${Math.max(computerResult[0].highPairs)}'s`);
+          tie = false;
+        }
+        if(tie === true) {
+          if(Math.max(userResult.highPairs) > Math.max(computerResult[0].highPairs)) {
+            console.log(`Player won with a full house ${userResult.highThreeOfAKind[0]}'s full of ${Math.max(userResult.highPairs)}'s`);
+            tie = false;
+          }
+          if(Math.max(userResult.highPairs) < Math.max(computerResult[0].highPairs)) {
+            console.log(`Computer won with a full house ${computerResult[0].highThreeOfAKind[0]}'s full of ${Math.max(computerResult[0].highPairs)}'s`);
+            tie = false;
+          }
+        }
+        if(tie === true) {
+          console.log(`Tie full house ${userResult.highThreeOfAKind[0]}'s full of ${Math.max(userResult.highPairs)}'s`)
+        }
+      }
+
+      // Check winning hand four of a kind
+      if(userResult.score === 7000) {
+        var tie = true;
+        if(userResult.highFourOfAKind[0] > computerResult[0].highFourOfAKind[0]) {
+          console.log(`Player wins with a four of a kind ${userResult.highFourOfAKind[0]}'s`);
+          tie = false;
+        }
+        if(userResult.highFourOfAKind[0] < computerResult[0].highFourOfAKind[0]) {
+          console.log(`Computer wins with a four of a kind ${computerResult[0].highFourOfAKind[0]}'s`);
+          tie = false;
+        }
+        if(tie === true) {
+          if(userResult.highCard > computerResult[0].highCard) {
+          console.log(`Player wins with a four of a kind ${userResult.highFourOfAKind[0]}'s`);
+          tie = false;
+          }
+          if(userResult.highCard < computerResult[0].highCard) {
+            console.log(`Computer wins with a four of a kind ${computerResult[0].highFourOfAKind[0]}'s`);
+            tie = false;
+          }
+        }
+        if(tie === true) {
+          console.log(`Tie four of a kind ${userResult.highCard[0]}'s`)
+        }
+      }
+
+      // Check winning hand straight flush
+      if(userResult.score === 8000) {
+        if(userResult.highCard > computerResult[0].highCard) {
+          console.log(`Player wins the a straight flush to ${userResult.highCard}`);
+          tie = false;
+        }
+        if(userResult.highCard < computerResult[0].highCard) {
+          console.log(`Computer wins the a straight flush to ${computerResult[0].highCard}`);
+          tie = false;
+        }
+        if(userResult.highCard === computerResult[0].highCard) {
+          console.log(`Tie straight flush to the ${userResult.highCard}`);
         }
       }
     }

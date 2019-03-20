@@ -252,6 +252,11 @@ function getUserResults(userHand) {
         i--;
       }
     }
+    for(let i = 0; i < userResult.bestFiveCards.length; i++) {
+      if(userResult.bestFiveCards[i] != captureFourOfAKindValue) {
+        userResult.highCard = userResult.bestFiveCards[i];
+      }
+    }
   }
   
   // Get values for straight flush check
@@ -283,8 +288,6 @@ function getUserResults(userHand) {
             userResult.bestFiveCards.shift();
           }
         }
-      } else {
-        checkStraightFlush = 0;
       }
     }
   }
