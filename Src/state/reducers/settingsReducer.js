@@ -25,7 +25,11 @@ const settingsReducer = (state = initState, action)=> {
     // CHANGE NUMBER OF HANDS
     case types.NUMBEROFHANDS:
       const numberOfHandsState = Object.assign({}, state);
-      numberOfHandsState.num_hands = true;
+      if(numberOfHandsState.num_hands === false) {
+        numberOfHandsState.num_hands = true;
+      } else {
+        numberOfHandsState.num_hands = false;
+      }
     return numberOfHandsState;
 
     // SHOW MAIN MENU

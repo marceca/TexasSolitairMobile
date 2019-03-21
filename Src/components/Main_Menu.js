@@ -40,9 +40,9 @@ class Main_Menu extends Component {
             {this.props.settings.num_hands ? <Num_Hands /> : <TouchableHighlight onPress={() => this.start_game()}><Image source={require("../assets/main_menu/Play_Button.png")} /></TouchableHighlight>}
           </View>
           <View style={styles.bottomMainMenu}>
-            <Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Show_Cards_Button.png")} />
-            <Image style={styles.bottomMainMenuImages} onClick={() => this.number_of_hands()} source={require("../assets/main_menu/Show_Cards_Button.png")} />
-            <Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Show_Cards_Button.png")} />
+            <Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Play_Button.png")} />
+            <TouchableHighlight onPress={() => this.number_of_hands()}><Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Play_Button.png")} /></TouchableHighlight>
+            <Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Play_Button.png")} />
           </View>
         </ImageBackground>
       </View>
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
   midMainMenu: {
-    height: screenHeight / 1.3,
+    height: screenHeight / 1.5,
     justifyContent: 'center',
     alignItems: 'center',
     zIndex: 20
