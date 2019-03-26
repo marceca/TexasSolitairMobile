@@ -41,7 +41,7 @@ class Main_Menu extends Component {
           </View>
           <View style={styles.bottomMainMenu}>
             <Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Play_Button.png")} />
-            <TouchableHighlight onPress={() => this.number_of_hands()}><Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Play_Button.png")} /></TouchableHighlight>
+            <TouchableHighlight onPress={() => this.number_of_hands()}><Image style={styles.bottomMainMenuImages} source={require("../assets/settings_page/Test_72ppi_Super.png")} /></TouchableHighlight>
             <Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Play_Button.png")} />
           </View>
         </ImageBackground>
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     width: screenWidth,
     height: screenHeight,
     backgroundColor: 'black',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   topMenu: {
     width: screenWidth,
@@ -86,13 +86,14 @@ const styles = StyleSheet.create({
     zIndex: 20
   },
   bottomMainMenu: {
-    height: screenHeight / 8,
+    height: screenHeight / 4,
     width: screenWidth,
     justifyContent: 'space-between',
     flexDirection: 'row'
   },
   bottomMainMenuImages: {
-    width: screenWidth / 3
+    width: screenWidth / 3,
+    flex: 1
   }
 })
 
