@@ -53,23 +53,24 @@ class Main_Menu extends Component {
 const styles = StyleSheet.create({
   blackModal: {
     width: screenWidth,
+    height: screenHeight,
     backgroundColor: 'black'
   },
   mainMenu: {
-    width: screenWidth,
-    height: screenHeight,
-    backgroundColor: 'black',
     flexDirection: 'column',
+    resizeMode: 'stretch',
+    width: screenWidth,
+    height: screenHeight
   },
   topMenu: {
     width: screenWidth,
     justifyContent: 'space-between',
-    height: screenHeight / 8,
+    maxHeight: screenHeight / 8,
     flexDirection: 'row',
   },
   playerContainer: {
     justifyContent: 'space-between',
-    width: screenWidth / 4,
+    width: screenWidth / 8,
     flexDirection: 'row',
     paddingRight: 10,
     paddingLeft: 10
@@ -80,16 +81,17 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
   midMainMenu: {
-    height: screenHeight / 1.5,
+    maxHeight: screenHeight,
+    width: screenWidth,
     justifyContent: 'center',
     alignItems: 'center',
-    zIndex: 20
+    zIndex: 20,
   },
   bottomMainMenu: {
-    height: screenHeight / 4,
+    maxHeight: screenHeight / 8,
     width: screenWidth,
     justifyContent: 'space-between',
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   bottomMainMenuImages: {
     width: screenWidth / 3,
