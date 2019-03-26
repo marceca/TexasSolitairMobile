@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "327618344631",
-    "firebase_url": "https://fir-database-f7da2.firebaseio.com",
-    "project_id": "fir-database-f7da2",
-    "storage_bucket": "fir-database-f7da2.appspot.com"
+    "project_number": "228727097495",
+    "firebase_url": "https://stickorswitch-a103e.firebaseio.com",
+    "project_id": "stickorswitch-a103e",
+    "storage_bucket": "stickorswitch-a103e.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:327618344631:android:6bf214d3f012efe5",
+        "mobilesdk_app_id": "1:228727097495:android:6bf214d3f012efe5",
         "android_client_info": {
           "package_name": "com.checka.firebasedatabase"
         }
       },
       "oauth_client": [
         {
-          "client_id": "327618344631-0ao95623jdf9d5cvmrtk108n3mnrhkj3.apps.googleusercontent.com",
+          "client_id": "228727097495-h68drmfa99802nkndcj2mg7iuj7186f5.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDwo8sEjWaADGKQWQcdMcNZl7GmRlXMQrU"
+          "current_key": "AIzaSyCp0aTl57a5gXVb7rb9lo7JZ51PAVJgD38"
         }
       ],
       "services": {

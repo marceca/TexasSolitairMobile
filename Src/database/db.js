@@ -6,7 +6,7 @@ import store from '../state/store';
 const uniqueID = DeviceInfo.getUniqueID();
 
 var config = {
-  databaseURL: "https://fir-database-f7da2.firebaseio.com/",
+  databaseURL: "https://stickorswitch-a103e.firebaseio.com/",
   projectId: "fir-database-f7da2",
 }
 

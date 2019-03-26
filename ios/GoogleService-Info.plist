@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>327618344631-47sbfd7t9v9tsfbkukjs83u7p18l4070.apps.googleusercontent.com</string>
+	<string>228727097495-ueur6obss0s60bo3emu8bvet9oqv7gor.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.327618344631-47sbfd7t9v9tsfbkukjs83u7p18l4070</string>
+	<string>com.googleusercontent.apps.228727097495-ueur6obss0s60bo3emu8bvet9oqv7gor</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCdcuy_FkDOhL0sfldPfWvV59W5hoPtstQ</string>
+	<string>AIzaSyCJF_XO5CCYQ_X_Xoh9BIpxxr-mOdeJKsw</string>
 	<key>GCM_SENDER_ID</key>
-	<string>327618344631</string>
+	<string>228727097495</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.checka.firebasedatabase</string>
 	<key>PROJECT_ID</key>
-	<string>fir-database-f7da2</string>
+	<string>stickorswitch-a103e</string>
 	<key>STORAGE_BUCKET</key>
-	<string>fir-database-f7da2.appspot.com</string>
+	<string>stickorswitch-a103e.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:327618344631:ios:6bf214d3f012efe5</string>
+	<string>1:228727097495:ios:6bf214d3f012efe5</string>
 	<key>DATABASE_URL</key>
-	<string>https://fir-database-f7da2.firebaseio.com</string>
+	<string>https://stickorswitch-a103e.firebaseio.com</string>
 </dict>
 </plist>
