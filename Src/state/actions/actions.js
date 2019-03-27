@@ -24,6 +24,9 @@ const SHOWMAINMENU = 'SHOWMAINMENU';
 const NUMBEROFHANDS = 'NUMBEROFHANDS';
 const UPDATENUMBEROFHANDS = 'UPDATENUMBEROFHANDS';
 const UPDATEBACKGROUNDIMAGE = 'UPDATEBACKGROUNDIMAGE';
+const UPDATEBET = 'UPDATEBET';
+const INCREASEBET = 'INCREASEBET';
+const DECREASEBET = 'DECREASEBET';
 
 const deal = () => ({type: DEAL});
 const flop = () => ({type: FLOP});
@@ -50,11 +53,14 @@ const showMainMenu = () => ({type: SHOWMAINMENU});
 const numberOfHands = () => ({type: NUMBEROFHANDS});
 const updateNumberOfHands = (numberOfHands) => ({type: UPDATENUMBEROFHANDS, numberOfHands});
 const updateBackgroundImage = (bg) => ({type: UPDATEBACKGROUNDIMAGE, bg});
+const updateBet = (num) => ({type: UPDATEBET, num});
+const increaseBet = () => ({type: INCREASEBET});
+const decreaseBet = () => ({type: DECREASEBET});
 
 // User updates
-const UPDATEUSERNAME = 'UPDATEUSERNAME';
+const UPDATEUSER = 'UPDATEUSER';
 
-const updateUserName = (userName) => ({type:UPDATEUSERNAME, userName})
+const updateUser = (userName, userCoins) => ({type:UPDATEUSER, userName, userCoins})
 
 module.exports = {
   DEAL,
@@ -107,6 +113,12 @@ module.exports = {
   updateNumberOfHands,
   UPDATEBACKGROUNDIMAGE,
   updateBackgroundImage,
-  UPDATEUSERNAME,
-  updateUserName
+  UPDATEUSER,
+  updateUser,
+  UPDATEBET,
+  updateBet,
+  INCREASEBET,
+  increaseBet,
+  decreaseBet,
+  DECREASEBET
 }

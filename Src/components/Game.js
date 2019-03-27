@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, TouchableHighlight, Image, Text, StyleSheet, Dimensions, ImageBackground} from 'react-native';
+import {View, TouchableHighlight, Image, Text, StyleSheet, Dimensions, ImageBackground, TextInput, TouchableWithoutFeedback, Keyboard} from 'react-native';
 import { connect } from 'react-redux';
 import store from '../state/store';
 import * as types from '../state/actions/actions';
@@ -12,6 +12,8 @@ import Main_Menu from './Main_Menu';
 import Settings from './Settings';
 import Stick_Switch_Hands from'./Stick_Switch_Hands';
 import constants from '../assets/Constants';
+import * as dbCalls from '../database/db';
+import DismissKeyboard from './DismissKeyboard';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -23,6 +25,11 @@ const mapStateToProps = (state) => {
   }
 }
 class Game extends Component {
+
+  componentDidMount() {
+    // let score = db.getUserScore()
+    console.log('here ', dbCalls.readUserData(dbCalls.uniqueID));
+  }
 
   deal(el, props) {
     if(props.game.play === 1) {
@@ -65,47 +72,79 @@ class Game extends Component {
   reset() {
     store.dispatch(types.reset())
   }
+
+  incrementBet() {
+    if(this.props.game.coins >= this.props.game.bet + this.props.game.betSize) {
+      store.dispatch(types.increaseBet())
+    }
+  }
+
+  decreaseBet() {
+    if(this.props.game.bet - this.props.game.betSize >= 0) {
+      store.dispatch(types.decreaseBet())
+    }
+  }
+
+  updateTextInput(num) {
+    if(this.props.game.coins >= num) {
+      store.dispatch(types.updateBet(num))
+    }
+  }
   render() {
     const bg = constants.backgroundPossibilities[this.props.settings.main_background_image]
     return (
       console.log('props ', this.props),
       <ImageBackground style={styles.mainBackgroundImage} source={bg}>
         <View style={styles.container} className="background-image-container">
-          <ImageBackground style={styles.tableBackgroundImage} source={require('../assets/tables/Poker_Table.png')}>
-            {this.props.settings.mainMenu ? <Main_Menu /> : null}
-            <View style={styles.imageContainer} className="settings-icon">
-              <TouchableHighlight onPress={() => this.openCloseSettings()}>
-                <Image style={styles.settingsIcon} source={require('../assets/icons/settings.png')} />
-              </TouchableHighlight>
-            </View>
-            {/* Setting Pages */}
-            {this.props.settings.tutorial ? <Tutorial /> : null}
-            {this.props.settings.hand_ranks ? <Hand_Ranks /> : null}
-            {this.props.settings.background_image ? <Background_Image_Selection /> : null}
-            {this.props.settings.total_hands ? <Total_Number_Of_Hands /> : null}
-            {this.props.settings.change_card_back ? <Change_Card_Back /> : null}
-            { this.props.settings.settings ? <Settings /> : null}
-            <View style={styles.cardsContainer} className="cards-container">
-              <View style={styles.playerHandsContainer} className="player-hands-container">
-                <Stick_Switch_Hands />
-              </View>
-              <View style={styles.communityCardsContainer} className="community-cards">
-                {this.props.game.communityCards}
-              </View>
-            </View>
-            <View style={styles.buttonsContainer} className="buttons-container">
-              <View Style={styles.userCards}className="user-cards">
-                <View style={styles.playeHand} className="possible-hand">
-                  {this.props.game.handsDisplay[this.props.game.handsDisplay.length - 1]}
+          <DismissKeyboard>
+            <ImageBackground style={styles.tableBackgroundImage} source={require('../assets/tables/Poker_Table.png')}>
+              {this.props.settings.mainMenu ? <Main_Menu /> : null}
+              <DismissKeyboard>
+                <View style={styles.settingsContainer} className="settings-icon">
+                  <View style={styles.scoreContainter}><Text style={styles.coinsText}>Coins: {this.props.game.coins ? this.props.game.coins : 0} </Text></View>
+                  <TouchableHighlight onPress={() => this.openCloseSettings()}>
+                    <Image style={styles.settingsIcon} source={require('../assets/icons/settings.png')} />
+                  </TouchableHighlight>
                 </View>
-              </View>
-              <View style={styles.stickSwitchButtonsContainer} className="stick-switch-buttons">
-                <TouchableHighlight className="button stick" id="game-button" onPress={(e) => this.deal(e,this.props)} ><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Stick_Button_White_2.png')} /></TouchableHighlight>
-                <TouchableHighlight className="button switch" onPress={(e) => this.switch(e,this.props)}><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Switch_Button_White_2.png')} /></TouchableHighlight>
-                {this.props.game.reset ? <TouchableHighlight onPress={(e) => this.reset(e)}><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Next_Hand_White_2.png')} /></TouchableHighlight> : <Image style={[styles.stickSwitchButtons, styles.cantClickButton]} source={require('../assets/buttons/Next_Hand_White_2.png')} />}
-              </View>
-            </View>
-          </ImageBackground>
+              </DismissKeyboard>
+              {/* Setting Pages */}
+              {this.props.settings.tutorial ? <Tutorial /> : null}
+              {this.props.settings.hand_ranks ? <Hand_Ranks /> : null}
+              {this.props.settings.background_image ? <Background_Image_Selection /> : null}
+              {this.props.settings.total_hands ? <Total_Number_Of_Hands /> : null}
+              {this.props.settings.change_card_back ? <Change_Card_Back /> : null}
+              { this.props.settings.settings ? <Settings /> : null}
+              <DismissKeyboard>
+                <View style={styles.cardsContainer} className="cards-container">
+                  <View style={styles.playerHandsContainer} className="player-hands-container">
+                    <Stick_Switch_Hands />
+                  </View>
+                  <View style={styles.communityCardsContainer} className="community-cards">
+                    {this.props.game.communityCards}
+                  </View>
+                  <View style={styles.bettigsButtonsContainer}>
+                    <TouchableHighlight onPress={() => this.incrementBet()}><Image style={styles.bettingButtons} source={require('../assets/betting/Bet_Arrow_Up.png')} /></TouchableHighlight>
+                    <TextInput style={styles.betInput} onChangeText={(num) => this.updateTextInput(num)} type='number' value={this.props.game.bet.toString()} keyboardType ='numeric' />
+                    <TouchableHighlight onPress={() => this.decreaseBet()}><Image style={styles.bettingButtons} source={require('../assets/betting/Bet_Arrow_Down.png')} /></TouchableHighlight>
+                  </View>
+                </View>
+              </DismissKeyboard>
+              <DismissKeyboard>
+                <View style={styles.buttonsContainer} className="buttons-container">
+                  <View Style={styles.userCards}className="user-cards">
+                    <View style={styles.playeHand} className="possible-hand">
+                      {this.props.game.handsDisplay[this.props.game.handsDisplay.length - 1]}
+                    </View>
+                  </View>
+                  <View style={styles.stickSwitchButtonsContainer} className="stick-switch-buttons">
+                    <TouchableHighlight className="button stick" id="game-button" onPress={(e) => this.deal(e,this.props)} ><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Stick_Button_White_2.png')} /></TouchableHighlight>
+                    <TouchableHighlight className="button switch" onPress={(e) => this.switch(e,this.props)}><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Switch_Button_White_2.png')} /></TouchableHighlight>
+                    {this.props.game.reset ? <TouchableHighlight onPress={(e) => this.reset(e)}><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Next_Hand_White_2.png')} /></TouchableHighlight> : <Image style={[styles.stickSwitchButtons, styles.cantClickButton]} source={require('../assets/buttons/Next_Hand_White_2.png')} />}
+                  </View>
+                </View>
+              </DismissKeyboard>
+            </ImageBackground>
+          </DismissKeyboard>
         </View>
       </ImageBackground>
     );
@@ -119,7 +158,7 @@ const styles = StyleSheet.create({
   },
   mainBackgroundImage: {
     width: screenWidth,
-    height: screenHeight
+    height: screenHeight,
   },
   tableBackgroundImage: {
     width: screenWidth,
@@ -127,14 +166,24 @@ const styles = StyleSheet.create({
     resizeMode: 'center',
     justifyContent: 'space-between'
   },
-  imageContainer: {
-    width: screenWidth,
+  settingsContainer: {
+    width: '90%',
     height: 20,
-    alignItems: 'flex-end'
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: 10
+  },
+  coinsText: {
+    fontSize: 16,
+    color: 'red'
   },
   settingsIcon: {
     width: 30,
     height: 30,
+    alignItems: 'flex-end'
   },
   cardsContainer: {
     justifyContent: 'space-between',
@@ -148,7 +197,15 @@ const styles = StyleSheet.create({
   },
   communityCardsContainer: {
     flexDirection: 'row',
-    width: screenWidth / 2,
+    width: screenWidth / 3,
+  },
+  bettigsButtonsContainer: {
+    flexDirection: 'column',
+    width: screenWidth / 3,
+  },
+  bettingButtons: {
+      width: '20%',
+      height: '20%'
   },
   buttonsContainer: {
     width: screenWidth,
@@ -156,6 +213,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row'
+  },
+  betInput: {
+    backgroundColor: 'white',
+    width: '20%',
+    color: 'black'
   },
   userCards: {
     justifyContent: 'flex-end',

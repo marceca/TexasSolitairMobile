@@ -11,8 +11,7 @@ const screenHeight = Dimensions.get('window').height;
 const mapStateToProps = (state) => {
   return {
     game: state.application,
-    settings: state.settings,
-    user: state.user
+    settings: state.settings
   }
 }
 
@@ -32,7 +31,7 @@ class Main_Menu extends Component {
           <View style={styles.topMenu}>
             <View style={styles.playerContainer}>
               <Image source={require("../assets/main_menu/Profile_Picture_Holder.png")} />
-              <Text style={styles.playerName}>{this.props.user.name ? this.props.user.name : 'Dead Eyes'}</Text>
+              <Text style={styles.playerName}>{this.props.game.name ? this.props.game.name : 'Dead Eyes'}</Text>
             </View>
             <Image source={require("../assets/main_menu/Profile_Picture_Holder.png")} />
           </View>

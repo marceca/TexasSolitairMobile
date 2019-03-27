@@ -45,10 +45,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   possibleHand: {
-    width: 120,
-    height: 90,
+    width: 100,
+    height: 75,
     zIndex: 11,
-    padding: 10,
+    padding: 5,
     flexDirection: 'row',
   }
 })

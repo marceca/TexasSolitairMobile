@@ -28,13 +28,25 @@ function readUserData(user) {
     } else { 
       console.log('found record and gets user information')
       console.log('snap shot ',snapshot.val())
-      store.dispatch(types.updateUserName(snapshot.val().fname))
+      store.dispatch(types.updateUser(snapshot.val().fname, snapshot.val().coins))
     }
   });
 }
 
+function updateUserCoins(newCoins) {
+  console.log('new coins ',newCoins)
+  firebase.database().ref('Users/' + uniqueID + '/').update({
+    coins: newCoins
+})
+}
+
+// function getUserScore() {
+//   firebase.database().ref('Users/' + user + '/')
+// }
+
 module.exports = {
   writeUserData,
   readUserData,
-  uniqueID
+  uniqueID,
+  updateUserCoins
 }
