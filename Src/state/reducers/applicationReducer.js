@@ -363,13 +363,13 @@ const applicationReducer = (state = initState, action)=> {
 
       if(userResult.score > computerResult[0].score) {
         console.log('Player wins');
-        let newCoins = (resultsState.coins + resultsState.bet);
+        let newCoins = (resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]));
         resultsState.coins = newCoins;
         dbCalls.updateUserCoins(newCoins);
       }
       if(computerResult[0].score > userResult.score) {
         console.log(`Computer hand number ${computerResult[0].computerHand} won`);
-        let newCoins = (resultsState.coins - resultsState.bet);
+        let newCoins = (resultsState.coins - (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]));
         resultsState.coins = newCoins;
         dbCalls.updateUserCoins(newCoins);
       }

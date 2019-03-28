@@ -14,7 +14,19 @@ const cardBackOptions = {
   'deadly' : require('../assets/settings_page/Deadly_Woman_Card_Back.png')
 }
 
+const winningsPercents = {
+  2 : .5,
+  3 : .66,
+  4 : .75,
+  5 : .9,
+  6 : 1,
+  7 : 1.2,
+  8 : 1.5,
+  9 : 2
+}
+
 export default constants = { 
   backgroundPossibilities,
-  cardBackOptions
+  cardBackOptions,
+  winningsPercents
 }
