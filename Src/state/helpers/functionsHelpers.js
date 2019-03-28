@@ -72,6 +72,15 @@ function getUserResults(userHand) {
     }
     userStraightCount.push(userHand[i][0].value)
   }
+
+  // Set high hand with card value
+  for(let i = 0; i < userResult.wholeHand.length; i++) {
+    userResult.bestFiveCards.push(userResult.wholeHand[i]);
+  }
+  while(userResult.bestFiveCards.length > 5) {
+    userResult.bestFiveCards.shift();
+  }
+  
   // Get pair amounts
   let pairCount = {
     'pair': 0,

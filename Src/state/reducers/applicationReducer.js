@@ -229,28 +229,15 @@ const applicationReducer = (state = initState, action)=> {
       //   // 1st comp hand
       //   [
       //     [{
-      //     value: 10,
+      //     value: 5,
       //     name: 'Two of Clubs',
       //     suit: 'Spades',
       //     img: '/cards/2C.png'
       //   }],
       //   [{
-      //     value: 11,
+      //     value: 2,
       //     name: 'Three of Clubs',
       //     suit: 'Spades',
-      //     img: '/cards/3C.png'
-      //   }]],
-      //   [
-      //     [{
-      //     value: 1,
-      //     name: 'Two of Clubs',
-      //     suit: 'Diamonds',
-      //     img: '/cards/2C.png'
-      //   }],
-      //   [{
-      //     value: 11,
-      //     name: 'Three of Clubs',
-      //     suit: 'Diamonds',
       //     img: '/cards/3C.png'
       //   }]],
       //   // dead comp hand
@@ -269,16 +256,16 @@ const applicationReducer = (state = initState, action)=> {
       //   }]],
       // ]
 
-      // // // // Changing community card value for testing
+      // Changing community card value for testing
       // resultsState.communityCardsValue = [
       //   [{
-      //     value: 12,
+      //     value: 1,
       //     name: 'Four of Clubs',
-      //     suit: 'Spades',
+      //     suit: 'Clubs',
       //     img: '/cards/2C.png'
       //   }],
       //   [{
-      //     value: 13,
+      //     value: 3,
       //     name: 'Five of Clubs',
       //     suit: 'Spades',
       //     img: '/cards/3C.png'
@@ -286,13 +273,13 @@ const applicationReducer = (state = initState, action)=> {
       //   [{
       //     value: 14,
       //     name: 'Nine of Clubs',
-      //     suit: 'Spades',
+      //     suit: 'Hearts',
       //     img: '/cards/4C.png'
       //   }],
       //   [{
-      //     value: 15,
+      //     value: 9,
       //     name: 'Fve of Clubs',
-      //     suit: 'Spades',
+      //     suit: 'Diamonds',
       //     img: '/cards/5C.png'
       //   }],
       //   [{
@@ -303,30 +290,30 @@ const applicationReducer = (state = initState, action)=> {
       //   }]
       // ]
 
-      // // // For testing user results
+      // For testing user results
       // resultsState.userHand = [
       //   [{
-      //     value: 10,
+      //     value: 1,
       //     name: 'Two of Clubs',
-      //     suit: 'Spades',
+      //     suit: 'Clubs',
       //     img: '/cards/2C.png'
       //   }],
       //   [{
-      //     value: 11,
+      //     value: 2,
       //     name: 'Three of Clubs',
       //     suit: 'Spades',
       //     img: '/cards/3C.png'
       //   }],
       //   [{
-      //     value: 12,
+      //     value: 3,
       //     name: 'Four of Clubs',
-      //     suit: 'Spades',
+      //     suit: 'Hearts',
       //     img: '/cards/2C.png'
       //   }],
       //   [{
-      //     value: 13,
+      //     value: 9,
       //     name: 'Five of Clubs',
-      //     suit: 'Spades',
+      //     suit: 'Diamonds',
       //     img: '/cards/3C.png'
       //   }],
       //   [{
@@ -389,7 +376,7 @@ const applicationReducer = (state = initState, action)=> {
             }
             if(userResult.bestFiveCards[userResult.bestFiveCards.length - 1 - i] < computerResult[0].bestFiveCards[computerResult[0].bestFiveCards.length - 1 - i]) {
               console.log('Computer wins with high cards');
-              let newCoins = (resultsState.coins + resultsState.bet);
+              let newCoins = (resultsState.coins - resultsState.bet);
               resultsState.coins = newCoins;
               dbCalls.updateUserCoins(newCoins);
               tie = false;
