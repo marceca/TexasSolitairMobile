@@ -356,7 +356,7 @@ const applicationReducer = (state = initState, action)=> {
       }
       if(computerResult[0].score > userResult.score) {
         console.log(`Computer hand number ${computerResult[0].computerHand} won`);
-        let newCoins = (resultsState.coins - (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]));
+        let newCoins = (resultsState.coins - resultsState.bet);
         resultsState.coins = newCoins;
         dbCalls.updateUserCoins(newCoins);
       }
@@ -368,7 +368,7 @@ const applicationReducer = (state = initState, action)=> {
           for(let i = 0; i < userResult.bestFiveCards.length; i++) {
             if(userResult.bestFiveCards[userResult.bestFiveCards.length - 1 - i] > computerResult[0].bestFiveCards[computerResult[0].bestFiveCards.length - 1 - i]) {
               console.log('Player wins with high cards');
-              let newCoins = (resultsState.coins + resultsState.bet);
+              let newCoins = (resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]));
               resultsState.coins = newCoins;
               dbCalls.updateUserCoins(newCoins);
               tie = false;
@@ -394,7 +394,7 @@ const applicationReducer = (state = initState, action)=> {
           for(let i = 0; i < userResult.highPairs.length; i++) {
             if(userResult.highPairs[userResult.highPairs.length - 1 - i] > computerResult[0].highPairs[computerResult[0].highPairs - 1 - i]) {
               console.log('Player wins one pair or two pair');
-              let newCoins = (resultsState.coins + resultsState.bet);
+              let newCoins = (resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]));
               resultsState.coins = newCoins;
               dbCalls.updateUserCoins(newCoins);
               tie = false;
@@ -413,7 +413,7 @@ const applicationReducer = (state = initState, action)=> {
             for(let i = 0; i < userResult.bestFiveCards.length; i++) {
               if(userResult.bestFiveCards[i] > computerResult[0].bestFiveCards[i]) {
                 console.log(`Player wins high card one pair or Two pair`);
-                let newCoins = (resultsState.coins + resultsState.bet);
+                let newCoins = (resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]));
                 resultsState.coins = newCoins;
                 dbCalls.updateUserCoins(newCoins);
                 tie = false;
@@ -439,7 +439,7 @@ const applicationReducer = (state = initState, action)=> {
         console.log('three of a kind')
         if(userResult.highThreeOfAKind[0] > computerResult[0].highThreeOfAKind[0]) {
           console.log(`Player wins three of a kind ${userResult.highThreeOfAKind[0]}`);
-          let newCoins = (resultsState.coins + resultsState.bet);
+          let newCoins = (resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]));
           resultsState.coins = newCoins;
           dbCalls.updateUserCoins(newCoins);
         }
@@ -451,7 +451,7 @@ const applicationReducer = (state = initState, action)=> {
           for(let i = 0; i < userResult.bestFiveCards.length; i++) {
             if(userResult.bestFiveCards[i] > computerResult[0].bestFiveCards[i]) {
               console.log(`Player wins high card three of a kind ${userResult.highThreeOfAKind[0]}`);
-              let newCoins = (resultsState.coins + resultsState.bet);
+              let newCoins = (resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]));
               resultsState.coins = newCoins;
               dbCalls.updateUserCoins(newCoins);
               tie = false;
@@ -476,7 +476,7 @@ const applicationReducer = (state = initState, action)=> {
       if(userResult.score === 4000) {
         if(userResult.bestFiveCards[4] > computerResult[0].bestFiveCards[4]) {
           console.log(`Player wins with straight to the ${userResult.bestFiveCards[4]}`);
-          let newCoins = (resultsState.coins + resultsState.bet)
+          let newCoins = (resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]))
           resultsState.coins = newCoins
           dbCalls.updateUserCoins(newCoins)
         }
@@ -496,7 +496,7 @@ const applicationReducer = (state = initState, action)=> {
         var tie = true;
         if(userResult.bestFiveCards[4] > computerResult[0].bestFiveCards[4]) {
           console.log(`Player wins with flush with high card ${userResult.bestFiveCards[4]}`);
-          let newCoins = (resultsState.coins + resultsState.bet)
+          let newCoins = (resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]))
           resultsState.coins = newCoins
           dbCalls.updateUserCoins(newCoins)
           tie = false;
@@ -512,7 +512,7 @@ const applicationReducer = (state = initState, action)=> {
           for(let i = 0; i < userResult.bestFiveCards.length; i++) {
             if(userResult.bestFiveCards[userResult.bestFiveCards.length - i - 1] > computerResult[0].bestFiveCards[computerResult[0].bestFiveCards.length - i - 1]) {
               console.log(`Player wins with a flush with high card ${userResult.bestFiveCards[4]}`);
-              let newCoins = (resultsState.coins + resultsState.bet)
+              let newCoins = (resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]))
               resultsState.coins = newCoins
               dbCalls.updateUserCoins(newCoins)
               tie = false;
@@ -538,7 +538,7 @@ const applicationReducer = (state = initState, action)=> {
         var tie = true;
         if(userResult.highThreeOfAKind[0] > computerResult[0].highThreeOfAKind[0]) {
           console.log(`Player won with a full house ${userResult.highThreeOfAKind[0]}'s full of ${Math.max(userResult.highPairs)}'s`);
-          let newCoins = (resultsState.coins + resultsState.bet)
+          let newCoins = (resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]))
           resultsState.coins = newCoins
           dbCalls.updateUserCoins(newCoins)
           tie = false;
@@ -553,7 +553,7 @@ const applicationReducer = (state = initState, action)=> {
         if(tie === true) {
           if(Math.max(userResult.highPairs) > Math.max(computerResult[0].highPairs)) {
             console.log(`Player won with a full house ${userResult.highThreeOfAKind[0]}'s full of ${Math.max(userResult.highPairs)}'s`);
-            let newCoins = (resultsState.coins + resultsState.bet)
+            let newCoins = (resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]))
             resultsState.coins = newCoins
             dbCalls.updateUserCoins(newCoins)
             tie = false;
@@ -576,7 +576,7 @@ const applicationReducer = (state = initState, action)=> {
         var tie = true;
         if(userResult.highFourOfAKind[0] > computerResult[0].highFourOfAKind[0]) {
           console.log(`Player wins with a four of a kind ${userResult.highFourOfAKind[0]}'s`);
-          let newCoins = (resultsState.coins + resultsState.bet)
+          let newCoins = (resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]))
           resultsState.coins = newCoins
           dbCalls.updateUserCoins(newCoins)
           tie = false;
@@ -591,7 +591,7 @@ const applicationReducer = (state = initState, action)=> {
         if(tie === true) {
           if(userResult.highCard > computerResult[0].highCard) {
           console.log(`Player wins with a four of a kind ${userResult.highFourOfAKind[0]}'s`);
-          let newCoins = (resultsState.coins + resultsState.bet)
+          let newCoins = (resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]))
           resultsState.coins = newCoins
           dbCalls.updateUserCoins(newCoins)
           tie = false;
@@ -613,7 +613,7 @@ const applicationReducer = (state = initState, action)=> {
       if(userResult.score === 8000) {
         if(userResult.highCard > computerResult[0].highCard) {
           console.log(`Player wins the a straight flush to ${userResult.highCard}`);
-          let newCoins = (resultsState.coins + resultsState.bet)
+          let newCoins = (resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]))
           resultsState.coins = newCoins
           dbCalls.updateUserCoins(newCoins)
           tie = false;
