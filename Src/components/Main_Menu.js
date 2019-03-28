@@ -29,12 +29,12 @@ class Main_Menu extends Component {
 
   }
 
-  ladder() {
-
+  ladderState() {
+    store.dispatch(types.ladder())
   }
 
   render() {
-    const numHands = constants.numberOfHands[this.props.game.num_of_hands]
+    const numHands = constants.numberOfHands[this.props.game.numOfHands]
     return (
       <View style={styles.blackModal}>
         <ImageBackground style={styles.mainMenu} source={require('../assets/main_menu/Menu_Screen.png')}>
@@ -51,7 +51,7 @@ class Main_Menu extends Component {
           <View style={styles.bottomMainMenu}>
             <TouchableHighlight onPress={() => this.showHideCards()}><Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Hide_Cards_Button.png")} /></TouchableHighlight>
             <TouchableHighlight onPress={() => this.number_of_hands()}><Image style={styles.bottomMainMenuImages} source={numHands} /></TouchableHighlight>
-            <TouchableHighlight onPress={() => this.ladder()}><Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Ladder_Button.png")} /></TouchableHighlight>
+            {this.props.game.ladder ? <TouchableHighlight onPress={() => this.ladderState()}><Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Ladder_Button.png")} /></TouchableHighlight> : <TouchableHighlight onPress={() => this.ladderState()}><Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Ladder_Locked_Button.png")} /></TouchableHighlight>}
           </View>
         </ImageBackground>
       </View>

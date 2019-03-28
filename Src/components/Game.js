@@ -80,7 +80,7 @@ class Game extends Component {
   }
 
   decreaseBet() {
-    if(this.props.game.bet - this.props.game.betSize >= 0) {
+    if(this.props.game.bet - this.props.game.betSize >= 50) {
       store.dispatch(types.decreaseBet())
     }
   }
@@ -90,6 +90,7 @@ class Game extends Component {
       store.dispatch(types.updateBet(num))
     }
   }
+
   render() {
     const bg = constants.backgroundPossibilities[this.props.settings.main_background_image]
     return (

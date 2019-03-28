@@ -27,6 +27,7 @@ const UPDATEBACKGROUNDIMAGE = 'UPDATEBACKGROUNDIMAGE';
 const UPDATEBET = 'UPDATEBET';
 const INCREASEBET = 'INCREASEBET';
 const DECREASEBET = 'DECREASEBET';
+const LADDER = 'LADDER';
 
 const deal = () => ({type: DEAL});
 const flop = () => ({type: FLOP});
@@ -56,6 +57,7 @@ const updateBackgroundImage = (bg) => ({type: UPDATEBACKGROUNDIMAGE, bg});
 const updateBet = (num) => ({type: UPDATEBET, num});
 const increaseBet = () => ({type: INCREASEBET});
 const decreaseBet = () => ({type: DECREASEBET});
+const ladder = () => ({type: LADDER});
 
 // User updates
 const UPDATEUSER = 'UPDATEUSER';
@@ -120,5 +122,7 @@ module.exports = {
   INCREASEBET,
   increaseBet,
   decreaseBet,
-  DECREASEBET
+  DECREASEBET,
+  ladder,
+  LADDER
 }

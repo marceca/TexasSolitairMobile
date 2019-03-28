@@ -33,7 +33,9 @@ const initState = {
   coins: null,
   bet: 50,
   betSize: 50,
-  num_of_hands: 'six'
+  numOfHands: 'six',
+  show_careds: true,
+  ladder: true
 }
 
 // Sort user hand by card value
@@ -49,19 +51,6 @@ function userSort(userSorting) {
   return userSorting;
 }
 
-// Sort computer hand by card value
-function computerSort(compSorting) {
-  for(let i = 0; i < compSorting.wholeHand.length; i++) {
-    if(i != compSorting.wholeHand.length - 1) {
-      if(compSorting.wholeHand[i] > compSorting.wholeHand[i + 1]) {
-        [compSorting.wholeHand[i], compSorting.wholeHand[i + 1]] = [compSorting.wholeHand[i + 1], compSorting.wholeHand[i]]
-        computerSort(compSorting)
-      }
-    }
-  }
-  return compSorting
-}
-
 const applicationReducer = (state = initState, action)=> {
   switch (action.type) {
 
@@ -72,7 +61,7 @@ const applicationReducer = (state = initState, action)=> {
       updateUserState.coins = action.userCoins
     return updateUserState
 
-    // SOME SETTINGS
+    // SETTINGS
     case types.CHANGECARDBACK:
       const changeCardBackState =  Object.assign({}, state);
       changeCardBackState.cardBack = constants.cardBackOptions[action.cardBack];
@@ -86,10 +75,20 @@ const applicationReducer = (state = initState, action)=> {
         updateHandObject.push([]);
         updateDisplayObject.push([]);
       }
-      updateNumberOfHandsState.num_of_hands = action.numHandsImage;
+      updateNumberOfHandsState.numOfHands = action.numHandsImage;
       updateNumberOfHandsState.handsDisplay = updateDisplayObject;
       updateNumberOfHandsState.handObjects = updateHandObject;
     return updateNumberOfHandsState;
+
+    case types.LADDER:
+      const ladderState = Object.assign({}, state);
+      console.log('lader')
+      if(ladderState.ladder === true) {
+        ladderState.ladder = false;
+      } else {
+        ladderState.ladder = true;
+      }
+    return ladderState;
 
     // BETTINGS CONTROLS
 
