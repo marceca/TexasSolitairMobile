@@ -160,12 +160,26 @@ const applicationReducer = (state = initState, action)=> {
       if(!userHandState.priorHands[action.hand] && userHandState.dealt === true) {
         userHandState.userHand = userHandState.handObjects[action.hand];
         userHandState.priorHands[action.hand] = true;
+        let captureSwitchHand = [];
+        if(userHandState.showCards === false) {
+          captureSwitchHand.push(<Image key={userHandState.userHand[0][0].name} style={styles.cardImage}  source={userHandState.cardBack} />)
+          captureSwitchHand.push(<Image key={userHandState.userHand[1][0].name} style={styles.cardImage}  source={userHandState.cardBack} />)
+        }
+        console.log('capture switch ahd ', captureSwitchHand)
         userHandState.handsDisplay[action.hand] = [];
         userHandState.handsDisplay[action.hand].push(<Image key={userHandState.userHand[0][0].name} style={styles.cardImage}  source={userHandState.userHand[0][0].img} />);
         userHandState.handsDisplay[action.hand].push(<Image key={userHandState.userHand[1][0].name} style={styles.cardImage} source={userHandState.userHand[1][0].img} />);
         userHandState.chosenHand = action.hand + 1;
-        [userHandState.handsDisplay[userHandState.handsDisplay.length - 1][0], userHandState.handsDisplay[action.hand][0]] = [userHandState.handsDisplay[action.hand][0], userHandState.handsDisplay[userHandState.handsDisplay.length - 1][0]];
-        [userHandState.handsDisplay[userHandState.handsDisplay.length - 1][1], userHandState.handsDisplay[action.hand][1]] = [userHandState.handsDisplay[action.hand][1], userHandState.handsDisplay[userHandState.handsDisplay.length - 1][1]];
+        if(userHandState.showCards === false) {
+          userHandState.handsDisplay[userHandState.handsDisplay.length - 1][0] = userHandState.handsDisplay[action.hand][0];
+          userHandState.handsDisplay[userHandState.handsDisplay.length - 1][1] = userHandState.handsDisplay[action.hand][1];
+          userHandState.handsDisplay[action.hand][0] = captureSwitchHand[0];
+          userHandState.handsDisplay[action.hand][1] = captureSwitchHand[1];
+        } else {
+          [userHandState.handsDisplay[userHandState.handsDisplay.length - 1][0], userHandState.handsDisplay[action.hand][0]] = [userHandState.handsDisplay[action.hand][0], userHandState.handsDisplay[userHandState.handsDisplay.length - 1][0]];
+
+          [userHandState.handsDisplay[userHandState.handsDisplay.length - 1][1], userHandState.handsDisplay[action.hand][1]] = [userHandState.handsDisplay[action.hand][1], userHandState.handsDisplay[userHandState.handsDisplay.length - 1][1]];
+        }
         [userHandState.handObjects[userHandState.handsDisplay.length - 1], userHandState.handObjects[action.hand]] = [userHandState.handObjects[action.hand], userHandState.handObjects[userHandState.handsDisplay.length - 1]]
         userHandState.choseHandThisTurn = true;
         userHandState.chooseOncePerTurn = true;
