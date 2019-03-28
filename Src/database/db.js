@@ -12,11 +12,12 @@ var config = {
 
 firebase.initializeApp(config);
 
-function writeUserData(coins,uniqueID,fname ,lname){
+function writeUserData(coins,uniqueID,fname ,lname, ladderNumber){
   firebase.database().ref('Users/' + uniqueID + '/').set({
       coins,
       fname,
-      lname
+      lname,
+      ladderNumber
   })
 }
 
@@ -24,11 +25,11 @@ function readUserData(user) {
   firebase.database().ref('Users/' + user +'/').once('value', function (snapshot) {
     if(snapshot.val() === null) {
       console.log('in null')
-      writeUserData(1000, uniqueID, 'firstName', 'lastName');
+      writeUserData(1000, uniqueID, 'firstName', 'lastName', 1);
     } else { 
       console.log('found record and gets user information')
       console.log('snap shot ',snapshot.val())
-      store.dispatch(types.updateUser(snapshot.val().fname, snapshot.val().coins))
+      store.dispatch(types.updateUser(snapshot.val().fname, snapshot.val().coins, snapshot.val().ladderNumber))
     }
   });
 }
@@ -37,7 +38,16 @@ function updateUserCoins(newCoins) {
   console.log('new coins ',newCoins)
   firebase.database().ref('Users/' + uniqueID + '/').update({
     coins: newCoins
-})
+  })
+}
+
+function updateLadder(currentLadder) {
+  console.log('in update ladder', currentLadder)
+  const nextLadder = currentLadder + 1;
+  console.log('next ladder ', nextLadder)
+  firebase.database().ref('Users/' + uniqueID + '/').update({
+    ladderNumber: nextLadder
+  })
 }
 
 // function getUserScore() {
@@ -48,5 +58,6 @@ module.exports = {
   writeUserData,
   readUserData,
   uniqueID,
-  updateUserCoins
+  updateUserCoins,
+  updateLadder
 }

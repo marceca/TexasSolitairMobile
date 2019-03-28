@@ -21,6 +21,7 @@ export default class App extends React.Component {
 
     // await firebase.analytics().logEvent('foo', { bar: '123'});
 
+    console.log('before first read user call')
     dbCalls.readUserData(dbCalls.uniqueID);
   }
 

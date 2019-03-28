@@ -62,7 +62,7 @@ const ladder = () => ({type: LADDER});
 // User updates
 const UPDATEUSER = 'UPDATEUSER';
 
-const updateUser = (userName, userCoins) => ({type:UPDATEUSER, userName, userCoins})
+const updateUser = (userName, userCoins, userLadder) => ({type:UPDATEUSER, userName, userCoins, userLadder})
 
 module.exports = {
   DEAL,
