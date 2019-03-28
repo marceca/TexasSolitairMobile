@@ -27,6 +27,8 @@ const initState = {
   cardBack: constants.cardBackOptions['red'],
   profilePicture: '',
   reset: false,
+  stick: true,
+  switch: true,
   name: null,
   coins: null,
   bet: 50,
@@ -208,6 +210,8 @@ const applicationReducer = (state = initState, action)=> {
       const resultsState = Object.assign({}, state);
       // Show reset button
       resultsState.reset = true;
+      resultsState.stick = false;
+      resultsState.switch = false;
       // Flip all cards
       for(let i = 0; i <  resultsState.handsDisplay.length - 1; i++) {
         resultsState.handsDisplay[i] = [];
@@ -376,7 +380,7 @@ const applicationReducer = (state = initState, action)=> {
         if(userResult.score === 1000 || userResult.score === 2000) {
           var tie = true;
           for(let i = 0; i < userResult.highPairs.length; i++) {
-            if(userResult.highPairs[i] > computerResult[0].highPairs[i]) {
+            if(userResult.highPairs[userResult.highPairs.length - 1 - i] > computerResult[0].highPairs[computerResult[0].highPairs - 1 - i]) {
               console.log('Player wins one pair or two pair');
               let newCoins = (resultsState.coins + resultsState.bet);
               resultsState.coins = newCoins;
@@ -384,7 +388,7 @@ const applicationReducer = (state = initState, action)=> {
               tie = false;
               break;
             }
-            if(userResult.highPairs[i] < computerResult[0].highPairs[i]) {
+            if(userResult.highPairs[userResult.highPairs.length - 1 - i] < computerResult[0].highPairs[computerResult[0].highPairs - 1 - i]) {
               console.log(`a pair or two pair computer hand number ${computerResult[0].computerHand} won`);
               let newCoins = (resultsState.coins - resultsState.bet);
               resultsState.coins = newCoins;
@@ -638,6 +642,8 @@ const applicationReducer = (state = initState, action)=> {
       resetState.chosenHand = true;
       resetState.choseHandThisTurn = true;
       resetState.chooseOncePerTurn = false;
+      resetState.stick = true;
+      resetState.switch = true;
       resetState.reset = false;
     return resetState;
 

@@ -137,8 +137,8 @@ class Game extends Component {
                     </View>
                   </View>
                   <View style={styles.stickSwitchButtonsContainer} className="stick-switch-buttons">
-                    <TouchableHighlight className="button stick" id="game-button" onPress={(e) => this.deal(e,this.props)} ><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Stick_Button_White_2.png')} /></TouchableHighlight>
-                    <TouchableHighlight className="button switch" onPress={(e) => this.switch(e,this.props)}><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Switch_Button_White_2.png')} /></TouchableHighlight>
+                    {this.props.game.stick ? <TouchableHighlight className="button stick" id="game-button" onPress={(e) => this.deal(e,this.props)} ><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Stick_Button_White_2.png')} /></TouchableHighlight> : <Image style={[styles.stickSwitchButtons, styles.cantClickButton]} source={require('../assets/buttons/Stick_Button_White_2.png')} />}
+                    {this.props.game.switch ? <TouchableHighlight className="button switch" onPress={(e) => this.switch(e,this.props)}><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Switch_Button_White_2.png')} /></TouchableHighlight> : <Image style={[styles.stickSwitchButtons, styles.cantClickButton]} source={require('../assets/buttons/Switch_Button_White_2.png')} />}
                     {this.props.game.reset ? <TouchableHighlight onPress={(e) => this.reset(e)}><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Next_Hand_White_2.png')} /></TouchableHighlight> : <Image style={[styles.stickSwitchButtons, styles.cantClickButton]} source={require('../assets/buttons/Next_Hand_White_2.png')} />}
                   </View>
                 </View>
@@ -204,8 +204,9 @@ const styles = StyleSheet.create({
     width: screenWidth / 3,
   },
   bettingButtons: {
-      width: '20%',
-      height: '20%'
+      width: '25%',
+      height: 50,
+      resizeMode: 'stretch'
   },
   buttonsContainer: {
     width: screenWidth,

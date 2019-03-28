@@ -183,7 +183,7 @@ PODS:
     - React/Core (= 0.58.0-rc.2)
   - React/Core (0.58.0-rc.2):
     - yoga (= 0.58.0-rc.2.React)
-  - RNDeviceInfo (1.0.0):
+  - RNDeviceInfo (1.1.0):
     - React
   - yoga (0.58.0-rc.2.React)
 
@@ -276,7 +276,7 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   React: e4fc8313fddcafa6457842be3a670c463c01e967
-  RNDeviceInfo: 3a4a9c6b1792d7a7d0d7b5428edb03107be90528
+  RNDeviceInfo: bcb9494e3c9efd7536c3b25d4c16cf879c84042d
   yoga: 77ef683428c2437b3252e0edbc9f15198e1a1d44
 
 PODFILE CHECKSUM: 7c20425b06e1886aebca996db329772ccfdeb45c
