@@ -375,6 +375,31 @@ const applicationReducer = (state = initState, action)=> {
       }
 
       if(userResult.score === computerResult[0].score) {
+        // Check high card winning hand
+        if(userResult.score < 1000) {
+          var tie = true;
+          for(let i = 0; i < userResult.bestFiveCards.length; i++) {
+            if(userResult.bestFiveCards[userResult.bestFiveCards.length - 1 - i] > computerResult[0].bestFiveCards[computerResult[0].bestFiveCards.length - 1 - i]) {
+              console.log('Player wins with high cards');
+              let newCoins = (resultsState.coins + resultsState.bet);
+              resultsState.coins = newCoins;
+              dbCalls.updateUserCoins(newCoins);
+              tie = false;
+              break;
+            }
+            if(userResult.bestFiveCards[userResult.bestFiveCards.length - 1 - i] < computerResult[0].bestFiveCards[computerResult[0].bestFiveCards.length - 1 - i]) {
+              console.log('Computer wins with high cards');
+              let newCoins = (resultsState.coins + resultsState.bet);
+              resultsState.coins = newCoins;
+              dbCalls.updateUserCoins(newCoins);
+              tie = false;
+              break;
+            }
+          }
+          if(tie === true) {
+            console.log('Tie hand with high cards');
+          }
+        }
 
         // Check one pair and two pair winning hand
         if(userResult.score === 1000 || userResult.score === 2000) {
