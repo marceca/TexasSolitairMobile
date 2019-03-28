@@ -86,7 +86,6 @@ const applicationReducer = (state = initState, action)=> {
         updateHandObject.push([]);
         updateDisplayObject.push([]);
       }
-      console.log('action ',action)
       updateNumberOfHandsState.num_of_hands = action.numHandsImage;
       updateNumberOfHandsState.handsDisplay = updateDisplayObject;
       updateNumberOfHandsState.handObjects = updateHandObject;
@@ -165,7 +164,6 @@ const applicationReducer = (state = initState, action)=> {
       const flopState = Object.assign({}, state);
       let flop = 0;
       if(flopState.chosenHand != false && flopState.choseHandThisTurn === true) {
-        console.log('in if statemetn')
         while(flop < 3) {
           // Random number for each card
           ranNum = Math.floor(Math.random() * (flopState.deck.length))
@@ -177,7 +175,6 @@ const applicationReducer = (state = initState, action)=> {
         }
         flopState.play++;
       }
-      console.log('after loop state ', flopState)
       flopState.choseHandThisTurn = true;
       flopState.chooseOncePerTurn = false;
     return flopState;

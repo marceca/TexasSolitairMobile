@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, TouchableHighlight, Image, Text, StyleSheet, Dimensions, ImageBackground, TextInput, TouchableWithoutFeedback, Keyboard} from 'react-native';
+import {View, TouchableHighlight, Image, Text, StyleSheet, Dimensions, ImageBackground, TextInput} from 'react-native';
 import { connect } from 'react-redux';
 import store from '../state/store';
 import * as types from '../state/actions/actions';
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
   },
   settingsContainer: {
     width: '90%',
-    height: 20,
+    height: 30,
     alignItems: 'center',
     justifyContent: 'space-between',
     flexDirection: 'row',
@@ -178,11 +178,16 @@ const styles = StyleSheet.create({
   },
   scoreContainter: {
     backgroundColor: 'white',
-    borderRadius: 15
+    borderRadius: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   coinsText: {
     fontSize: 16,
-    color: 'red'
+    paddingLeft: 5,
+    paddingRight: 5,
+    paddingTop: 5,
+    paddingBottom: 5
   },
   settingsIcon: {
     width: 30,
@@ -206,6 +211,7 @@ const styles = StyleSheet.create({
   bettigsButtonsContainer: {
     flexDirection: 'column',
     width: screenWidth / 3,
+    top: '5%'
   },
   bettingButtons: {
       width: '25%',
