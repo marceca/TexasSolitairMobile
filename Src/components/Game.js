@@ -176,6 +176,10 @@ const styles = StyleSheet.create({
     marginRight: 'auto',
     marginTop: 10
   },
+  scoreContainter: {
+    backgroundColor: 'white',
+    borderRadius: 15
+  },
   coinsText: {
     fontSize: 16,
     color: 'red'
