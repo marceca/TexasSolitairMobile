@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import store from '../state/store';
 import * as types from '../state/actions/actions';
 import Num_Hands from './settings/Num_Hands';
+import constants from '../assets/Constants';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -24,24 +25,33 @@ class Main_Menu extends Component {
     store.dispatch(types.numberOfHands())
   }
 
+  showHideCards() {
+
+  }
+
+  ladder() {
+
+  }
+
   render() {
+    const numHands = constants.numberOfHands[this.props.game.num_of_hands]
     return (
       <View style={styles.blackModal}>
         <ImageBackground style={styles.mainMenu} source={require('../assets/main_menu/Menu_Screen.png')}>
           <View style={styles.topMenu}>
             <View style={styles.playerContainer}>
-              <Image source={require("../assets/main_menu/Profile_Picture_Holder.png")} />
+              <Image source={require("../assets/main_menu/Profile_Pic_Pill.png")} />
               <Text style={styles.playerName}>{this.props.game.name ? this.props.game.name : 'Dead Eyes'}</Text>
             </View>
-            <Image source={require("../assets/main_menu/Profile_Picture_Holder.png")} />
+            <Image source={require("../assets/main_menu/Settings_Icon.png")} />
           </View>
           <View style={styles.midMainMenu}>
-            {this.props.settings.num_hands ? <Num_Hands /> : <TouchableHighlight onPress={() => this.start_game()}><Image source={require("../assets/main_menu/Play_Button.png")} /></TouchableHighlight>}
+            {this.props.settings.num_hands ? <Num_Hands /> : <TouchableHighlight onPress={() => this.start_game()}><Image style={styles.midMainImage} source={require("../assets/main_menu/Play_Button.png")} /></TouchableHighlight>}
           </View>
           <View style={styles.bottomMainMenu}>
-            <Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Play_Button.png")} />
-            <TouchableHighlight onPress={() => this.number_of_hands()}><Image style={styles.bottomMainMenuImages} source={require("../assets/settings_page/Test_72ppi_Super.png")} /></TouchableHighlight>
-            <Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Play_Button.png")} />
+            <TouchableHighlight onPress={() => this.showHideCards()}><Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Hide_Cards_Button.png")} /></TouchableHighlight>
+            <TouchableHighlight onPress={() => this.number_of_hands()}><Image style={styles.bottomMainMenuImages} source={numHands} /></TouchableHighlight>
+            <TouchableHighlight onPress={() => this.ladder()}><Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Ladder_Button.png")} /></TouchableHighlight>
           </View>
         </ImageBackground>
       </View>
@@ -64,12 +74,12 @@ const styles = StyleSheet.create({
   topMenu: {
     width: screenWidth,
     justifyContent: 'space-between',
-    maxHeight: screenHeight / 8,
+    height: screenHeight / 12,
     flexDirection: 'row',
   },
   playerContainer: {
-    justifyContent: 'space-between',
-    width: screenWidth / 8,
+    justifyContent: 'flex-start',
+    width: screenWidth / 2,
     flexDirection: 'row',
     paddingRight: 10,
     paddingLeft: 10
@@ -80,21 +90,25 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
   midMainMenu: {
-    maxHeight: screenHeight,
+    height: screenHeight / 1.23,
     width: screenWidth,
     justifyContent: 'center',
     alignItems: 'center',
     zIndex: 20,
   },
+  midMainImage: {
+
+  },
   bottomMainMenu: {
-    maxHeight: screenHeight / 8,
+    height: screenHeight / 10,
     width: screenWidth,
     justifyContent: 'space-between',
     flexDirection: 'row',
+    resizeMode: 'stretch'
   },
   bottomMainMenuImages: {
     width: screenWidth / 3,
-    flex: 1
+    height: 50
   }
 })
 

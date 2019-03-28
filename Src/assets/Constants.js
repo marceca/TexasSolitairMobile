@@ -25,8 +25,21 @@ const winningsPercents = {
   9 : 2
 }
 
+const numberOfHands = {
+  'two' : require('../assets/main_menu/number_of_hands/Number_Of_Hands_2.png'),
+  'three' : require('../assets/main_menu/number_of_hands/Number_Of_Hands_3.png'),
+  'four' : require('../assets/main_menu/number_of_hands/Number_Of_Hands_4.png'),
+  'five' : require('../assets/main_menu/number_of_hands/Number_Of_Hands_5.png'),
+  'six' : require('../assets/main_menu/number_of_hands/Number_Of_Hands_6.png'),
+  'seven' : require('../assets/main_menu/number_of_hands/Number_Of_Hands_7.png'),
+  'eight' : require('../assets/main_menu/number_of_hands/Number_Of_Hands_8.png'),
+  'nine' : require('../assets/main_menu/number_of_hands/Number_Of_Hands_9.png'),
+  'ten' : require('../assets/main_menu/number_of_hands/Number_Of_Hands_10.png'),
+}
+
 export default constants = { 
   backgroundPossibilities,
   cardBackOptions,
-  winningsPercents
+  winningsPercents,
+  numberOfHands
 }

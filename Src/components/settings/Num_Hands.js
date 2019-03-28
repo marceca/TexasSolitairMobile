@@ -15,22 +15,22 @@ const mapStateToProps = (state) => {
 }
 
 class Num_Hands extends Component {
-  update_num_hands(numberOfHands) {
-    store.dispatch(types.updateNumberOfHands(numberOfHands))
+  update_num_hands(numberOfHands, numHandsImage) {
+    store.dispatch(types.updateNumberOfHands(numberOfHands, numHandsImage))
   }
   
   render() {
     return (
       <View style={styles.numHandsContainer} className="num-hands-container">
-        <TouchableHighlight onPress={() => this.update_num_hands(2)}><Image style={styles.numbers} source={require("../../assets/settings_page/Number_1_Button.png")} /></TouchableHighlight>
-        <TouchableHighlight onPress={() => this.update_num_hands(3)}><Image style={styles.numbers} source={require("../../assets/settings_page/Number_2_Button.png")} /></TouchableHighlight>
-        <TouchableHighlight onPress={() => this.update_num_hands(4)}><Image style={styles.numbers} source={require("../../assets/settings_page/Number_3_Button.png")} /></TouchableHighlight>
-        <TouchableHighlight onPress={() => this.update_num_hands(5)}><Image style={styles.numbers} source={require("../../assets/settings_page/Number_4_Button.png")} /></TouchableHighlight>
-        <TouchableHighlight onPress={() => this.update_num_hands(6)}><Image style={styles.numbers} source={require("../../assets/settings_page/Number_5_Button.png")} /></TouchableHighlight>
-        <TouchableHighlight onPress={() => this.update_num_hands(7)}><Image style={styles.numbers} source={require("../../assets/settings_page/Number_6_Button.png")} /></TouchableHighlight>
-        <TouchableHighlight onPress={() => this.update_num_hands(8)}><Image style={styles.numbers} source={require("../../assets/settings_page/Number_7_Button.png")} /></TouchableHighlight>
-        <TouchableHighlight onPress={() => this.update_num_hands(9)}><Image style={styles.numbers} source={require("../../assets/settings_page/Number_8_Button.png")} /></TouchableHighlight>
-        <TouchableHighlight onPress={() => this.update_num_hands(10)}><Image style={styles.numbers} source={require("../../assets/settings_page/Number_9_Button.png")} /></TouchableHighlight>
+        <TouchableHighlight onPress={() => this.update_num_hands(2, 'two')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_2.png")} /></TouchableHighlight>
+        <TouchableHighlight onPress={() => this.update_num_hands(3, 'three')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_3.png")} /></TouchableHighlight>
+        <TouchableHighlight onPress={() => this.update_num_hands(4, 'four')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_4.png")} /></TouchableHighlight>
+        <TouchableHighlight onPress={() => this.update_num_hands(5, 'five')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_5.png")} /></TouchableHighlight>
+        <TouchableHighlight onPress={() => this.update_num_hands(6, 'six')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_6.png")} /></TouchableHighlight>
+        <TouchableHighlight onPress={() => this.update_num_hands(7, 'seven')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_7.png")} /></TouchableHighlight>
+        <TouchableHighlight onPress={() => this.update_num_hands(8, 'eight')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_8.png")} /></TouchableHighlight>
+        <TouchableHighlight onPress={() => this.update_num_hands(9, 'nine')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_9.png")} /></TouchableHighlight>
+        <TouchableHighlight onPress={() => this.update_num_hands(10, 'ten')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_10.png")} /></TouchableHighlight>
       </View>
     )
   }

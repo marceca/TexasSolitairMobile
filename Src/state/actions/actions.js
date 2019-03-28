@@ -51,7 +51,7 @@ const tutorialPage = () => ({type: TUTORIALPAGE});
 const startGame = () => ({type: STARTGAME});
 const showMainMenu = () => ({type: SHOWMAINMENU});
 const numberOfHands = () => ({type: NUMBEROFHANDS});
-const updateNumberOfHands = (numberOfHands) => ({type: UPDATENUMBEROFHANDS, numberOfHands});
+const updateNumberOfHands = (numberOfHands, numHandsImage) => ({type: UPDATENUMBEROFHANDS, numberOfHands, numHandsImage});
 const updateBackgroundImage = (bg) => ({type: UPDATEBACKGROUNDIMAGE, bg});
 const updateBet = (num) => ({type: UPDATEBET, num});
 const increaseBet = () => ({type: INCREASEBET});

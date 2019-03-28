@@ -32,7 +32,8 @@ const initState = {
   name: null,
   coins: null,
   bet: 50,
-  betSize: 50
+  betSize: 50,
+  num_of_hands: 'six'
 }
 
 // Sort user hand by card value
@@ -85,7 +86,8 @@ const applicationReducer = (state = initState, action)=> {
         updateHandObject.push([]);
         updateDisplayObject.push([]);
       }
-
+      console.log('action ',action)
+      updateNumberOfHandsState.num_of_hands = action.numHandsImage;
       updateNumberOfHandsState.handsDisplay = updateDisplayObject;
       updateNumberOfHandsState.handObjects = updateHandObject;
     return updateNumberOfHandsState;
