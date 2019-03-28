@@ -30,7 +30,7 @@ class Num_Hands extends Component {
         <TouchableHighlight onPress={() => this.update_num_hands(7, 'seven')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_7.png")} /></TouchableHighlight>
         <TouchableHighlight onPress={() => this.update_num_hands(8, 'eight')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_8.png")} /></TouchableHighlight>
         <TouchableHighlight onPress={() => this.update_num_hands(9, 'nine')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_9.png")} /></TouchableHighlight>
-        <TouchableHighlight onPress={() => this.update_num_hands(10, 'ten')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_10.png")} /></TouchableHighlight>
+        <TouchableHighlight onPress={() => this.update_num_hands(10, 'ten')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Nmber_10.png")} /></TouchableHighlight>
       </View>
     )
   }

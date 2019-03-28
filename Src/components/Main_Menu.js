@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     width: screenWidth,
     justifyContent: 'space-between',
     flexDirection: 'row',
-    resizeMode: 'stretch'
+    resizeMode: 'contain'
   },
   bottomMainMenuImages: {
     width: screenWidth / 3,
