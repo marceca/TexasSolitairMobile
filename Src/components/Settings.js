@@ -27,28 +27,31 @@ class Settings extends Component {
   }
 
   open_total_number_of_hands() {
-    store.dispatch(types.openTotalNumberOfHands())
+    store.dispatch(types.openTotalNumberOfHands());
   }
 
   open_hand_ranks() {
-    store.dispatch(types.openHandRanks())
+    store.dispatch(types.openHandRanks());
   }
 
   open_tutorial() {
-    store.dispatch(types.openTutorial())
+    store.dispatch(types.openTutorial());
   }
 
   show_main_menu() {
-    store.dispatch(types.showMainMenu())
+    store.dispatch(types.showMainMenu());
   }
 
+  showCards() {
+    store.dispatch(types.showHideCards());
+  }
   render() {
     return (
       <ImageBackground style={styles.settingsContainer} source={require('../assets/settings_page/Settings_BG.png')}>
         <ScrollView>
           <View style={styles.settingsIcons} className="settings-icons top-buffer"><Text style={styles.settingsText}>Settings</Text><TouchableHighlight onPress={() => this.closeSettings()}><Image className="white-x-icon" source={require("../assets/settings_page/White_X.png")} /></TouchableHighlight></View>
           <View style={styles.settingsIcons} className="settings-icons"><Text style={styles.settingsText}>SFX</Text><Image source={require("../assets/settings_page/ON_Button.png")} /></View>
-          <View style={styles.settingsIcons} className="settings-icons"><Text style={styles.settingsText}>Show Cards</Text><Image source={require("../assets/settings_page/ON_Button.png")} /></View>
+          <TouchableHighlight onPress={() => this.showCards()}><View style={styles.settingsIcons} className="settings-icons"><Text style={styles.settingsText}>Show Cards</Text>{this.props.game.showCards ? <Image source={require("../assets/settings_page/ON_Button.png")} /> : <Image source={require("../assets/settings_page/Off_Toggle_Button.png")} />}</View></TouchableHighlight>
           <TouchableHighlight onPress={() => this.open_total_number_of_hands()}><View style={styles.settingsIcons} className="settings-icons"><Text style={styles.settingsText}>Total Number of Hands</Text><Image source={require("../assets/settings_page/Blue_Arrow_Button.png")} /></View></TouchableHighlight>
           <TouchableHighlight onPress={() => this.change_background_image()}><View style={styles.settingsIcons} className="settings-icons"><Text style={styles.settingsText}>Change Background</Text><Image source={require("../assets/settings_page/Blue_Arrow_Button.png")} /></View></TouchableHighlight>
           <TouchableHighlight onPress={() => this.open_card_back()}><View style={styles.settingsIcons} className="settings-icons"><Text style={styles.settingsText}>Change Card Backs</Text><Image source={require("../assets/settings_page/Blue_Arrow_Button.png")} /></View></TouchableHighlight>

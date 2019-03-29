@@ -107,7 +107,9 @@ const applicationReducer = (state = initState, action)=> {
       if(showHideCardsState.showCards === true && showHideCardsState.dealt === false) {
         showHideCardsState.showCards = false;
       } else {
-        showHideCardsState.showCards = true;
+        if(showHideCardsState.dealt === false) {
+          showHideCardsState.showCards = true;
+        }
       }
     return showHideCardsState;
     
