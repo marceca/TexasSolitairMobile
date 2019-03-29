@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Dimensions, ScrollView} from 'react-native';
+import {StyleSheet, View, Dimensions, StatusBar} from 'react-native';
 import { Provider } from 'react-redux';
 import store from './Src/state/store';
 import Game from './Src/components/Game';
@@ -27,7 +27,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <Provider store={store}><View style={styles.container}><Game /></View></Provider>
+      <Provider store={store}><View style={styles.container}><StatusBar hidden /><Game /></View></Provider>
     );
   }
 }

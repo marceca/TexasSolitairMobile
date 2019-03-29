@@ -129,7 +129,7 @@ class Game extends Component {
               <DismissKeyboard>
                 <View style={styles.buttonsContainer} className="buttons-container">
                   <View Style={styles.userCards}className="user-cards">
-                    <View style={styles.playeHand} className="possible-hand">
+                    <View style={styles.playerHand} className="possible-hand">
                       {this.props.game.handsDisplay[this.props.game.handsDisplay.length - 1]}
                     </View>
                   </View>
@@ -207,11 +207,11 @@ const styles = StyleSheet.create({
   },
   bettigsButtonsContainer: {
     flexDirection: 'column',
-    width: screenWidth / 3,
+    width:  '10%',
     top: '5%'
   },
   bettingButtons: {
-      width: '25%',
+      width: '65%',
       height: 50,
       resizeMode: 'stretch'
   },
@@ -224,14 +224,14 @@ const styles = StyleSheet.create({
   },
   betInput: {
     backgroundColor: 'white',
-    width: '20%',
+    width: '65%',
     color: 'black'
   },
   userCards: {
     justifyContent: 'flex-end',
     width: screenWidth / 2
   },
-  playeHand: {
+  playerHand: {
     width: 120,
     height: 90,
     padding: 10,

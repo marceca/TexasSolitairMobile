@@ -74,11 +74,13 @@ const styles = StyleSheet.create({
   topMenu: {
     width: screenWidth,
     justifyContent: 'space-between',
+    alignItems: 'center',
     height: screenHeight / 12,
     flexDirection: 'row',
   },
   playerContainer: {
     justifyContent: 'flex-start',
+    alignItems: 'center',
     width: screenWidth / 2,
     flexDirection: 'row',
     paddingRight: 10,
@@ -87,7 +89,8 @@ const styles = StyleSheet.create({
   playerName: {
     color: 'white',
     justifyContent: 'flex-end',
-    fontSize: 20
+    fontSize: 20,
+    paddingLeft: 20
   },
   midMainMenu: {
     height: screenHeight / 1.23,
