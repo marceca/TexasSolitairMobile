@@ -121,19 +121,23 @@ const applicationReducer = (state = initState, action)=> {
     case types.INCREASEBET:
       const increaseBetState = Object.assign({}, state);
       console.log(typeof Number(increaseBetState.bet))
-      if(increaseBetState.coins >= (Number(increaseBetState.bet) + increaseBetState.betSize)) {
+      if(increaseBetState.coins >= (Number(increaseBetState.bet) + increaseBetState.betSize) && increaseBetState.dealt === false) {
         increaseBetState.bet = Number(increaseBetState.bet) + increaseBetState.betSize;
       } else {
-        increaseBetState.bet = increaseBetState.coins;
+        if(increaseBetState.dealt === false) {
+          increaseBetState.bet = increaseBetState.coins;
+        }
       }
     return increaseBetState;
 
     case types.DECREASEBET:
       const decreaseBetState = Object.assign({}, state);
-      if(decreaseBetState.bet - decreaseBetState.betSize >= 50) {
+      if(decreaseBetState.bet - decreaseBetState.betSize >= 50 && decreaseBetState.dealt === false) {
         decreaseBetState.bet = Number(decreaseBetState.bet) - decreaseBetState.betSize;
       } else {
-        decreaseBetState.bet = 50;
+        if(decreaseBetState.dealt === false) {
+          decreaseBetState.bet = 50;
+        }
       }
     return decreaseBetState;
 
@@ -143,6 +147,12 @@ const applicationReducer = (state = initState, action)=> {
       const dealState = Object.assign({}, state);
       let card, ranNum;
       let cardsEach = 0
+      if(Number(dealState.bet) < 50) {
+        dealState.bet = 50;
+      }
+      if(Number(dealState.bet) > dealState.coins) {
+        dealState.bet = dealState.coins;
+      }
       if(dealState.dealt === false) {
         while(cardsEach < 2) {
           for(let i = 0; i < dealState.handsDisplay.length; i++) {
