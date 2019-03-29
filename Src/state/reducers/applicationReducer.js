@@ -177,7 +177,6 @@ const applicationReducer = (state = initState, action)=> {
           userHandState.handsDisplay[action.hand][1] = captureSwitchHand[1];
         } else {
           [userHandState.handsDisplay[userHandState.handsDisplay.length - 1][0], userHandState.handsDisplay[action.hand][0]] = [userHandState.handsDisplay[action.hand][0], userHandState.handsDisplay[userHandState.handsDisplay.length - 1][0]];
-
           [userHandState.handsDisplay[userHandState.handsDisplay.length - 1][1], userHandState.handsDisplay[action.hand][1]] = [userHandState.handsDisplay[action.hand][1], userHandState.handsDisplay[userHandState.handsDisplay.length - 1][1]];
         }
         [userHandState.handObjects[userHandState.handsDisplay.length - 1], userHandState.handObjects[action.hand]] = [userHandState.handObjects[action.hand], userHandState.handObjects[userHandState.handsDisplay.length - 1]]
