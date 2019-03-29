@@ -71,7 +71,7 @@ const applicationReducer = (state = initState, action)=> {
 
     case types.UPDATENUMBEROFHANDS:
       const updateNumberOfHandsState = Object.assign({}, state);
-      if(updateNumberOfHandsState.ladder = false) {
+      if(updateNumberOfHandsState.ladder === false && updateNumberOfHandsState.dealt === false) {
         let updateHandObject = [];
         let updateDisplayObject = [];
         for(let i = 0; i < action.numberOfHands; i++) {
@@ -104,7 +104,7 @@ const applicationReducer = (state = initState, action)=> {
 
     case types.SHOWHIDECARDS:
       const showHideCardsState = Object.assign({}, state);
-      if(showHideCardsState.showCards === true) {
+      if(showHideCardsState.showCards === true && showHideCardsState.dealt === false) {
         showHideCardsState.showCards = false;
       } else {
         showHideCardsState.showCards = true;
@@ -242,8 +242,12 @@ const applicationReducer = (state = initState, action)=> {
       const resultsState = Object.assign({}, state);
       // Show reset button
       resultsState.reset = true;
+      // Turn off other buttons
       resultsState.stick = false;
       resultsState.switch = false;
+      // Allow show cards and chaging of hand number
+      resultsState.dealt = false;
+
       // Flip all cards
       for(let i = 0; i <  resultsState.handsDisplay.length - 1; i++) {
         resultsState.handsDisplay[i] = [];
