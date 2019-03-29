@@ -74,15 +74,11 @@ class Game extends Component {
   }
 
   incrementBet() {
-    if(this.props.game.coins >= this.props.game.bet + this.props.game.betSize) {
-      store.dispatch(types.increaseBet())
-    }
+    store.dispatch(types.increaseBet())
   }
 
   decreaseBet() {
-    if(this.props.game.bet - this.props.game.betSize >= 50) {
-      store.dispatch(types.decreaseBet())
-    }
+    store.dispatch(types.decreaseBet())
   }
 
   updateTextInput(num) {

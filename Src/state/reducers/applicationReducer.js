@@ -120,12 +120,21 @@ const applicationReducer = (state = initState, action)=> {
 
     case types.INCREASEBET:
       const increaseBetState = Object.assign({}, state);
-      increaseBetState.bet += increaseBetState.betSize;
+      console.log(typeof Number(increaseBetState.bet))
+      if(increaseBetState.coins >= (Number(increaseBetState.bet) + increaseBetState.betSize)) {
+        increaseBetState.bet = Number(increaseBetState.bet) + increaseBetState.betSize;
+      } else {
+        increaseBetState.bet = increaseBetState.coins;
+      }
     return increaseBetState;
 
     case types.DECREASEBET:
       const decreaseBetState = Object.assign({}, state);
-      decreaseBetState.bet -= decreaseBetState.betSize;
+      if(decreaseBetState.bet - decreaseBetState.betSize >= 50) {
+        decreaseBetState.bet = Number(decreaseBetState.bet) - decreaseBetState.betSize;
+      } else {
+        decreaseBetState.bet = 50;
+      }
     return decreaseBetState;
 
 
