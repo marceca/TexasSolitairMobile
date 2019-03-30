@@ -18,7 +18,23 @@ class Stick_Switch_Hands extends Component {
   changeHands(id, props) {
     console.log('change hands')
     if(props.game.choseHandThisTurn === false) {
+      console.log('in change hands')
       store.dispatch(types.userHand(id))
+      if(props.game.play === 1) {
+        store.dispatch(types.deal())
+      }
+      if(props.game.play === 2 && props.game.chosenHand != false) {
+        store.dispatch(types.flop());
+      }
+      if(props.game.play === 3) {
+        store.dispatch(types.turn());
+      }
+      if(props.game.play === 4) {
+        store.dispatch(types.river());
+      }
+      if(props.game.play === 5) {
+        store.dispatch(types.results());
+      }
     }
   }
   test() {
