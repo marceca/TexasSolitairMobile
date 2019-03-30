@@ -33,6 +33,10 @@ class Main_Menu extends Component {
     store.dispatch(types.ladder())
   }
 
+  openCloseSettings() {
+    store.dispatch(types.settings())
+  }
+
   render() {
     const numHands = constants.numberOfHands[this.props.game.numOfHands]
     return (
@@ -43,7 +47,7 @@ class Main_Menu extends Component {
               <Image source={require("../assets/main_menu/Profile_Pic_Pill.png")} />
               <Text style={styles.playerName}>{this.props.game.name ? this.props.game.name : 'Dead Eyes'}</Text>
             </View>
-            <Image source={require("../assets/main_menu/Settings_Icon.png")} />
+            <TouchableHighlight onPress={() => this.openCloseSettings()}><Image source={require("../assets/main_menu/Settings_Icon.png")} /></TouchableHighlight>
           </View>
           <View style={styles.midMainMenu}>
             {this.props.settings.num_hands ? <Num_Hands /> : <TouchableHighlight onPress={() => this.start_game()}><Image style={styles.midMainImage} source={require("../assets/main_menu/Play_Button.png")} /></TouchableHighlight>}
@@ -110,8 +114,8 @@ const styles = StyleSheet.create({
     resizeMode: 'contain'
   },
   bottomMainMenuImages: {
-    width: screenWidth / 3,
-    height: 50
+    width: screenWidth / 3.3,
+    flex: 1
   }
 })
 

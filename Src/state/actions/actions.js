@@ -28,7 +28,8 @@ const UPDATEBET = 'UPDATEBET';
 const INCREASEBET = 'INCREASEBET';
 const DECREASEBET = 'DECREASEBET';
 const LADDER = 'LADDER';
-const SHOWHIDECARDS = 'SHOWHIDECARDS'
+const SHOWHIDECARDS = 'SHOWHIDECARDS';
+const ONOFFSFX = 'ONOFFSFX';
 
 const deal = () => ({type: DEAL});
 const flop = () => ({type: FLOP});
@@ -60,6 +61,7 @@ const increaseBet = () => ({type: INCREASEBET});
 const decreaseBet = () => ({type: DECREASEBET});
 const ladder = () => ({type: LADDER});
 const showHideCards = () => ({type: SHOWHIDECARDS});
+const onOffSFX = () => ({type: ONOFFSFX});
 
 // User updates
 const UPDATEUSER = 'UPDATEUSER';
@@ -128,5 +130,7 @@ module.exports = {
   ladder,
   LADDER,
   showHideCards,
-  SHOWHIDECARDS
+  SHOWHIDECARDS,
+  onOffSFX,
+  ONOFFSFX
 }

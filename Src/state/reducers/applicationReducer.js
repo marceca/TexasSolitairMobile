@@ -36,7 +36,8 @@ const initState = {
   numOfHands: 'six',
   showCards: true,
   ladder: false,
-  ladderNumber: null
+  ladderNumber: null,
+  sfx: true
 }
 
 // Sort user hand by card value
@@ -112,6 +113,15 @@ const applicationReducer = (state = initState, action)=> {
         }
       }
     return showHideCardsState;
+
+    case types.ONOFFSFX:
+      const onOffSFXState = Object.assign({}, state);
+      if(onOffSFXState.sfx === true) {
+        onOffSFXState.sfx = false;
+      } else {
+        onOffSFXState.sfx = true;
+      }
+    return onOffSFXState;
     
     // BETTINGS CONTROLS
 
