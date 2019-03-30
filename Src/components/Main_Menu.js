@@ -53,9 +53,9 @@ class Main_Menu extends Component {
             {this.props.settings.num_hands ? <Num_Hands /> : <TouchableHighlight onPress={() => this.start_game()}><Image style={styles.midMainImage} source={require("../assets/main_menu/Play_Button.png")} /></TouchableHighlight>}
           </View>
           <View style={styles.bottomMainMenu}>
-            {this.props.game.showCards ? <TouchableHighlight onPress={() => this.showHideCards()}><Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Show_Cards_Button.png")} /></TouchableHighlight> : <TouchableHighlight onPress={() => this.showHideCards()}><Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Hide_Cards_Button.png")} /></TouchableHighlight>}
+            <TouchableHighlight onPress={() => this.showHideCards()}>{this.props.game.showCards ? <Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Show_Cards_Button.png")} /> : <Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Hide_Cards_Button.png")} />}</TouchableHighlight>
             <TouchableHighlight onPress={() => this.number_of_hands()}><Image style={styles.bottomMainMenuImages} source={numHands} /></TouchableHighlight>
-            {this.props.game.ladder ? <TouchableHighlight onPress={() => this.ladderState()}><Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Ladder_Button.png")} /></TouchableHighlight> : <TouchableHighlight onPress={() => this.ladderState()}><Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Ladder_Locked_Button.png")} /></TouchableHighlight>}
+            <TouchableHighlight onPress={() => this.ladderState()}>{this.props.game.ladder ? <Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Ladder_Button.png")} /> : <Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Ladder_Locked_Button.png")} />}</TouchableHighlight>
           </View>
         </ImageBackground>
       </View>
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain'
   },
   bottomMainMenuImages: {
-    width: screenWidth / 3.3,
+    width: screenWidth / 3.8,
     flex: 1
   },
   settingsIcon:  {
