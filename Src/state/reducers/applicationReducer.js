@@ -422,8 +422,10 @@ const applicationReducer = (state = initState, action)=> {
           resultsState.coins = newCoins;
           dbCalls.updateUserCoins(newCoins);
         } else {
-          dbCalls.updateLadder(resultsState.ladderNumber);
-          resultsState.ladderNumber += 1;
+          if(resultsState.ladderNumber < 9) {
+            dbCalls.updateLadder(resultsState.ladderNumber);
+            resultsState.ladderNumber += 1;
+          }
         }
       }
       if(computerResult[0].score > userResult.score) {
@@ -447,8 +449,10 @@ const applicationReducer = (state = initState, action)=> {
                 resultsState.coins = newCoins;
                 dbCalls.updateUserCoins(newCoins);
               } else {
-                dbCalls.updateLadder(resultsState.ladderNumber);
-                resultsState.ladderNumber += 1;
+                if(resultsState.ladderNumber < 9) {
+                  dbCalls.updateLadder(resultsState.ladderNumber);
+                  resultsState.ladderNumber += 1;
+                }
               }
               tie = false;
               break;
@@ -480,8 +484,10 @@ const applicationReducer = (state = initState, action)=> {
                 resultsState.coins = newCoins;
                 dbCalls.updateUserCoins(newCoins);
               } else {
-                dbCalls.updateLadder(resultsState.ladderNumber);
-                resultsState.ladderNumber += 1;
+                if(resultsState.ladderNumber < 9) {
+                  dbCalls.updateLadder(resultsState.ladderNumber);
+                  resultsState.ladderNumber += 1;
+                }
               }
               tie = false;
               break;
@@ -506,8 +512,10 @@ const applicationReducer = (state = initState, action)=> {
                   resultsState.coins = newCoins;
                   dbCalls.updateUserCoins(newCoins);
                 } else {
-                  dbCalls.updateLadder(resultsState.ladderNumber);
-                  resultsState.ladderNumber += 1;
+                  if(resultsState.ladderNumber < 9) {
+                    dbCalls.updateLadder(resultsState.ladderNumber);
+                    resultsState.ladderNumber += 1;
+                  }
                 }
                 tie = false;
                 break;
@@ -539,8 +547,10 @@ const applicationReducer = (state = initState, action)=> {
             resultsState.coins = newCoins;
             dbCalls.updateUserCoins(newCoins);
           } else {
-            dbCalls.updateLadder(resultsState.ladderNumber);
-            resultsState.ladderNumber += 1;
+            if(resultsState.ladderNumber < 9) {
+              dbCalls.updateLadder(resultsState.ladderNumber);
+              resultsState.ladderNumber += 1;
+            }
           }
         }
         if(userResult.highThreeOfAKind[0] < computerResult[0].highThreeOfAKind[0]) {
@@ -556,8 +566,10 @@ const applicationReducer = (state = initState, action)=> {
                 resultsState.coins = newCoins;
                 dbCalls.updateUserCoins(newCoins);
               } else {
-                resultsState.ladderNumber += 1;
-                dbCalls.updateLadder(resultsState.ladderNumber);
+                if(resultsState.ladderNumber < 9) {
+                  dbCalls.updateLadder(resultsState.ladderNumber);
+                  resultsState.ladderNumber += 1;
+                }
               }
               tie = false;
               break;
@@ -588,8 +600,10 @@ const applicationReducer = (state = initState, action)=> {
             resultsState.coins = newCoins;
             dbCalls.updateUserCoins(newCoins);
           } else {
-            resultsState.ladderNumber += 1;
-            dbCalls.updateLadder(resultsState.ladderNumber);
+            if(resultsState.ladderNumber < 9) {
+              dbCalls.updateLadder(resultsState.ladderNumber);
+              resultsState.ladderNumber += 1;
+            }
           }
         }
         if(userResult.bestFiveCards[4] < computerResult[0].bestFiveCards[4]) {
@@ -615,8 +629,10 @@ const applicationReducer = (state = initState, action)=> {
             resultsState.coins = newCoins;
             dbCalls.updateUserCoins(newCoins);
           } else {
-            resultsState.ladderNumber += 1;
-            dbCalls.updateLadder(resultsState.ladderNumber);
+            if(resultsState.ladderNumber < 9) {
+              dbCalls.updateLadder(resultsState.ladderNumber);
+              resultsState.ladderNumber += 1;
+            }
           }
           tie = false;
         }
@@ -638,8 +654,10 @@ const applicationReducer = (state = initState, action)=> {
                 resultsState.coins = newCoins;
                 dbCalls.updateUserCoins(newCoins);
               } else {
-                dbCalls.updateLadder(resultsState.ladderNumber);
-                resultsState.ladderNumber += 1;
+                if(resultsState.ladderNumber < 9) {
+                  dbCalls.updateLadder(resultsState.ladderNumber);
+                  resultsState.ladderNumber += 1;
+                }
               }
               tie = false;
               break;
@@ -671,8 +689,10 @@ const applicationReducer = (state = initState, action)=> {
             resultsState.coins = newCoins;
             dbCalls.updateUserCoins(newCoins);
           } else {
-            dbCalls.updateLadder(resultsState.ladderNumber);
-            resultsState.ladderNumber += 1;
+            if(resultsState.ladderNumber < 9) {
+              dbCalls.updateLadder(resultsState.ladderNumber);
+              resultsState.ladderNumber += 1;
+            }
           }
           tie = false;
         }
@@ -693,8 +713,10 @@ const applicationReducer = (state = initState, action)=> {
               resultsState.coins = newCoins;
               dbCalls.updateUserCoins(newCoins);
             } else {
-              dbCalls.updateLadder(resultsState.ladderNumber);
-              resultsState.ladderNumber += 1;
+              if(resultsState.ladderNumber < 9) {
+                dbCalls.updateLadder(resultsState.ladderNumber);
+                resultsState.ladderNumber += 1;
+              }
             }
             tie = false;
           }
@@ -723,8 +745,10 @@ const applicationReducer = (state = initState, action)=> {
             resultsState.coins = newCoins;
             dbCalls.updateUserCoins(newCoins);
           } else {
-            dbCalls.updateLadder(resultsState.ladderNumber);
-            resultsState.ladderNumber += 1;
+            if(resultsState.ladderNumber < 9) {
+              dbCalls.updateLadder(resultsState.ladderNumber);
+              resultsState.ladderNumber += 1;
+            }
           }
           tie = false;
         }
@@ -745,8 +769,10 @@ const applicationReducer = (state = initState, action)=> {
             resultsState.coins = newCoins;
             dbCalls.updateUserCoins(newCoins);
           } else {
-            dbCalls.updateLadder(resultsState.ladderNumber);
-            resultsState.ladderNumber += 1;
+            if(resultsState.ladderNumber < 9) {
+              dbCalls.updateLadder(resultsState.ladderNumber);
+              resultsState.ladderNumber += 1;
+            }
           }
           tie = false;
           }
@@ -774,8 +800,10 @@ const applicationReducer = (state = initState, action)=> {
             resultsState.coins = newCoins;
             dbCalls.updateUserCoins(newCoins);
           } else {
-            dbCalls.updateLadder(resultsState.ladderNumber);
-            resultsState.ladderNumber += 1;
+            if(resultsState.ladderNumber < 9) {
+              dbCalls.updateLadder(resultsState.ladderNumber);
+              resultsState.ladderNumber += 1;
+            }
           }
           tie = false;
         }
