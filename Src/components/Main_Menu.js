@@ -44,10 +44,10 @@ class Main_Menu extends Component {
         <ImageBackground style={styles.mainMenu} source={require('../assets/main_menu/Menu_Screen.png')}>
           <View style={styles.topMenu}>
             <View style={styles.playerContainer}>
-              <Image source={require("../assets/main_menu/Profile_Pic_Pill.png")} />
+              <Image style={styles.settingsIcon} source={require("../assets/main_menu/Profile_Pic_Pill.png")} />
               <Text style={styles.playerName}>{this.props.game.name ? this.props.game.name : 'Dead Eyes'}</Text>
             </View>
-            <TouchableHighlight onPress={() => this.openCloseSettings()}><Image source={require("../assets/main_menu/Settings_Icon.png")} /></TouchableHighlight>
+            <TouchableHighlight onPress={() => this.openCloseSettings()}><Image style={styles.settingsIcon} source={require("../assets/main_menu/Settings_Icon.png")} /></TouchableHighlight>
           </View>
           <View style={styles.midMainMenu}>
             {this.props.settings.num_hands ? <Num_Hands /> : <TouchableHighlight onPress={() => this.start_game()}><Image style={styles.midMainImage} source={require("../assets/main_menu/Play_Button.png")} /></TouchableHighlight>}
@@ -81,6 +81,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: screenHeight / 12,
     flexDirection: 'row',
+    paddingLeft: 20,
+    paddingRight: 20
   },
   playerContainer: {
     justifyContent: 'flex-start',
@@ -116,6 +118,10 @@ const styles = StyleSheet.create({
   bottomMainMenuImages: {
     width: screenWidth / 3.3,
     flex: 1
+  },
+  settingsIcon:  {
+    height: 50,
+    width: 50
   }
 })
 

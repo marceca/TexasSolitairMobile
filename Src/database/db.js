@@ -35,19 +35,18 @@ function readUserData(user) {
 }
 
 function updateUserCoins(newCoins) {
-  console.log('new coins ',newCoins)
   firebase.database().ref('Users/' + uniqueID + '/').update({
     coins: newCoins
   })
 }
 
 function updateLadder(currentLadder) {
-  console.log('in update ladder', currentLadder)
   const nextLadder = currentLadder + 1;
-  console.log('next ladder ', nextLadder)
-  firebase.database().ref('Users/' + uniqueID + '/').update({
-    ladderNumber: nextLadder
-  })
+  if(nextLadder < 10) {
+    firebase.database().ref('Users/' + uniqueID + '/').update({
+      ladderNumber: nextLadder
+    })
+  }
 }
 
 // function getUserScore() {
