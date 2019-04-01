@@ -15,6 +15,7 @@ import constants from '../assets/Constants';
 import * as dbCalls from '../database/db';
 import DismissKeyboard from './DismissKeyboard';
 import User_Hand from './User_Hand';
+import Profile from './Profile';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -111,7 +112,8 @@ class Game extends Component {
               {this.props.settings.background_image ? <Background_Image_Selection /> : null}
               {this.props.settings.total_hands ? <Total_Number_Of_Hands /> : null}
               {this.props.settings.change_card_back ? <Change_Card_Back /> : null}
-              { this.props.settings.settings ? <Settings /> : null}
+              {this.props.settings.settings ? <Settings /> : null}
+              {this.props.game.profile ? <Profile /> : null}
               <DismissKeyboard>
                 <View style={styles.cardsContainer}>
                   <View style={styles.playerHandsContainer}>

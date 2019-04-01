@@ -18,23 +18,27 @@ const mapStateToProps = (state) => {
 
 class Main_Menu extends Component {
   start_game() {
-    store.dispatch(types.startGame())
+    store.dispatch(types.startGame());
   }
 
   number_of_hands() {
-    store.dispatch(types.numberOfHands())
+    store.dispatch(types.numberOfHands());
   }
 
   showHideCards() {
-    store.dispatch(types.showHideCards())
+    store.dispatch(types.showHideCards());
   }
 
   ladderState() {
-    store.dispatch(types.ladder())
+    store.dispatch(types.ladder());
   }
 
   openCloseSettings() {
-    store.dispatch(types.settings())
+    store.dispatch(types.settings());
+  }
+
+  openCloseProfile() {
+    store.dispatch(types.openCloseProfile());
   }
 
   render() {
@@ -44,7 +48,7 @@ class Main_Menu extends Component {
         <ImageBackground style={styles.mainMenu} source={require('../assets/main_menu/Menu_Screen.png')}>
           <View style={styles.topMenu}>
             <View style={styles.playerContainer}>
-              <Image style={styles.settingsIcon} source={require("../assets/main_menu/Profile_Pic_Pill.png")} />
+              <TouchableWithoutFeedback onPress={() => this.openCloseProfile()}><Image style={styles.settingsIcon} source={require("../assets/main_menu/Profile_Pic_Pill.png")} /></TouchableWithoutFeedback>
               <Text style={styles.playerName}>{this.props.game.name ? this.props.game.name : 'Dead Eyes'}</Text>
             </View>
             <TouchableWithoutFeedback onPress={() => this.openCloseSettings()}><Image style={styles.settingsIcon} source={require("../assets/main_menu/Settings_Icon.png")} /></TouchableWithoutFeedback>

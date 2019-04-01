@@ -38,7 +38,8 @@ const initState = {
   ladder: false,
   ladderNumber: null,
   sfx: true,
-  winningHand: null
+  winningHand: null,
+  profile: false
 }
 
 // Sort user hand by card value
@@ -64,6 +65,15 @@ const applicationReducer = (state = initState, action)=> {
       updateUserState.coins = action.userCoins;
       updateUserState.ladderNumber = action.userLadder;
     return updateUserState
+
+    case types.OPENCLOSEPROFILE:
+      const openCloseProfileState = Object.assign({}, state);
+      if(openCloseProfileState.profile === true) {
+        openCloseProfileState.profile = false;
+      } else {
+        openCloseProfileState.profile = true;
+      }
+    return openCloseProfileState;
 
     // SETTINGS
     case types.CHANGECARDBACK:

@@ -11,7 +11,8 @@ const initState = {
   tutorial_page: 1,
   mainMenu: true,
   num_hands: false,
-  main_background_image: 'wood'
+  main_background_image: 'wood',
+  changeName: false
 }
 
 const settingsReducer = (state = initState, action)=> {
@@ -21,6 +22,16 @@ const settingsReducer = (state = initState, action)=> {
       const startGameState = Object.assign({}, state);
       startGameState.mainMenu = false;
     return startGameState;
+
+    //CHANGE USER NAME
+    case types.OPENCHANGENAME:
+      const openChangeNameState = Object.assign({}, state);
+      if(openChangeNameState.changeName === false) {
+        openChangeNameState.changeName = true;
+      } else {
+        openChangeNameState.changeName = false;
+      }
+    return openChangeNameState;
 
     // CHANGE NUMBER OF HANDS
     case types.NUMBEROFHANDS:
