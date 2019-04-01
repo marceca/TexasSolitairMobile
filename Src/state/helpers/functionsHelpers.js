@@ -91,6 +91,7 @@ function getUserResults(userHand) {
   // Setting pair, three of a kind, four of a kind and what the card value is of the best
   for(let key in userCardCount) {
     if(userCardCount[key] === 2) {
+      userResult.bestFiveCards = [];
       pairCount['pair'] += 1;
       if(pairCount['pair'] === 1) {
         captureFirstPair = Number(key);

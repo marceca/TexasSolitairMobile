@@ -38,8 +38,7 @@ const initState = {
   ladder: false,
   ladderNumber: null,
   sfx: true,
-  winningHand: null,
-  playerWin: null
+  winningHand: null
 }
 
 // Sort user hand by card value
@@ -181,8 +180,8 @@ const applicationReducer = (state = initState, action)=> {
           dealState.userHand = dealState.handObjects[dealState.handObjects.length - 1];
         }
         dealState.handsDisplay[dealState.handsDisplay.length - 1] = []
-        dealState.handsDisplay[dealState.handsDisplay.length - 1].push(<Image key={dealState.userHand[0][0].name} style={[styles.cardImage, dealState.playerWin ? styles.winningHand : '']}  source={dealState.userHand[0][0].img} />);
-        dealState.handsDisplay[dealState.handsDisplay.length - 1].push(<Image key={dealState.userHand[1][0].name} style={[styles.cardImage, dealState.playerWin ? styles.winningHand : '']}  source={dealState.userHand[1][0].img} />);
+        dealState.handsDisplay[dealState.handsDisplay.length - 1].push(<Image key={dealState.userHand[0][0].name} style={styles.cardImage}  source={dealState.userHand[0][0].img} />);
+        dealState.handsDisplay[dealState.handsDisplay.length - 1].push(<Image key={dealState.userHand[1][0].name} style={styles.cardImage}  source={dealState.userHand[1][0].img} />);
         dealState.dealt = true;
         dealState.play++;
       }
@@ -199,8 +198,8 @@ const applicationReducer = (state = initState, action)=> {
           captureSwitchHand.push(<Image key={userHandState.userHand[1][0].name} style={styles.cardImage}  source={userHandState.cardBack} />)
         }
         userHandState.handsDisplay[action.hand] = [];
-        userHandState.handsDisplay[action.hand].push(<Image key={userHandState.userHand[0][0].name} style={[styles.cardImage, userHandState.playerWin ? styles.winningHand : '']}  source={userHandState.userHand[0][0].img} />);
-        userHandState.handsDisplay[action.hand].push(<Image key={userHandState.userHand[1][0].name} style={[styles.cardImage, userHandState.playerWin ? styles.winningHand : '']} source={userHandState.userHand[1][0].img} />);
+        userHandState.handsDisplay[action.hand].push(<Image key={userHandState.userHand[0][0].name} style={styles.cardImage}  source={userHandState.userHand[0][0].img} />);
+        userHandState.handsDisplay[action.hand].push(<Image key={userHandState.userHand[1][0].name} style={styles.cardImage} source={userHandState.userHand[1][0].img} />);
         userHandState.chosenHand = action.hand + 1;
         if(userHandState.showCards === false) {
           userHandState.handsDisplay[userHandState.handsDisplay.length - 1][0] = userHandState.handsDisplay[action.hand][0];
@@ -412,7 +411,6 @@ const applicationReducer = (state = initState, action)=> {
       
       // Get computer results
       let computerResult = getHands.getComputerResults(resultsState);
-      resultsState.playerWin = true;
 
       console.log('user result ', userResult)
       console.log('computer result ', computerResult)
@@ -910,10 +908,6 @@ const styles = StyleSheet.create({
     height: undefined,
     flex: 1,
     resizeMode: 'contain',
-  },
-  winningHand: {
-    width: 200,
-    height: 150
   }
 })
 
