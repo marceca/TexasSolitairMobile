@@ -37,13 +37,11 @@ class Stick_Switch_Hands extends Component {
       }
     }
   }
-  test() {
-    console.log('test')
-  }
+
   render() {
     let mainGame = []
     for(let i = 0; i < this.props.game.handObjects.length - 1; i++) {
-      mainGame.push(<TouchableWithoutFeedback key={'handNumber'+i} style={styles.possibleHand} onPress={(e) => this.changeHands(i, this.props)}><View style={styles.possibleHand}>{this.props.game.handsDisplay[i]}</View></TouchableWithoutFeedback>)
+      mainGame.push(<TouchableWithoutFeedback key={'handNumber'+i} style={styles.possibleHand} onPress={(e) => this.changeHands(i, this.props)}><View style={[styles.possibleHand, this.props.game.winningHand === i ? styles.winningHand : '']}>{this.props.game.handsDisplay[i]}</View></TouchableWithoutFeedback>)
     }
     return (
       <View style={styles.possibleHandContainer}>{mainGame}</View>
@@ -66,6 +64,10 @@ const styles = StyleSheet.create({
     zIndex: 11,
     padding: 5,
     flexDirection: 'row',
+  },
+  winningHand: {
+    width: 200,
+    height: 150
   }
 })
 

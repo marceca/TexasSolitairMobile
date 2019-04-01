@@ -14,6 +14,7 @@ import Stick_Switch_Hands from'./Stick_Switch_Hands';
 import constants from '../assets/Constants';
 import * as dbCalls from '../database/db';
 import DismissKeyboard from './DismissKeyboard';
+import User_Hand from './User_Hand';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -129,9 +130,7 @@ class Game extends Component {
               <DismissKeyboard>
                 <View style={styles.buttonsContainer}>
                   <View Style={styles.userCards}>
-                    <View style={styles.playerHand}>
-                      {this.props.game.handsDisplay[this.props.game.handsDisplay.length - 1]}
-                    </View>
+                    <User_Hand />
                   </View>
                   <View style={styles.stickSwitchButtonsContainer}>
                     {this.props.game.stick ? <TouchableWithoutFeedback id="game-button" onPress={(e) => this.deal(e,this.props)} ><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Stick_Button_White_2.png')} /></TouchableWithoutFeedback> : <Image style={[styles.stickSwitchButtons, styles.cantClickButton]} source={require('../assets/buttons/Stick_Button_White_2.png')} />}
@@ -230,12 +229,6 @@ const styles = StyleSheet.create({
   userCards: {
     justifyContent: 'flex-end',
     width: screenWidth / 2
-  },
-  playerHand: {
-    width: 120,
-    height: 90,
-    padding: 10,
-    flexDirection: 'row'
   },
   stickSwitchButtonsContainer: {
     justifyContent: 'space-around',
