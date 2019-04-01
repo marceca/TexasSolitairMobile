@@ -79,15 +79,7 @@ const styles = StyleSheet.create({
     width: screenWidth,
     justifyContent: 'space-between',
     alignItems: 'center',
-    ...Platform.select({
-      ios: {
-        height: screenHeight / 8
-      },
-      android: {
-        height: screenHeight / 4,
-
-      }
-    }),
+    height: screenHeight / 6,
     flexDirection: 'row',
     paddingLeft: 20,
     paddingRight: 20,
@@ -108,14 +100,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20
   },
   midMainMenu: {
-    ...Platform.select({
-      ios: {
-        height: screenHeight / 1.32,
-      },
-      android: {
-        height: screenHeight / 2,
-      }
-    }),
+    height: screenHeight / 1.5,
     width: screenWidth,
     justifyContent: 'center',
     alignItems: 'center',
@@ -125,26 +110,18 @@ const styles = StyleSheet.create({
 
   },
   bottomMainMenu: {
-    ...Platform.select({
-      ios: {
-        height: screenHeight / 8
-      },
-      android: {
-        height: screenHeight / 4,
-
-      }
-    }),
+    height: screenHeight / 6,
     width: screenWidth,
     justifyContent: 'space-between',
     flexDirection: 'row',
     resizeMode: 'contain',
     paddingLeft: 10,
-    paddingRight: 10
+    paddingRight: 10,
   },
   bottomMainMenuImages: {
     width: screenWidth / 3.8,
     resizeMode: 'contain',
-    flex: 1
+    marginBottom: 20
   },
   settingsIcon:  {
     height: 50,
