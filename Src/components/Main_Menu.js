@@ -79,10 +79,11 @@ const styles = StyleSheet.create({
     width: screenWidth,
     justifyContent: 'space-between',
     alignItems: 'center',
-    height: screenHeight / 12,
+    height: screenHeight / 8,
     flexDirection: 'row',
     paddingLeft: 20,
-    paddingRight: 20
+    paddingRight: 20,
+    paddingTop: 20
   },
   playerContainer: {
     justifyContent: 'flex-start',
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20
   },
   midMainMenu: {
-    height: screenHeight / 1.23,
+    height: screenHeight / 1.32,
     width: screenWidth,
     justifyContent: 'center',
     alignItems: 'center',
@@ -109,7 +110,7 @@ const styles = StyleSheet.create({
 
   },
   bottomMainMenu: {
-    height: screenHeight / 10,
+    height: screenHeight / 8,
     width: screenWidth,
     justifyContent: 'space-between',
     flexDirection: 'row',
@@ -119,11 +120,12 @@ const styles = StyleSheet.create({
   },
   bottomMainMenuImages: {
     width: screenWidth / 3.8,
+    resizeMode: 'contain',
     flex: 1
   },
   settingsIcon:  {
-    height: 30,
-    width: 30
+    height: 50,
+    width: 50
   }
 })
 
