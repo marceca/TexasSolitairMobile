@@ -12,22 +12,23 @@ var config = {
 
 firebase.initializeApp(config);
 
-function writeUserData(coins,uniqueID,fname ,lname, ladderNumber){
+function writeUserData(coins,uniqueID,fname ,lname, ladderNumber, numberOfWins){
   firebase.database().ref('Users/' + uniqueID + '/').set({
       coins,
       fname,
       lname,
-      ladderNumber
+      ladderNumber,
+      numberOfWins
   })
 }
 
 function readUserData(user) {
   firebase.database().ref('Users/' + user +'/').once('value', function (snapshot) {
     if(snapshot.val() === null) {
-      writeUserData(1000, uniqueID, 'firstName', 'lastName', 1);
+      writeUserData(1000, uniqueID, 'firstName', 'lastName', 1, 0);
     } else { 
-      console.log('snap shot ',snapshot.val())
-      store.dispatch(types.updateUser(snapshot.val().fname, snapshot.val().coins, snapshot.val().ladderNumber))
+      console.log('snap shot ',snapshot.val());
+      store.dispatch(types.updateUser(snapshot.val().fname, snapshot.val().coins, snapshot.val().ladderNumber, snapshot.val().numberOfWins));
     }
   });
 }
@@ -53,6 +54,13 @@ function updateName(newName) {
   })
 }
 
+function updateWins(currentWins) {
+  const newWins = currentWins + 1;
+  firebase.database().ref('Users/' + uniqueID + '/').update({
+    numberOfWins: newWins
+  })
+}
+
 // function getUserScore() {
 //   firebase.database().ref('Users/' + user + '/')
 // }
@@ -63,5 +71,6 @@ module.exports = {
   uniqueID,
   updateUserCoins,
   updateLadder,
-  updateName
+  updateName,
+  updateWins
 }

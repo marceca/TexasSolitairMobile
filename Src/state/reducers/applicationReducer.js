@@ -40,7 +40,8 @@ const initState = {
   sfx: true,
   winningHand: null,
   profile: false,
-  numHands: false
+  numHands: false,
+  numberOfWins: null
 }
 
 // Sort user hand by card value
@@ -65,6 +66,7 @@ const applicationReducer = (state = initState, action)=> {
       updateUserState.name = action.userName;
       updateUserState.coins = action.userCoins;
       updateUserState.ladderNumber = action.userLadder;
+      updateUserState.numberOfWins = action.numberOfWins;
     return updateUserState
 
     case types.OPENCLOSEPROFILE:
@@ -443,7 +445,9 @@ const applicationReducer = (state = initState, action)=> {
         if(resultsState.ladder === false) {
           let newCoins = Math.ceil(resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]));
           resultsState.coins = newCoins;
+          resultsState.numberOfWins += 1;
           dbCalls.updateUserCoins(newCoins);
+          dbCalls.updateWins(resultsState.numberOfWins);
         } else {
           if(resultsState.ladderNumber < 9) {
             dbCalls.updateLadder(resultsState.ladderNumber);
@@ -472,7 +476,9 @@ const applicationReducer = (state = initState, action)=> {
               if(resultsState.ladder === false) {
                 let newCoins = Math.ceil(resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]));
                 resultsState.coins = newCoins;
+                resultsState.numberOfWins += 1;
                 dbCalls.updateUserCoins(newCoins);
+                dbCalls.updateWins(resultsState.numberOfWins);
               } else {
                 if(resultsState.ladderNumber < 9) {
                   dbCalls.updateLadder(resultsState.ladderNumber);
@@ -509,7 +515,9 @@ const applicationReducer = (state = initState, action)=> {
               if(resultsState.ladder === false) {
                 let newCoins = Math.ceil(resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]));
                 resultsState.coins = newCoins;
+                resultsState.numberOfWins += 1;
                 dbCalls.updateUserCoins(newCoins);
+                dbCalls.updateWins(resultsState.numberOfWins);
               } else {
                 if(resultsState.ladderNumber < 9) {
                   dbCalls.updateLadder(resultsState.ladderNumber);
@@ -539,7 +547,9 @@ const applicationReducer = (state = initState, action)=> {
                 if(resultsState.ladder === false) {
                   let newCoins = Math.ceil(resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]));
                   resultsState.coins = newCoins;
+                  resultsState.numberOfWins += 1;
                   dbCalls.updateUserCoins(newCoins);
+                  dbCalls.updateWins(resultsState.numberOfWins);
                 } else {
                   if(resultsState.ladderNumber < 9) {
                     dbCalls.updateLadder(resultsState.ladderNumber);
@@ -576,7 +586,9 @@ const applicationReducer = (state = initState, action)=> {
           if(resultsState.ladder === false) {
             let newCoins = Math.ceil(resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]));
             resultsState.coins = newCoins;
+            resultsState.numberOfWins += 1;
             dbCalls.updateUserCoins(newCoins);
+            dbCalls.updateWins(resultsState.numberOfWins);
           } else {
             if(resultsState.ladderNumber < 9) {
               dbCalls.updateLadder(resultsState.ladderNumber);
@@ -597,7 +609,9 @@ const applicationReducer = (state = initState, action)=> {
               if(resultsState.ladder === false) {
                 let newCoins = Math.ceil(resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]));
                 resultsState.coins = newCoins;
+                resultsState.numberOfWins += 1;
                 dbCalls.updateUserCoins(newCoins);
+                dbCalls.updateWins(resultsState.numberOfWins);
               } else {
                 if(resultsState.ladderNumber < 9) {
                   dbCalls.updateLadder(resultsState.ladderNumber);
@@ -633,7 +647,9 @@ const applicationReducer = (state = initState, action)=> {
           if(resultsState.ladder === false) {
             let newCoins = Math.ceil(resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]));
             resultsState.coins = newCoins;
+            resultsState.numberOfWins += 1;
             dbCalls.updateUserCoins(newCoins);
+            dbCalls.updateWins(resultsState.numberOfWins);
           } else {
             if(resultsState.ladderNumber < 9) {
               dbCalls.updateLadder(resultsState.ladderNumber);
@@ -664,7 +680,9 @@ const applicationReducer = (state = initState, action)=> {
           if(resultsState.ladder === false) {
             let newCoins = Math.ceil(resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]));
             resultsState.coins = newCoins;
+            resultsState.numberOfWins += 1;
             dbCalls.updateUserCoins(newCoins);
+            dbCalls.updateWins(resultsState.numberOfWins);
           } else {
             if(resultsState.ladderNumber < 9) {
               dbCalls.updateLadder(resultsState.ladderNumber);
@@ -691,7 +709,9 @@ const applicationReducer = (state = initState, action)=> {
               if(resultsState.ladder === false) {
                 let newCoins = Math.ceil(resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]));
                 resultsState.coins = newCoins;
+                resultsState.numberOfWins += 1;
                 dbCalls.updateUserCoins(newCoins);
+                dbCalls.updateWins(resultsState.numberOfWins);
               } else {
                 if(resultsState.ladderNumber < 9) {
                   dbCalls.updateLadder(resultsState.ladderNumber);
@@ -728,7 +748,9 @@ const applicationReducer = (state = initState, action)=> {
           if(resultsState.ladder === false) {
             let newCoins = Math.ceil(resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]));
             resultsState.coins = newCoins;
+            resultsState.numberOfWins += 1;
             dbCalls.updateUserCoins(newCoins);
+            dbCalls.updateWins(resultsState.numberOfWins);
           } else {
             if(resultsState.ladderNumber < 9) {
               dbCalls.updateLadder(resultsState.ladderNumber);
@@ -754,7 +776,9 @@ const applicationReducer = (state = initState, action)=> {
             if(resultsState.ladder === false) {
               let newCoins = Math.ceil(resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]));
               resultsState.coins = newCoins;
+              resultsState.numberOfWins += 1;
               dbCalls.updateUserCoins(newCoins);
+              dbCalls.updateWins(resultsState.numberOfWins);
             } else {
               if(resultsState.ladderNumber < 9) {
                 dbCalls.updateLadder(resultsState.ladderNumber);
@@ -788,7 +812,9 @@ const applicationReducer = (state = initState, action)=> {
           if(resultsState.ladder === false) {
             let newCoins = Math.ceil(resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]));
             resultsState.coins = newCoins;
+            resultsState.numberOfWins += 1;
             dbCalls.updateUserCoins(newCoins);
+            dbCalls.updateWins(resultsState.numberOfWins);
           } else {
             if(resultsState.ladderNumber < 9) {
               dbCalls.updateLadder(resultsState.ladderNumber);
@@ -814,7 +840,9 @@ const applicationReducer = (state = initState, action)=> {
           if(resultsState.ladder === false) {
             let newCoins = Math.ceil(resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]));
             resultsState.coins = newCoins;
+            resultsState.numberOfWins += 1;
             dbCalls.updateUserCoins(newCoins);
+            dbCalls.updateWins(resultsState.numberOfWins);
           } else {
             if(resultsState.ladderNumber < 9) {
               dbCalls.updateLadder(resultsState.ladderNumber);
@@ -847,7 +875,9 @@ const applicationReducer = (state = initState, action)=> {
           if(resultsState.ladder === false) {
             let newCoins = Math.ceil(resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]));
             resultsState.coins = newCoins;
+            resultsState.numberOfWins += 1;
             dbCalls.updateUserCoins(newCoins);
+            dbCalls.updateWins(resultsState.numberOfWins);
           } else {
             if(resultsState.ladderNumber < 9) {
               dbCalls.updateLadder(resultsState.ladderNumber);

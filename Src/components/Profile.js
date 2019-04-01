@@ -38,6 +38,13 @@ class Profile extends Component {
           </View>
           <Image style={styles.blueLineFullWidth} source={require('../assets/profile/Horizontal_Blue_Line.png')} />
           <View style={styles.headers}><Image source={require('../assets/profile/Stats_Header.png')} /></View>
+          <View style={styles.statsContainer}>
+            <View style={styles.individualStats}>
+              <Text style={styles.statsText}>Number of Wins: </Text>
+              <Text style={styles.statsText}>{this.props.game.numberOfWins}</Text>
+            </View>
+            <Image style={styles.blueLineShort} source={require('../assets/profile/Horizontal_Blue_Line.png')} />
+          </View>
           <Image style={styles.blueLineFullWidth} source={require('../assets/profile/Horizontal_Blue_Line.png')} />
           <View style={styles.headers}><Image source={require('../assets/profile/Challenges_Header.png')} /></View>
         </ScrollView>
@@ -89,10 +96,27 @@ const styles = StyleSheet.create({
   blueLineFullWidth: {
     width: '100%'
   },
+  blueLineShort: {
+    width: '90%'
+  },
   headers: {
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  statsContainer: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  individualStats: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    width: '90%'
+  },
+  statsText: {
+    color: 'white',
+    fontSize: 20
   }
 })
 
