@@ -10,7 +10,6 @@ const initState = {
   tutorial: false,
   tutorial_page: 1,
   mainMenu: true,
-  num_hands: false,
   main_background_image: 'wood',
   changeName: false
 }
@@ -32,16 +31,6 @@ const settingsReducer = (state = initState, action)=> {
         openChangeNameState.changeName = false;
       }
     return openChangeNameState;
-
-    // CHANGE NUMBER OF HANDS
-    case types.NUMBEROFHANDS:
-      const numberOfHandsState = Object.assign({}, state);
-      if(numberOfHandsState.num_hands === false) {
-        numberOfHandsState.num_hands = true;
-      } else {
-        numberOfHandsState.num_hands = false;
-      }
-    return numberOfHandsState;
 
     // SHOW MAIN MENU
     case types.SHOWMAINMENU:

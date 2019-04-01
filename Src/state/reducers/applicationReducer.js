@@ -39,7 +39,8 @@ const initState = {
   ladderNumber: null,
   sfx: true,
   winningHand: null,
-  profile: false
+  profile: false,
+  numHands: false
 }
 
 // Sort user hand by card value
@@ -93,6 +94,7 @@ const applicationReducer = (state = initState, action)=> {
         updateNumberOfHandsState.numOfHands = action.numHandsImage;
         updateNumberOfHandsState.handsDisplay = updateDisplayObject;
         updateNumberOfHandsState.handObjects = updateHandObject;
+        updateNumberOfHandsState.numHands = false;
       }
     return updateNumberOfHandsState;
 
@@ -134,6 +136,16 @@ const applicationReducer = (state = initState, action)=> {
       }
     return onOffSFXState;
     
+      // CHANGE NUMBER OF HANDS
+      case types.NUMBEROFHANDS:
+        const numberOfHandsState = Object.assign({}, state);
+        if(numberOfHandsState.numHands === false) {
+          numberOfHandsState.numHands = true;
+        } else {
+          numberOfHandsState.numHands = false;
+        }
+      return numberOfHandsState;
+
     // BETTINGS CONTROLS
 
     case types.UPDATEBET:
