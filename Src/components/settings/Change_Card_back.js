@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, Text, Image, TouchableHighlight, StyleSheet, Dimensions, ImageBackground, ScrollView} from 'react-native';
+import {View, Text, Image, TouchableWithoutFeedback, StyleSheet, Dimensions, ImageBackground, ScrollView} from 'react-native';
 import { connect } from 'react-redux';
 import store from '../../state/store';
 import * as types from '../../state/actions/actions';
@@ -29,16 +29,16 @@ class Change_Card_Back extends Component {
         <ImageBackground style={{width: screenWidth / 2.5, height: screenHeight/1.1}}  source={require("../../assets/settings_page/Settings_BG.png")}>
           <View style={styles.backgroundImageTopBar}>
             <Text style={styles.settingsText}>Change Card Back</Text>
-            <TouchableHighlight onPress={() => this.cardBackClose()}><Image source={require("../../assets/settings_page/White_X.png")} /></TouchableHighlight>
+            <TouchableWithoutFeedback onPress={() => this.cardBackClose()}><Image source={require("../../assets/settings_page/White_X.png")} /></TouchableWithoutFeedback>
           </View>
-          <View className="flex-column">
-            <View style={styles.twoImageContainer} className="flex-row padding-top-10px">
-              <TouchableHighlight onPress={(e) => this.changeCardBack('blue')}><Image style={styles.images} source={require("../../assets/settings_page/Blue_Card_Back.png")} /></TouchableHighlight>
-              <TouchableHighlight onPress={(e) => this.changeCardBack('red')}><Image style={styles.images} source={require("../../assets/settings_page/Red_Card_Back.png")} /></TouchableHighlight>
+          <View>
+            <View style={styles.twoImageContainer}>
+              <TouchableWithoutFeedback onPress={(e) => this.changeCardBack('blue')}><Image style={styles.images} source={require("../../assets/settings_page/Blue_Card_Back.png")} /></TouchableWithoutFeedback>
+              <TouchableWithoutFeedback onPress={(e) => this.changeCardBack('red')}><Image style={styles.images} source={require("../../assets/settings_page/Red_Card_Back.png")} /></TouchableWithoutFeedback>
             </View>
-            <View style={styles.twoImageContainer} className="flex-row">
-              <TouchableHighlight onPress={(e) => this.changeCardBack('deadly')}><Image style={styles.images} source={require("../../assets/settings_page/Deadly_Woman_Card_Back.png")} /></TouchableHighlight>
-              <TouchableHighlight onPress={(e) => this.changeCardBack('logo')}><Image style={styles.images} source={require("../../assets/settings_page/Logo_Card_Back.png")} /></TouchableHighlight>
+            <View style={styles.twoImageContainer} >
+              <TouchableWithoutFeedback onPress={(e) => this.changeCardBack('deadly')}><Image style={styles.images} source={require("../../assets/settings_page/Deadly_Woman_Card_Back.png")} /></TouchableWithoutFeedback>
+              <TouchableWithoutFeedback onPress={(e) => this.changeCardBack('logo')}><Image style={styles.images} source={require("../../assets/settings_page/Logo_Card_Back.png")} /></TouchableWithoutFeedback>
             </View>
           </View>
         </ImageBackground>

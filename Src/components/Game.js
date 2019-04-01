@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, TouchableHighlight, Image, Text, StyleSheet, Dimensions, ImageBackground, TextInput} from 'react-native';
+import {View, TouchableWithoutFeedback, Image, Text, StyleSheet, Dimensions, ImageBackground, TextInput} from 'react-native';
 import { connect } from 'react-redux';
 import store from '../state/store';
 import * as types from '../state/actions/actions';
@@ -92,16 +92,16 @@ class Game extends Component {
     return (
       console.log('props ', this.props),
       <ImageBackground style={styles.mainBackgroundImage} source={bg}>
-        <View style={styles.container} className="background-image-container">
+        <View style={styles.container}>
           <DismissKeyboard>
             <ImageBackground style={styles.tableBackgroundImage} source={require('../assets/tables/Poker_Table.png')}>
               {this.props.settings.mainMenu ? <Main_Menu /> : null}
               <DismissKeyboard>
-                <View style={styles.settingsContainer} className="settings-icon">
+                <View style={styles.settingsContainer}>
                   <View style={styles.scoreContainter}><Text style={styles.coinsText}>Coins: {this.props.game.coins ? this.props.game.coins : 0} </Text></View>
-                  <TouchableHighlight onPress={() => this.openCloseSettings()}>
+                  <TouchableWithoutFeedback onPress={() => this.openCloseSettings()}>
                     <Image style={styles.settingsIcon} source={require('../assets/icons/settings.png')} />
-                  </TouchableHighlight>
+                  </TouchableWithoutFeedback>
                 </View>
               </DismissKeyboard>
               {/* Setting Pages */}
@@ -112,31 +112,31 @@ class Game extends Component {
               {this.props.settings.change_card_back ? <Change_Card_Back /> : null}
               { this.props.settings.settings ? <Settings /> : null}
               <DismissKeyboard>
-                <View style={styles.cardsContainer} className="cards-container">
-                  <View style={styles.playerHandsContainer} className="player-hands-container">
+                <View style={styles.cardsContainer}>
+                  <View style={styles.playerHandsContainer}>
                     <Stick_Switch_Hands />
                   </View>
-                  <View style={styles.communityCardsContainer} className="community-cards">
+                  <View style={styles.communityCardsContainer}>
                     {this.props.game.communityCards}
                   </View>
                   <View style={styles.bettigsButtonsContainer}>
-                    <TouchableHighlight onPress={() => this.incrementBet()}><Image style={styles.bettingButtons} source={require('../assets/betting/Bet_Arrow_Up.png')} /></TouchableHighlight>
+                    <TouchableWithoutFeedback onPress={() => this.incrementBet()}><Image style={styles.bettingButtons} source={require('../assets/betting/Bet_Arrow_Up.png')} /></TouchableWithoutFeedback>
                     <TextInput style={styles.betInput} onChangeText={(num) => this.updateTextInput(num)} type='number' value={this.props.game.bet.toString()} keyboardType ='numeric' />
-                    <TouchableHighlight onPress={() => this.decreaseBet()}><Image style={styles.bettingButtons} source={require('../assets/betting/Bet_Arrow_Down.png')} /></TouchableHighlight>
+                    <TouchableWithoutFeedback onPress={() => this.decreaseBet()}><Image style={styles.bettingButtons} source={require('../assets/betting/Bet_Arrow_Down.png')} /></TouchableWithoutFeedback>
                   </View>
                 </View>
               </DismissKeyboard>
               <DismissKeyboard>
-                <View style={styles.buttonsContainer} className="buttons-container">
-                  <View Style={styles.userCards}className="user-cards">
-                    <View style={styles.playerHand} className="possible-hand">
+                <View style={styles.buttonsContainer}>
+                  <View Style={styles.userCards}>
+                    <View style={styles.playerHand}>
                       {this.props.game.handsDisplay[this.props.game.handsDisplay.length - 1]}
                     </View>
                   </View>
-                  <View style={styles.stickSwitchButtonsContainer} className="stick-switch-buttons">
-                    {this.props.game.stick ? <TouchableHighlight className="button stick" id="game-button" onPress={(e) => this.deal(e,this.props)} ><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Stick_Button_White_2.png')} /></TouchableHighlight> : <Image style={[styles.stickSwitchButtons, styles.cantClickButton]} source={require('../assets/buttons/Stick_Button_White_2.png')} />}
-                    {this.props.game.switch ? <TouchableHighlight className="button switch" onPress={(e) => this.switch(e,this.props)}><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Switch_Button_White_2.png')} /></TouchableHighlight> : <Image style={[styles.stickSwitchButtons, styles.cantClickButton]} source={require('../assets/buttons/Switch_Button_White_2.png')} />}
-                    {this.props.game.reset ? <TouchableHighlight onPress={(e) => this.reset(e)}><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Next_Hand_White_2.png')} /></TouchableHighlight> : <Image style={[styles.stickSwitchButtons, styles.cantClickButton]} source={require('../assets/buttons/Next_Hand_White_2.png')} />}
+                  <View style={styles.stickSwitchButtonsContainer}>
+                    {this.props.game.stick ? <TouchableWithoutFeedback id="game-button" onPress={(e) => this.deal(e,this.props)} ><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Stick_Button_White_2.png')} /></TouchableWithoutFeedback> : <Image style={[styles.stickSwitchButtons, styles.cantClickButton]} source={require('../assets/buttons/Stick_Button_White_2.png')} />}
+                    {this.props.game.switch ? <TouchableWithoutFeedback onPress={(e) => this.switch(e,this.props)}><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Switch_Button_White_2.png')} /></TouchableWithoutFeedback> : <Image style={[styles.stickSwitchButtons, styles.cantClickButton]} source={require('../assets/buttons/Switch_Button_White_2.png')} />}
+                    {this.props.game.reset ? <TouchableWithoutFeedback onPress={(e) => this.reset(e)}><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Next_Hand_White_2.png')} /></TouchableWithoutFeedback> : <Image style={[styles.stickSwitchButtons, styles.cantClickButton]} source={require('../assets/buttons/Next_Hand_White_2.png')} />}
                   </View>
                 </View>
               </DismissKeyboard>

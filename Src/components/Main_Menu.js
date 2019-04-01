@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, Image, StyleSheet, Dimensions, ImageBackground, TouchableHighlight} from 'react-native';
+import {View, Text, Image, StyleSheet, Dimensions, ImageBackground, TouchableWithoutFeedback, Platform} from 'react-native';
 import {connect} from 'react-redux';
 import store from '../state/store';
 import * as types from '../state/actions/actions';
@@ -47,15 +47,15 @@ class Main_Menu extends Component {
               <Image style={styles.settingsIcon} source={require("../assets/main_menu/Profile_Pic_Pill.png")} />
               <Text style={styles.playerName}>{this.props.game.name ? this.props.game.name : 'Dead Eyes'}</Text>
             </View>
-            <TouchableHighlight onPress={() => this.openCloseSettings()}><Image style={styles.settingsIcon} source={require("../assets/main_menu/Settings_Icon.png")} /></TouchableHighlight>
+            <TouchableWithoutFeedback onPress={() => this.openCloseSettings()}><Image style={styles.settingsIcon} source={require("../assets/main_menu/Settings_Icon.png")} /></TouchableWithoutFeedback>
           </View>
           <View style={styles.midMainMenu}>
-            {this.props.settings.num_hands ? <Num_Hands /> : <TouchableHighlight onPress={() => this.start_game()}><Image style={styles.midMainImage} source={require("../assets/main_menu/Play_Button.png")} /></TouchableHighlight>}
+            {this.props.settings.num_hands ? <Num_Hands /> : <TouchableWithoutFeedback onPress={() => this.start_game()}><Image style={styles.midMainImage} source={require("../assets/main_menu/Play_Button.png")} /></TouchableWithoutFeedback>}
           </View>
           <View style={styles.bottomMainMenu}>
-            <TouchableHighlight onPress={() => this.showHideCards()}>{this.props.game.showCards ? <Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Show_Cards_Button.png")} /> : <Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Hide_Cards_Button.png")} />}</TouchableHighlight>
-            <TouchableHighlight onPress={() => this.number_of_hands()}><Image style={styles.bottomMainMenuImages} source={numHands} /></TouchableHighlight>
-            <TouchableHighlight onPress={() => this.ladderState()}>{this.props.game.ladder ? <Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Ladder_Button.png")} /> : <Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Ladder_Locked_Button.png")} />}</TouchableHighlight>
+            <TouchableWithoutFeedback onPress={() => this.showHideCards()}>{this.props.game.showCards ? <Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Show_Cards_Button.png")} /> : <Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Hide_Cards_Button.png")} />}</TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => this.number_of_hands()}><Image style={styles.bottomMainMenuImages} source={numHands} /></TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => this.ladderState()}>{this.props.game.ladder ? <Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Ladder_Button.png")} /> : <Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Ladder_Locked_Button.png")} />}</TouchableWithoutFeedback>
           </View>
         </ImageBackground>
       </View>
@@ -79,7 +79,15 @@ const styles = StyleSheet.create({
     width: screenWidth,
     justifyContent: 'space-between',
     alignItems: 'center',
-    height: screenHeight / 8,
+    ...Platform.select({
+      ios: {
+        height: screenHeight / 8
+      },
+      android: {
+        height: screenHeight / 4,
+
+      }
+    }),
     flexDirection: 'row',
     paddingLeft: 20,
     paddingRight: 20,
@@ -100,7 +108,14 @@ const styles = StyleSheet.create({
     paddingLeft: 20
   },
   midMainMenu: {
-    height: screenHeight / 1.32,
+    ...Platform.select({
+      ios: {
+        height: screenHeight / 1.32,
+      },
+      android: {
+        height: screenHeight / 2,
+      }
+    }),
     width: screenWidth,
     justifyContent: 'center',
     alignItems: 'center',
@@ -110,7 +125,15 @@ const styles = StyleSheet.create({
 
   },
   bottomMainMenu: {
-    height: screenHeight / 8,
+    ...Platform.select({
+      ios: {
+        height: screenHeight / 8
+      },
+      android: {
+        height: screenHeight / 4,
+
+      }
+    }),
     width: screenWidth,
     justifyContent: 'space-between',
     flexDirection: 'row',

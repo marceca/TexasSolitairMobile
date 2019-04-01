@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {ScrollView, Image, StyleSheet, Dimensions, TouchableHighlight} from 'react-native';
+import {ScrollView, Image, StyleSheet, Dimensions, TouchableWithoutFeedback} from 'react-native';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -16,7 +16,7 @@ class Hand_Ranks extends Component {
   render() {
     return (
       <ScrollView style={styles.backgroundContainer}>
-          <TouchableHighlight><Image source={require("../../assets/settings_page/Hand_Ranks_Page.png")} /></TouchableHighlight>
+          <TouchableWithoutFeedback><Image source={require("../../assets/settings_page/Hand_Ranks_Page.png")} /></TouchableWithoutFeedback>
       </ScrollView>
     )
   }

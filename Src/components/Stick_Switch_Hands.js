@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Dimensions, TouchableHighlight} from 'react-native';
+import {View, StyleSheet, Dimensions, TouchableWithoutFeedback} from 'react-native';
 import {connect} from 'react-redux';
 import store from '../state/store';
 import * as types from '../state/actions/actions';
@@ -43,10 +43,10 @@ class Stick_Switch_Hands extends Component {
   render() {
     let mainGame = []
     for(let i = 0; i < this.props.game.handObjects.length - 1; i++) {
-      mainGame.push(<TouchableHighlight key={'handNumber'+i} style={styles.possibleHand} onPress={(e) => this.changeHands(i, this.props)}><View style={styles.possibleHand} className="possible-hand" >{this.props.game.handsDisplay[i]}</View></TouchableHighlight>)
+      mainGame.push(<TouchableWithoutFeedback key={'handNumber'+i} style={styles.possibleHand} onPress={(e) => this.changeHands(i, this.props)}><View style={styles.possibleHand}>{this.props.game.handsDisplay[i]}</View></TouchableWithoutFeedback>)
     }
     return (
-      <View style={styles.possibleHandContainer} className="possible-hands-container">{mainGame}</View>
+      <View style={styles.possibleHandContainer}>{mainGame}</View>
     )
   }
 }

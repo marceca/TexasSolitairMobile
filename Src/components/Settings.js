@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, Text, Image, StyleSheet, ImageBackground, Dimensions, ScrollView, TouchableHighlight} from 'react-native';
+import {View, Text, Image, StyleSheet, ImageBackground, Dimensions, ScrollView, TouchableWithoutFeedback} from 'react-native';
 import { connect } from 'react-redux';
 import store from '../state/store';
 import * as types from '../state/actions/actions';
@@ -53,17 +53,17 @@ class Settings extends Component {
     return (
       <ImageBackground style={styles.settingsContainer} source={require('../assets/settings_page/Settings_BG.png')}>
         <ScrollView>
-          <View style={styles.settingsIcons} className="settings-icons top-buffer"><Text style={styles.settingsText}>Settings</Text><TouchableHighlight onPress={() => this.closeSettings()}><Image className="white-x-icon" source={require("../assets/settings_page/White_X.png")} /></TouchableHighlight></View>
-          <TouchableHighlight onPress={() => this.onOffSFX()}><View style={styles.settingsIcons} className="settings-icons"><Text style={styles.settingsText}>SFX</Text>{this.props.game.sfx ? <Image source={require("../assets/settings_page/On_Toggle.png")} /> : <Image source={require("../assets/settings_page/Off_Toggle.png")} />}</View></TouchableHighlight>
-          <TouchableHighlight onPress={() => this.showCards()}><View style={styles.settingsIcons} className="settings-icons"><Text style={styles.settingsText}>Show Cards</Text>{this.props.game.showCards ? <Image source={require("../assets/settings_page/On_Toggle.png")} /> : <Image source={require("../assets/settings_page/Off_Toggle.png")} />}</View></TouchableHighlight>
-          <TouchableHighlight onPress={() => this.open_total_number_of_hands()}><View style={styles.settingsIcons} className="settings-icons"><Text style={styles.settingsText}>Number of Hands</Text><Image source={require("../assets/settings_page/Blue_Arrow_Button.png")} /></View></TouchableHighlight>
-          <TouchableHighlight onPress={() => this.change_background_image()}><View style={styles.settingsIcons} className="settings-icons"><Text style={styles.settingsText}>Change Background</Text><Image source={require("../assets/settings_page/Blue_Arrow_Button.png")} /></View></TouchableHighlight>
-          <TouchableHighlight onPress={() => this.open_card_back()}><View style={styles.settingsIcons} className="settings-icons"><Text style={styles.settingsText}>Change Card Backs</Text><Image source={require("../assets/settings_page/Blue_Arrow_Button.png")} /></View></TouchableHighlight>
-          <TouchableHighlight onPress={() => this.open_hand_ranks()}><View style={styles.settingsIcons} className="settings-icons"><Text style={styles.settingsText}>Hand Ranks</Text><Image source={require("../assets/settings_page/Blue_Arrow_Button.png")} /></View></TouchableHighlight>
-          <TouchableHighlight><View style={styles.settingsIcons} className="settings-icons"><Text style={styles.settingsText}>Contact Us</Text><Image source={require("../assets/settings_page/Blue_Arrow_Button.png")} /></View></TouchableHighlight>
-          <TouchableHighlight onPress={() => this.open_tutorial()}><View style={styles.settingsIcons} className="settings-icons"><Text style={styles.settingsText}>Tutorial</Text><Image source={require("../assets/settings_page/Blue_Arrow_Button.png")} /></View></TouchableHighlight>
-          <TouchableHighlight><View style={styles.settingsIcons} className="settings-icons"><Text style={styles.settingsText}>Website</Text><Image source={require("../assets/settings_page/Blue_Arrow_Button.png")} /></View></TouchableHighlight>
-          <TouchableHighlight onPress={() => this.show_main_menu()}><View style={styles.settingsIcons} className="settings-icons"><Text style={styles.settingsText}>Menu Screen</Text><Image source={require("../assets/settings_page/Blue_Arrow_Button.png")} /></View></TouchableHighlight>
+          <View style={styles.settingsIcons}><Text style={styles.settingsText}>Settings</Text><TouchableWithoutFeedback onPress={() => this.closeSettings()}><Image source={require("../assets/settings_page/White_X.png")} /></TouchableWithoutFeedback></View>
+          <TouchableWithoutFeedback onPress={() => this.onOffSFX()}><View style={styles.settingsIcons}><Text style={styles.settingsText}>SFX</Text>{this.props.game.sfx ? <Image source={require("../assets/settings_page/On_Toggle.png")} /> : <Image source={require("../assets/settings_page/Off_Toggle.png")} />}</View></TouchableWithoutFeedback>
+          <TouchableWithoutFeedback onPress={() => this.showCards()}><View style={styles.settingsIcons}><Text style={styles.settingsText}>Show Cards</Text>{this.props.game.showCards ? <Image source={require("../assets/settings_page/On_Toggle.png")} /> : <Image source={require("../assets/settings_page/Off_Toggle.png")} />}</View></TouchableWithoutFeedback>
+          <TouchableWithoutFeedback onPress={() => this.open_total_number_of_hands()}><View style={styles.settingsIcons}><Text style={styles.settingsText}>Number of Hands</Text><Image source={require("../assets/settings_page/Blue_Arrow_Button.png")} /></View></TouchableWithoutFeedback>
+          <TouchableWithoutFeedback onPress={() => this.change_background_image()}><View style={styles.settingsIcons}><Text style={styles.settingsText}>Change Background</Text><Image source={require("../assets/settings_page/Blue_Arrow_Button.png")} /></View></TouchableWithoutFeedback>
+          <TouchableWithoutFeedback onPress={() => this.open_card_back()}><View style={styles.settingsIcons}><Text style={styles.settingsText}>Change Card Backs</Text><Image source={require("../assets/settings_page/Blue_Arrow_Button.png")} /></View></TouchableWithoutFeedback>
+          <TouchableWithoutFeedback onPress={() => this.open_hand_ranks()}><View style={styles.settingsIcons}><Text style={styles.settingsText}>Hand Ranks</Text><Image source={require("../assets/settings_page/Blue_Arrow_Button.png")} /></View></TouchableWithoutFeedback>
+          <TouchableWithoutFeedback><View style={styles.settingsIcons}><Text style={styles.settingsText}>Contact Us</Text><Image source={require("../assets/settings_page/Blue_Arrow_Button.png")} /></View></TouchableWithoutFeedback>
+          <TouchableWithoutFeedback onPress={() => this.open_tutorial()}><View style={styles.settingsIcons}><Text style={styles.settingsText}>Tutorial</Text><Image source={require("../assets/settings_page/Blue_Arrow_Button.png")} /></View></TouchableWithoutFeedback>
+          <TouchableWithoutFeedback><View style={styles.settingsIcons}><Text style={styles.settingsText}>Website</Text><Image source={require("../assets/settings_page/Blue_Arrow_Button.png")} /></View></TouchableWithoutFeedback>
+          <TouchableWithoutFeedback onPress={() => this.show_main_menu()}><View style={styles.settingsIcons}><Text style={styles.settingsText}>Menu Screen</Text><Image source={require("../assets/settings_page/Blue_Arrow_Button.png")} /></View></TouchableWithoutFeedback>
         </ScrollView>
       </ImageBackground>
     )
@@ -73,11 +73,11 @@ class Settings extends Component {
 const styles = StyleSheet.create({
   settingsContainer: {
     height: screenHeight,
-    width: screenWidth / 3,
+    width: screenWidth / 2.5,
     zIndex: 10,
     position: 'absolute',
     top: 0,
-    right: 100
+    right: 20
   },
   settingsIcons: {
     justifyContent: 'space-between',

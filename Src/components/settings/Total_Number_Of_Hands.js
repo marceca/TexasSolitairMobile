@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Image, Text, StyleSheet, TouchableHighlight, ImageBackground, Dimensions, ScrollView} from 'react-native';
+import { View, Image, Text, StyleSheet, TouchableWithoutFeedback, ImageBackground, Dimensions, ScrollView} from 'react-native';
 import * as types from '../../state/actions/actions';
 import store from '../../state/store';
 import Num_Hands from './Num_Hands';
@@ -22,11 +22,11 @@ class Total_Number_Of_Hands extends Component {
 
   render() {
     return(
-      <ScrollView style={styles.backgroundImageTopBar}>
+      <ScrollView style={styles.backgroundContainer}>
         <ImageBackground style={styles.backgroundImage} source={require("../../assets/settings_page/Settings_BG.png")}>
           <View style={styles.topBar}>
             <Text style={styles.header}>Total Number of Hands</Text>
-            <TouchableHighlight onPress={() => this.closeTotalNumberOfHands()}><Image source={require("../../assets/settings_page/White_X.png")} /></TouchableHighlight>
+            <TouchableWithoutFeedback onPress={() => this.closeTotalNumberOfHands()}><Image source={require("../../assets/settings_page/White_X.png")} /></TouchableWithoutFeedback>
           </View>
           <Num_Hands />
         </ImageBackground>
@@ -37,20 +37,23 @@ class Total_Number_Of_Hands extends Component {
 
 const styles = StyleSheet.create({
   backgroundImage: {
-    height: screenHeight / 1.5,
+    resizeMode: 'cover',
     width: screednWidth / 2,
     zIndex: 11,
     marginLeft: 50,
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-between',
     flexDirection: 'column',
     paddingLeft: 20,
     paddingRight: 20,
+    paddingTop: 20,
+    paddingBottom: 20,
+    borderRadius: 30
   },
-  backgroundImageTopBar: {
+  backgroundContainer: {
     height: screenHeight,
     zIndex: 11,
     position: 'absolute',
-    top: 0
+    top: '40%'
   },
   header: {
     color: 'white',
@@ -59,6 +62,7 @@ const styles = StyleSheet.create({
   topBar: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    paddingBottom: 10
   }
 })
 

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Image, StyleSheet, Dimensions, TouchableHighlight} from 'react-native'
+import {View, Image, StyleSheet, Dimensions, TouchableWithoutFeedback} from 'react-native'
 import {connect} from 'react-redux';
 import store from '../../state/store';
 import * as types from '../../state/actions/actions';
@@ -21,16 +21,16 @@ class Num_Hands extends Component {
   
   render() {
     return (
-      <View style={styles.numHandsContainer} className="num-hands-container">
-        <TouchableHighlight onPress={() => this.update_num_hands(2, 'two')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_2.png")} /></TouchableHighlight>
-        <TouchableHighlight onPress={() => this.update_num_hands(3, 'three')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_3.png")} /></TouchableHighlight>
-        <TouchableHighlight onPress={() => this.update_num_hands(4, 'four')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_4.png")} /></TouchableHighlight>
-        <TouchableHighlight onPress={() => this.update_num_hands(5, 'five')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_5.png")} /></TouchableHighlight>
-        <TouchableHighlight onPress={() => this.update_num_hands(6, 'six')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_6.png")} /></TouchableHighlight>
-        <TouchableHighlight onPress={() => this.update_num_hands(7, 'seven')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_7.png")} /></TouchableHighlight>
-        <TouchableHighlight onPress={() => this.update_num_hands(8, 'eight')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_8.png")} /></TouchableHighlight>
-        <TouchableHighlight onPress={() => this.update_num_hands(9, 'nine')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_9.png")} /></TouchableHighlight>
-        <TouchableHighlight onPress={() => this.update_num_hands(10, 'ten')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Nmber_10.png")} /></TouchableHighlight>
+      <View style={styles.numHandsContainer}>
+        <TouchableWithoutFeedback onPress={() => this.update_num_hands(2, 'two')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_2.png")} /></TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => this.update_num_hands(3, 'three')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_3.png")} /></TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => this.update_num_hands(4, 'four')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_4.png")} /></TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => this.update_num_hands(5, 'five')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_5.png")} /></TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => this.update_num_hands(6, 'six')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_6.png")} /></TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => this.update_num_hands(7, 'seven')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_7.png")} /></TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => this.update_num_hands(8, 'eight')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_8.png")} /></TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => this.update_num_hands(9, 'nine')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_9.png")} /></TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => this.update_num_hands(10, 'ten')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Nmber_10.png")} /></TouchableWithoutFeedback>
       </View>
     )
   }
