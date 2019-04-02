@@ -12,13 +12,15 @@ var config = {
 
 firebase.initializeApp(config);
 
-function writeUserData(coins,uniqueID,fname ,lname, ladderNumber, numberOfWins, winsInARow){
+function writeUserData(coins,uniqueID,fname ,lname, ladderNumber, handsPlayed, numberOfWins, currentWinningsStreak, winsInARow){
   firebase.database().ref('Users/' + uniqueID + '/').set({
       coins,
       fname,
       lname,
       ladderNumber,
+      handsPlayed,
       numberOfWins,
+      currentWinningsStreak,
       winsInARow
   })
 }
@@ -26,10 +28,10 @@ function writeUserData(coins,uniqueID,fname ,lname, ladderNumber, numberOfWins, 
 function readUserData(user) {
   firebase.database().ref('Users/' + user +'/').once('value', function (snapshot) {
     if(snapshot.val() === null) {
-      writeUserData(1000, uniqueID, 'firstName', 'lastName', 1, 0, 0);
+      writeUserData(1000, uniqueID, 'firstName', 'lastName', 1, 0, 0, 0, 0);
     } else { 
       console.log('snap shot ',snapshot.val());
-      store.dispatch(types.updateUser(snapshot.val().fname, snapshot.val().coins, snapshot.val().ladderNumber, snapshot.val().numberOfWins, snapshot.val().winsInARow));
+      store.dispatch(types.updateUser(snapshot.val().fname, snapshot.val().coins, snapshot.val().ladderNumber, snapshot.val().handsPlayed, snapshot.val().numberOfWins, snapshot.val().currentWinningsStreak, snapshot.val().winsInARow));
     }
   });
 }
@@ -55,10 +57,22 @@ function updateName(newName) {
   })
 }
 
+function updateHandsPlayed(newHandsPlayed) {
+  firebase.database().ref('Users/' + uniqueID + '/').update({
+    handsPlayed: newHandsPlayed
+  })
+}
+
 function updateWins(currentWins) {
   const newWins = currentWins + 1;
   firebase.database().ref('Users/' + uniqueID + '/').update({
     numberOfWins: newWins
+  })
+}
+
+function updateCurrentWinningStreak(newCurrentWinningStreak) {
+  firebase.database().ref('Users/' + uniqueID + '/').update({
+    currentWinningsStreak: newCurrentWinningStreak
   })
 }
 
@@ -75,6 +89,8 @@ module.exports = {
   updateUserCoins,
   updateLadder,
   updateName,
+  updateHandsPlayed,
   updateWins,
+  updateCurrentWinningStreak,
   updateWinsInARow
 }

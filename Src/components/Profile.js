@@ -40,12 +40,22 @@ class Profile extends Component {
           <View style={styles.headers}><Image source={require('../assets/profile/Stats_Header.png')} /></View>
           <View style={styles.statsContainer}>
             <View style={styles.individualStats}>
+              <Text style={styles.statsText}>Hands Played: </Text>
+              <Text style={styles.statsText}>{this.props.game.handsPlayed}</Text>
+            </View>
+            <Image style={styles.blueLineShort} source={require('../assets/profile/Horizontal_Blue_Line.png')} />
+            <View style={styles.individualStats}>
               <Text style={styles.statsText}>Number of Wins: </Text>
               <Text style={styles.statsText}>{this.props.game.numberOfWins}</Text>
             </View>
             <Image style={styles.blueLineShort} source={require('../assets/profile/Horizontal_Blue_Line.png')} />
             <View style={styles.individualStats}>
-              <Text style={styles.statsText}>Wins in a Row: </Text>
+              <Text style={styles.statsText}>Current Winning Streak: </Text>
+              <Text style={styles.statsText}>{this.props.game.currentWinningStreak}</Text>
+            </View>
+            <Image style={styles.blueLineShort} source={require('../assets/profile/Horizontal_Blue_Line.png')} />
+            <View style={styles.individualStats}>
+              <Text style={styles.statsText}>Most Wins in a Row: </Text>
               <Text style={styles.statsText}>{this.props.game.winsInARow}</Text>
             </View>
             <Image style={styles.blueLineShort} source={require('../assets/profile/Horizontal_Blue_Line.png')} />
