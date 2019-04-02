@@ -16,7 +16,7 @@ import * as dbCalls from '../database/db';
 import DismissKeyboard from './DismissKeyboard';
 import User_Hand from './User_Hand';
 import Profile from './Profile';
-import Ads from '../advertisements/ads';
+import * as Ads from '../advertisements/ads';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -92,11 +92,6 @@ class Game extends Component {
 
   render() {
     const bg = constants.backgroundPossibilities[this.props.settings.main_background_image]
-
-    const unitId =
-    Platform.OS === 'ios'
-      ? 'ca-app-pub-6301728298962411/2328085917'
-      : 'ca-app-pub-6301728298962411/5162611743';
 
     return (
       console.log('props ', this.props),
