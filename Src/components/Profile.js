@@ -44,6 +44,11 @@ class Profile extends Component {
               <Text style={styles.statsText}>{this.props.game.numberOfWins}</Text>
             </View>
             <Image style={styles.blueLineShort} source={require('../assets/profile/Horizontal_Blue_Line.png')} />
+            <View style={styles.individualStats}>
+              <Text style={styles.statsText}>Wins in a Row: </Text>
+              <Text style={styles.statsText}>{this.props.game.winsInARow}</Text>
+            </View>
+            <Image style={styles.blueLineShort} source={require('../assets/profile/Horizontal_Blue_Line.png')} />
           </View>
           <Image style={styles.blueLineFullWidth} source={require('../assets/profile/Horizontal_Blue_Line.png')} />
           <View style={styles.headers}><Image source={require('../assets/profile/Challenges_Header.png')} /></View>
