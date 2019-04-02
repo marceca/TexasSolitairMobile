@@ -300,6 +300,11 @@ const applicationReducer = (state = initState, action)=> {
       riverState.chooseOncePerTurn = false;
     return riverState;
 
+    case types.updateCoins:
+      const updateCoinsState = Object.assign({}, state);
+      updateCoinsState.coins = action.coins;
+    return updateCoinsState;
+
     case types.RESULTS:
       const resultsState = Object.assign({}, state);
       // Show reset button
@@ -314,7 +319,7 @@ const applicationReducer = (state = initState, action)=> {
       dbCalls.updateHandsPlayed(resultsState.handsPlayed);
       // Run ad for every 5 games played
       if(resultsState.handsPlayed % 5 === 0) {
-        ads.runAd();
+        ads.runAd(resultsState);
       }
 
       // Flip all cards
