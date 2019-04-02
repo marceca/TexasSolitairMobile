@@ -43,7 +43,8 @@ const initState = {
   numHands: false,
   numberOfWins: null,
   winsInARow: null,
-  currentWinningStreak: 0
+  currentWinningStreak: null,
+  handsPlayed: null
 }
 
 // Sort user hand by card value
@@ -68,7 +69,9 @@ const applicationReducer = (state = initState, action)=> {
       updateUserState.name = action.userName;
       updateUserState.coins = action.userCoins;
       updateUserState.ladderNumber = action.userLadder;
+      updateUserState.handsPlayed = action.handsPlayed;
       updateUserState.numberOfWins = action.numberOfWins;
+      updateUserState.currentWinningStreak = action.currentWinningStreak;
       updateUserState.winsInARow = action.winsInARow;
     return updateUserState
 
@@ -305,6 +308,9 @@ const applicationReducer = (state = initState, action)=> {
       resultsState.switch = false;
       // Allow show cards and chaging of hand number
       resultsState.dealt = false;
+      // Add to number of hands played
+      resultsState.handsPlayed += 1;
+      dbCalls.updateHandsPlayed(resultsState.handsPlayed);
 
       // Flip all cards
       for(let i = 0; i <  resultsState.handsDisplay.length - 1; i++) {
@@ -450,6 +456,7 @@ const applicationReducer = (state = initState, action)=> {
           resultsState.coins = newCoins;
           resultsState.numberOfWins += 1;
           resultsState.currentWinningStreak += 1;
+          dbCalls.updateCurrentWinningStreak(resultsState.currentWinningStreak);
           if(resultsState.currentWinningStreak > resultsState.winsInARow) {
             resultsState.winsInARow += 1;
             dbCalls.updateWinsInARow(resultsState.currentWinningStreak);
@@ -487,6 +494,7 @@ const applicationReducer = (state = initState, action)=> {
                 resultsState.coins = newCoins;
                 resultsState.numberOfWins += 1;
                 resultsState.currentWinningStreak += 1;
+                dbCalls.updateCurrentWinningStreak(resultsState.currentWinningStreak);
                 if(resultsState.currentWinningStreak > resultsState.winsInARow) {
                   resultsState.winsInARow += 1;
                   dbCalls.updateWinsInARow(resultsState.currentWinningStreak);
@@ -532,6 +540,7 @@ const applicationReducer = (state = initState, action)=> {
                 resultsState.coins = newCoins;
                 resultsState.numberOfWins += 1;
                 resultsState.currentWinningStreak += 1;
+                dbCalls.updateCurrentWinningStreak(resultsState.currentWinningStreak);
                 if(resultsState.currentWinningStreak > resultsState.winsInARow) {
                   resultsState.winsInARow += 1;
                   dbCalls.updateWinsInARow(resultsState.currentWinningStreak);
@@ -570,6 +579,7 @@ const applicationReducer = (state = initState, action)=> {
                   resultsState.coins = newCoins;
                   resultsState.numberOfWins += 1;
                   resultsState.currentWinningStreak += 1;
+                  dbCalls.updateCurrentWinningStreak(resultsState.currentWinningStreak);
                   if(resultsState.currentWinningStreak > resultsState.winsInARow) {
                     resultsState.winsInARow += 1;
                     dbCalls.updateWinsInARow(resultsState.currentWinningStreak);
@@ -615,6 +625,7 @@ const applicationReducer = (state = initState, action)=> {
             resultsState.coins = newCoins;
             resultsState.numberOfWins += 1;
             resultsState.currentWinningStreak += 1;
+            dbCalls.updateCurrentWinningStreak(resultsState.currentWinningStreak);
             if(resultsState.currentWinningStreak > resultsState.winsInARow) {
               resultsState.winsInARow += 1;
               dbCalls.updateWinsInARow(resultsState.currentWinningStreak);
@@ -644,6 +655,7 @@ const applicationReducer = (state = initState, action)=> {
                 resultsState.coins = newCoins;
                 resultsState.numberOfWins += 1;
                 resultsState.currentWinningStreak += 1;
+                dbCalls.updateCurrentWinningStreak(resultsState.currentWinningStreak);
                 if(resultsState.currentWinningStreak > resultsState.winsInARow) {
                   resultsState.winsInARow += 1;
                   dbCalls.updateWinsInARow(resultsState.currentWinningStreak);
@@ -688,6 +700,7 @@ const applicationReducer = (state = initState, action)=> {
             resultsState.coins = newCoins;
             resultsState.numberOfWins += 1;
             resultsState.currentWinningStreak += 1;
+            dbCalls.updateCurrentWinningStreak(resultsState.currentWinningStreak);
             if(resultsState.currentWinningStreak > resultsState.winsInARow) {
               resultsState.winsInARow += 1;
               dbCalls.updateWinsInARow(resultsState.currentWinningStreak);
@@ -727,6 +740,7 @@ const applicationReducer = (state = initState, action)=> {
             resultsState.coins = newCoins;
             resultsState.numberOfWins += 1;
             resultsState.currentWinningStreak += 1;
+            dbCalls.updateCurrentWinningStreak(resultsState.currentWinningStreak);
             if(resultsState.currentWinningStreak > resultsState.winsInARow) {
               resultsState.winsInARow += 1;
               dbCalls.updateWinsInARow(resultsState.currentWinningStreak);
@@ -762,6 +776,7 @@ const applicationReducer = (state = initState, action)=> {
                 resultsState.coins = newCoins;
                 resultsState.numberOfWins += 1;
                 resultsState.currentWinningStreak += 1;
+                dbCalls.updateCurrentWinningStreak(resultsState.currentWinningStreak);
                 if(resultsState.currentWinningStreak > resultsState.winsInARow) {
                   resultsState.winsInARow += 1;
                   dbCalls.updateWinsInARow(resultsState.currentWinningStreak);
@@ -807,6 +822,7 @@ const applicationReducer = (state = initState, action)=> {
             resultsState.coins = newCoins;
             resultsState.numberOfWins += 1;
             resultsState.currentWinningStreak += 1;
+            dbCalls.updateCurrentWinningStreak(resultsState.currentWinningStreak);
             if(resultsState.currentWinningStreak > resultsState.winsInARow) {
               resultsState.winsInARow += 1;
               dbCalls.updateWinsInARow(resultsState.currentWinningStreak);
@@ -841,6 +857,7 @@ const applicationReducer = (state = initState, action)=> {
               resultsState.coins = newCoins;
               resultsState.numberOfWins += 1;
               resultsState.currentWinningStreak += 1;
+              dbCalls.updateCurrentWinningStreak(resultsState.currentWinningStreak);
               if(resultsState.currentWinningStreak > resultsState.winsInARow) {
                 resultsState.winsInARow += 1;
                 dbCalls.updateWinsInARow(resultsState.currentWinningStreak);
@@ -883,6 +900,7 @@ const applicationReducer = (state = initState, action)=> {
             resultsState.coins = newCoins;
             resultsState.numberOfWins += 1;
             resultsState.currentWinningStreak += 1;
+            dbCalls.updateCurrentWinningStreak(resultsState.currentWinningStreak);
             if(resultsState.currentWinningStreak > resultsState.winsInARow) {
               resultsState.winsInARow += 1;
               dbCalls.updateWinsInARow(resultsState.currentWinningStreak);
@@ -917,6 +935,7 @@ const applicationReducer = (state = initState, action)=> {
             resultsState.coins = newCoins;
             resultsState.numberOfWins += 1;
             resultsState.currentWinningStreak += 1;
+            dbCalls.updateCurrentWinningStreak(resultsState.currentWinningStreak);
             if(resultsState.currentWinningStreak > resultsState.winsInARow) {
               resultsState.winsInARow += 1;
               dbCalls.updateWinsInARow(resultsState.currentWinningStreak);
@@ -958,6 +977,7 @@ const applicationReducer = (state = initState, action)=> {
             resultsState.coins = newCoins;
             resultsState.numberOfWins += 1;
             resultsState.currentWinningStreak += 1;
+            dbCalls.updateCurrentWinningStreak(resultsState.currentWinningStreak);
             if(resultsState.currentWinningStreak > resultsState.winsInARow) {
               resultsState.winsInARow += 1;
               dbCalls.updateWinsInARow(resultsState.currentWinningStreak);
