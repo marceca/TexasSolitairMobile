@@ -12,11 +12,10 @@ var config = {
 
 firebase.initializeApp(config);
 
-function writeUserData(coins,uniqueID,fname ,lname, ladderNumber, handsPlayed, numberOfWins, currentWinningsStreak, winsInARow){
+function writeUserData(coins,uniqueID,nickName, ladderNumber, handsPlayed, numberOfWins, currentWinningsStreak, winsInARow){
   firebase.database().ref('Users/' + uniqueID + '/').set({
       coins,
-      fname,
-      lname,
+      nickName,
       ladderNumber,
       handsPlayed,
       numberOfWins,
@@ -28,10 +27,11 @@ function writeUserData(coins,uniqueID,fname ,lname, ladderNumber, handsPlayed, n
 function readUserData(user) {
   firebase.database().ref('Users/' + user +'/').once('value', function (snapshot) {
     if(snapshot.val() === null) {
-      writeUserData(1000, uniqueID, 'firstName', 'lastName', 1, 0, 0, 0, 0);
+      writeUserData(1000, uniqueID, 'firstName', 1, 0, 0, 0, 0);
+      store.dispatch(types.updateUser(1000, 'firstName', 1, 0, 0, 0, 0))
     } else { 
       console.log('snap shot ',snapshot.val());
-      store.dispatch(types.updateUser(snapshot.val().fname, snapshot.val().coins, snapshot.val().ladderNumber, snapshot.val().handsPlayed, snapshot.val().numberOfWins, snapshot.val().currentWinningsStreak, snapshot.val().winsInARow));
+      store.dispatch(types.updateUser(snapshot.val().coins, snapshot.val().nickName, snapshot.val().ladderNumber, snapshot.val().handsPlayed, snapshot.val().numberOfWins, snapshot.val().currentWinningsStreak, snapshot.val().winsInARow));
     }
   });
 }
@@ -53,7 +53,7 @@ function updateLadder(currentLadder) {
 
 function updateName(newName) {
   firebase.database().ref('Users/' + uniqueID + '/').update({
-    fname: newName
+    nickName: newName
   })
 }
 

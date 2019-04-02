@@ -70,7 +70,7 @@ const openChangeName = () => ({type: OPENCHANGENAME});
 // User updates
 const UPDATEUSER = 'UPDATEUSER';
 
-const updateUser = (userName, userCoins, userLadder, handsPlayed, numberOfWins, currentWinningStreak, winsInARow) => ({type:UPDATEUSER, userName, userCoins, userLadder, handsPlayed, numberOfWins, currentWinningStreak, winsInARow})
+const updateUser = (userCoins, userName, userLadder, handsPlayed, numberOfWins, currentWinningStreak, winsInARow) => ({type:UPDATEUSER, userCoins, userName, userLadder, handsPlayed, numberOfWins, currentWinningStreak, winsInARow})
 
 module.exports = {
   DEAL,
