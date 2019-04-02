@@ -5,6 +5,7 @@ import STARTING_DECK from '../../assets/deck';
 import * as getHands from '../helpers/functionsHelpers';
 import constants from '../../assets/Constants';
 import * as dbCalls from '../../database/db';
+import * as ads from '../../advertisements/ads';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -311,6 +312,10 @@ const applicationReducer = (state = initState, action)=> {
       // Add to number of hands played
       resultsState.handsPlayed += 1;
       dbCalls.updateHandsPlayed(resultsState.handsPlayed);
+      // Run ad for every 5 games played
+      if(resultsState.handsPlayed % 5 === 0) {
+        ads.runAd();
+      }
 
       // Flip all cards
       for(let i = 0; i <  resultsState.handsDisplay.length - 1; i++) {
