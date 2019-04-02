@@ -28,9 +28,10 @@ function readUserData(user) {
   firebase.database().ref('Users/' + user +'/').once('value', function (snapshot) {
     if(snapshot.val() === null) {
       writeUserData(1000, uniqueID, 'firstName', 1, 0, 0, 0, 0);
+      store.dispatch(types.updateUser(1000, 'firstName', 1, 0, 0, 0, 0))
     } else { 
       console.log('snap shot ',snapshot.val());
-      store.dispatch(types.updateUser(snapshot.val().nickName, snapshot.val().coins, snapshot.val().ladderNumber, snapshot.val().handsPlayed, snapshot.val().numberOfWins, snapshot.val().currentWinningsStreak, snapshot.val().winsInARow));
+      store.dispatch(types.updateUser(snapshot.val().coins, snapshot.val().nickName, snapshot.val().ladderNumber, snapshot.val().handsPlayed, snapshot.val().numberOfWins, snapshot.val().currentWinningsStreak, snapshot.val().winsInARow));
     }
   });
 }
