@@ -300,7 +300,7 @@ const applicationReducer = (state = initState, action)=> {
       riverState.chooseOncePerTurn = false;
     return riverState;
 
-    case types.updateCoins:
+    case types.UPDATECOINS:
       const updateCoinsState = Object.assign({}, state);
       updateCoinsState.coins = action.coins;
     return updateCoinsState;

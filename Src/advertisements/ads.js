@@ -1,5 +1,7 @@
 import firebase from 'react-native-firebase';
 import * as dbCalls from '../database/db';
+import * as types from '../state/actions/actions';
+import store from '../state/store';
 
 async function runAd(state) {
   const advert = firebase.admob().rewarded('ca-app-pub-3940256099942544/1712485313');
@@ -16,6 +18,7 @@ async function runAd(state) {
     state.coins = state.coins + 1000;
     console.log('The user watched the entire video and will now be rewarded!', event);
     dbCalls.updateUserCoins(state.coins);
+    store.dispatch(types.updateCoins(state.coins));
   });
 }
 

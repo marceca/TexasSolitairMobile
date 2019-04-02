@@ -72,7 +72,6 @@ const UPDATEUSER = 'UPDATEUSER';
 const UPDATECOINS = 'UPDATECOINS';
 
 const updateUser = (userCoins, userName, userLadder, handsPlayed, numberOfWins, currentWinningStreak, winsInARow) => ({type:UPDATEUSER, userCoins, userName, userLadder, handsPlayed, numberOfWins, currentWinningStreak, winsInARow})
-
 const updateCoins = (coins) => ({type: UPDATECOINS, coins})
 
 module.exports = {
