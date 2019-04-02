@@ -16,6 +16,7 @@ import * as dbCalls from '../database/db';
 import DismissKeyboard from './DismissKeyboard';
 import User_Hand from './User_Hand';
 import Profile from './Profile';
+import Ads from '../advertisements/ads';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
