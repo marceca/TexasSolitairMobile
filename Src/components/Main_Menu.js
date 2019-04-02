@@ -48,7 +48,7 @@ class Main_Menu extends Component {
         <ImageBackground style={styles.mainMenu} source={require('../assets/main_menu/Menu_Screen.png')}>
           <View style={styles.topMenu}>
             <View style={styles.playerContainer}>
-              <TouchableWithoutFeedback onPress={() => this.openCloseProfile()}><Image style={styles.settingsIcon} source={require("../assets/main_menu/Profile_Pic_Pill.png")} /></TouchableWithoutFeedback>
+              <ImageBackground style={styles.settingsIcon} source={require("../assets/main_menu/Profile_Pic_Pill.png")}><TouchableWithoutFeedback onPress={() => this.openCloseProfile()}><Image style={styles.settingsIcon} source={require('../assets/profile/avatars/Avatar_Checka.png')} /></TouchableWithoutFeedback></ImageBackground>
               <Text style={styles.playerName}>{this.props.game.name ? this.props.game.name : 'Dead Eyes'}</Text>
             </View>
             <TouchableWithoutFeedback onPress={() => this.openCloseSettings()}><Image style={styles.settingsIcon} source={require("../assets/main_menu/Settings_Icon.png")} /></TouchableWithoutFeedback>

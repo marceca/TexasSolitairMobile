@@ -30,7 +30,8 @@ class Profile extends Component {
         <ScrollView>
           <View style={styles.topMenu}>
             <View style={styles.playerContainer}>
-              <TouchableWithoutFeedback onPress={() => this.openCloseProfile()}><Image style={styles.settingsIcon} source={require("../assets/main_menu/Profile_Pic_Pill.png")} /></TouchableWithoutFeedback>
+            <TouchableWithoutFeedback><Image style={styles.changeName} source={require('../assets/profile/Change_Avatar_Button.png')} /></TouchableWithoutFeedback>
+              <ImageBackground style={styles.settingsIcon} source={require("../assets/main_menu/Profile_Pic_Pill.png")}><TouchableWithoutFeedback onPress={() => this.openCloseProfile()}><Image style={styles.settingsIcon} source={require('../assets/profile/avatars/Avatar_Checka.png')} /></TouchableWithoutFeedback></ImageBackground>
               <Text style={styles.playerName}>{this.props.game.name ? this.props.game.name : 'Dead Eyes'}</Text>
               <TouchableWithoutFeedback onPress={() => this.changeName()}><Image style={styles.changeName} source={require('../assets/profile/Change_Name_Profile_Page_Button.png')} /></TouchableWithoutFeedback>
               {this.props.settings.changeName ? <Change_Name /> : null}
