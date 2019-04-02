@@ -37,9 +37,14 @@ const numberOfHands = {
   'ten' : require('../assets/main_menu/number_of_hands/Number_Of_Hands_10.png'),
 }
 
+const avatars = {
+  'pony' : require('../assets/profile/avatars/Avatar_Checka.png')
+}
+
 export default constants = { 
   backgroundPossibilities,
   cardBackOptions,
   winningsPercents,
-  numberOfHands
+  numberOfHands,
+  avatars
 }
