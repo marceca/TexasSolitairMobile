@@ -4,6 +4,7 @@ import {View, TouchableWithoutFeedback, Image, Text, ImageBackground, StyleSheet
 import * as types from '../state/actions/actions';
 import store from '../state/store';
 import Change_Name from './settings/Change_Name';
+import constants from '../assets/Constants';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -25,12 +26,14 @@ class Profile extends Component {
   }
 
   render() {
+    const avatar  = constants.avatars['pony'];
     return (
       <ImageBackground style={styles.image} source={require('../assets/profile/profile_background.png')}>
         <ScrollView>
           <View style={styles.topMenu}>
             <View style={styles.playerContainer}>
-              <TouchableWithoutFeedback onPress={() => this.openCloseProfile()}><Image style={styles.settingsIcon} source={require("../assets/main_menu/Profile_Pic_Pill.png")} /></TouchableWithoutFeedback>
+            <TouchableWithoutFeedback><Image style={styles.changeName} source={require('../assets/profile/Change_Avatar_Button.png')} /></TouchableWithoutFeedback>
+              <ImageBackground style={styles.settingsIcon} source={require("../assets/main_menu/Profile_Pic_Pill.png")}><TouchableWithoutFeedback onPress={() => this.openCloseProfile()}><Image style={[styles.settingsIcon, styles.avatar]} source={avatar} /></TouchableWithoutFeedback></ImageBackground>
               <Text style={styles.playerName}>{this.props.game.name ? this.props.game.name : 'Dead Eyes'}</Text>
               <TouchableWithoutFeedback onPress={() => this.changeName()}><Image style={styles.changeName} source={require('../assets/profile/Change_Name_Profile_Page_Button.png')} /></TouchableWithoutFeedback>
               {this.props.settings.changeName ? <Change_Name /> : null}
@@ -95,7 +98,13 @@ const styles = StyleSheet.create({
   },
   settingsIcon:  {
     height: 50,
-    width: 50
+    width: 50,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  avatar: {
+    height: 49,
+    width: 49
   },
   image: {
     height: '100%',
