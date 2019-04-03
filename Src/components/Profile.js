@@ -39,7 +39,7 @@ class Profile extends Component {
           <View style={styles.topMenu}>
             <View style={styles.playerContainer}>
             <TouchableWithoutFeedback onPress={() => this.openCloseAvatar()}><Image style={styles.changeName} source={require('../assets/profile/Change_Avatar_Button.png')} /></TouchableWithoutFeedback>
-              <ImageBackground style={styles.settingsIcon} source={require("../assets/main_menu/Profile_Pic_Pill.png")}><TouchableWithoutFeedback onPress={() => this.openCloseProfile()}><Image style={[styles.settingsIcon, styles.avatar]} source={avatar} /></TouchableWithoutFeedback></ImageBackground>
+              <ImageBackground style={styles.settingsIcon} source={require("../assets/main_menu/Profile_Pic_Pill.png")}><TouchableWithoutFeedback onPress={() => this.openCloseProfile()}><Image style={[styles.avatar]} source={avatar} /></TouchableWithoutFeedback></ImageBackground>
               <Text style={styles.playerName}>{this.props.game.name ? this.props.game.name : 'Dead Eyes'}</Text>
               <TouchableWithoutFeedback onPress={() => this.changeName()}><Image style={styles.changeName} source={require('../assets/profile/Change_Name_Profile_Page_Button.png')} /></TouchableWithoutFeedback>
               {this.props.settings.changeName ? <Change_Name /> : null}
@@ -100,7 +100,8 @@ const styles = StyleSheet.create({
     color: 'white',
     justifyContent: 'flex-end',
     fontSize: 20,
-    paddingLeft: 20
+    paddingLeft: 20,
+    marginRight: 10
   },
   settingsIcon:  {
     height: 50,
@@ -121,7 +122,8 @@ const styles = StyleSheet.create({
   },
   changeName: {
     height: 20,
-    width: 20
+    width: 20,
+    marginRight: 10
   },
   blueLineFullWidth: {
     width: '100%'
