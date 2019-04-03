@@ -12,7 +12,7 @@ const initState = {
   mainMenu: true,
   main_background_image: 'wood',
   changeName: false,
-  updateAvatar: true,
+  openCloseAvatar: false,
   avatar: 'pony'
 }
 
@@ -39,6 +39,16 @@ const settingsReducer = (state = initState, action)=> {
       const updateAvatarState = Object.assign({}, state);
       updateAvatarState.avatar = action.avatar;
     return updateAvatarState;
+
+    // OPEN CLOSE AVATAR CHOICES
+    case types.OPENCLOSEAVATAR:
+      const openCloseAvatarState = Object.assign({}, state);
+      if(openCloseAvatarState.openCloseAvatar === false) {
+        openCloseAvatarState.openCloseAvatar = true;
+      } else {
+        openCloseAvatarState.openCloseAvatar = false;
+      }
+    return openCloseAvatarState;
 
     // SHOW MAIN MENU
     case types.SHOWMAINMENU:

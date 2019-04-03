@@ -26,15 +26,19 @@ class Profile extends Component {
     store.dispatch(types.openChangeName())
   }
 
+  openCloseAvatar() {
+    store.dispatch(types.openCloseAvatar())
+  }
+
   render() {
     const avatar  = constants.avatars[this.props.settings.avatar];    
     return (
       <ImageBackground style={styles.image} source={require('../assets/profile/profile_background.png')}>
-        {this.props.settings.updateAvatar ? <Avatar /> : null}
+        {this.props.settings.openCloseAvatar ? <Avatar /> : null}
         <ScrollView>
           <View style={styles.topMenu}>
             <View style={styles.playerContainer}>
-            <TouchableWithoutFeedback><Image style={styles.changeName} source={require('../assets/profile/Change_Avatar_Button.png')} /></TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => this.openCloseAvatar()}><Image style={styles.changeName} source={require('../assets/profile/Change_Avatar_Button.png')} /></TouchableWithoutFeedback>
               <ImageBackground style={styles.settingsIcon} source={require("../assets/main_menu/Profile_Pic_Pill.png")}><TouchableWithoutFeedback onPress={() => this.openCloseProfile()}><Image style={[styles.settingsIcon, styles.avatar]} source={avatar} /></TouchableWithoutFeedback></ImageBackground>
               <Text style={styles.playerName}>{this.props.game.name ? this.props.game.name : 'Dead Eyes'}</Text>
               <TouchableWithoutFeedback onPress={() => this.changeName()}><Image style={styles.changeName} source={require('../assets/profile/Change_Name_Profile_Page_Button.png')} /></TouchableWithoutFeedback>
