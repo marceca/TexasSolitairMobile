@@ -38,7 +38,9 @@ const numberOfHands = {
 }
 
 const avatars = {
-  'pony' : require('../assets/profile/avatars/Avatar_Checka.png')
+  'pony' : require('../assets/profile/avatars/Avatar_Checka.png'),
+  'death' : require('../assets/profile/avatars/Avatar_Death.png'),
+  'death-orange' : require('../assets/profile/avatars/Avatar_Death_In_A_Circle.png'),
 }
 
 export default constants = { 

@@ -11,7 +11,9 @@ const initState = {
   tutorial_page: 1,
   mainMenu: true,
   main_background_image: 'wood',
-  changeName: false
+  changeName: false,
+  openCloseAvatar: false,
+  avatar: 'pony'
 }
 
 const settingsReducer = (state = initState, action)=> {
@@ -31,6 +33,22 @@ const settingsReducer = (state = initState, action)=> {
         openChangeNameState.changeName = false;
       }
     return openChangeNameState;
+
+    // UPDATE AVATAR
+    case types.UPDATEAVATAR:
+      const updateAvatarState = Object.assign({}, state);
+      updateAvatarState.avatar = action.avatar;
+    return updateAvatarState;
+
+    // OPEN CLOSE AVATAR CHOICES
+    case types.OPENCLOSEAVATAR:
+      const openCloseAvatarState = Object.assign({}, state);
+      if(openCloseAvatarState.openCloseAvatar === false) {
+        openCloseAvatarState.openCloseAvatar = true;
+      } else {
+        openCloseAvatarState.openCloseAvatar = false;
+      }
+    return openCloseAvatarState;
 
     // SHOW MAIN MENU
     case types.SHOWMAINMENU:
