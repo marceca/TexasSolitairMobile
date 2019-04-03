@@ -11,7 +11,9 @@ const initState = {
   tutorial_page: 1,
   mainMenu: true,
   main_background_image: 'wood',
-  changeName: false
+  changeName: false,
+  updateAvatar: true,
+  avatar: 'pony'
 }
 
 const settingsReducer = (state = initState, action)=> {
@@ -31,6 +33,12 @@ const settingsReducer = (state = initState, action)=> {
         openChangeNameState.changeName = false;
       }
     return openChangeNameState;
+
+    // UPDATE AVATAR
+    case types.UPDATEAVATAR:
+      const updateAvatarState = Object.assign({}, state);
+      updateAvatarState.avatar = action.avatar;
+    return updateAvatarState;
 
     // SHOW MAIN MENU
     case types.SHOWMAINMENU:

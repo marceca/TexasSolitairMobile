@@ -5,6 +5,7 @@ import * as types from '../state/actions/actions';
 import store from '../state/store';
 import Change_Name from './settings/Change_Name';
 import constants from '../assets/Constants';
+import Avatar from './profile/Avatar';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -26,9 +27,10 @@ class Profile extends Component {
   }
 
   render() {
-    const avatar  = constants.avatars['pony'];
+    const avatar  = constants.avatars[this.props.settings.avatar];    
     return (
       <ImageBackground style={styles.image} source={require('../assets/profile/profile_background.png')}>
+        {this.props.settings.updateAvatar ? <Avatar /> : null}
         <ScrollView>
           <View style={styles.topMenu}>
             <View style={styles.playerContainer}>

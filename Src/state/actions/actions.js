@@ -32,6 +32,7 @@ const SHOWHIDECARDS = 'SHOWHIDECARDS';
 const ONOFFSFX = 'ONOFFSFX';
 const OPENCLOSEPROFILE = 'OPENCLOSEPROFILE';
 const OPENCHANGENAME = 'OPENCHANGENAME';
+const UPDATEAVATAR = 'UPDATEAVATAR';
 
 const deal = () => ({type: DEAL});
 const flop = () => ({type: FLOP});
@@ -66,6 +67,7 @@ const showHideCards = () => ({type: SHOWHIDECARDS});
 const onOffSFX = () => ({type: ONOFFSFX});
 const openCloseProfile = () => ({type: OPENCLOSEPROFILE});
 const openChangeName = () => ({type: OPENCHANGENAME});
+const updateAvatar = (avatar) => ({types: UPDATEAVATAR, avatar});
 
 // User updates
 const UPDATEUSER = 'UPDATEUSER';
@@ -140,5 +142,9 @@ module.exports = {
   openCloseProfile,
   OPENCLOSEPROFILE,
   openChangeName,
-  OPENCHANGENAME
+  OPENCHANGENAME,
+  updateCoins,
+  UPDATECOINS,
+  updateAvatar,
+  UPDATEAVATAR
 }

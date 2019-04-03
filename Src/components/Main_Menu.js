@@ -43,7 +43,7 @@ class Main_Menu extends Component {
 
   render() {
     const numHands = constants.numberOfHands[this.props.game.numOfHands];
-    const avatar  = constants.avatars['pony'];
+    const avatar  = constants.avatars[this.props.settings.avatar];
     return (
       <View style={styles.blackModal}>
         <ImageBackground style={styles.mainMenu} source={require('../assets/main_menu/Menu_Screen.png')}>
