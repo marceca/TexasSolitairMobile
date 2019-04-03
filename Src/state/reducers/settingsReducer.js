@@ -16,7 +16,13 @@ const initState = {
   avatar: 'pony',
   pony: true,
   deathOrange: true,
-  death: false
+  death: false,
+  clown: true,
+  cowboy: true,
+  jobStress: true,
+  lamb: true,
+  puppy: true,
+  zombie: true
 }
 
 const settingsReducer = (state = initState, action)=> {

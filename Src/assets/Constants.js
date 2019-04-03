@@ -41,6 +41,12 @@ const avatars = {
   'pony' : require('../assets/profile/avatars/Avatar_Checka.png'),
   'death' : require('../assets/profile/avatars/Avatar_Death.png'),
   'death-orange' : require('../assets/profile/avatars/Avatar_Death_In_A_Circle.png'),
+  'clown' : require('../assets/profile/avatars/Avatar_Clown.png'),
+  'cowboy' : require('../assets/profile/avatars/Avatar_Cowboy.png'),
+  'jobStress' : require('../assets/profile/avatars/Avatar_Job_Stress.png'),
+  'lamb' : require('../assets/profile/avatars/Avatar_Lamb.png'),
+  'puppy' : require('../assets/profile/avatars/Avatar_Puppy.png'),
+  'zombie' : require('../assets/profile/avatars/Avatar_Zombie_Boy.png')
 }
 
 export default constants = { 

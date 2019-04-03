@@ -54,6 +54,54 @@ class Avatar extends Component {
               <Image style={styles.lock} source={require('../../assets/profile/avatars/Lock_Icon.png')} />
             </ImageBackground> 
           }
+          {this.props.settings.clown ? 
+            <TouchableWithoutFeedback onPress={() => this.changeAvatar('clown')}>
+              <Image style={styles.avatar} source={require('../../assets/profile/avatars/Avatar_Clown.png')} />
+            </TouchableWithoutFeedback> :
+            <ImageBackground style={styles.lockedBackgroundImage} source={require('../../assets/profile/avatars/Avatar_Clown.png')}>
+              <Image style={styles.lock} source={require('../../assets/profile/avatars/Lock_Icon.png')} />
+            </ImageBackground> 
+          }
+          {this.props.settings.cowboy ? 
+            <TouchableWithoutFeedback onPress={() => this.changeAvatar('cowboy')}>
+              <Image style={styles.avatar} source={require('../../assets/profile/avatars/Avatar_Cowboy.png')} />
+            </TouchableWithoutFeedback> :
+            <ImageBackground style={styles.lockedBackgroundImage} source={require('../../assets/profile/avatars/Avatar_Cowboy.png')}>
+              <Image style={styles.lock} source={require('../../assets/profile/avatars/Lock_Icon.png')} />
+            </ImageBackground> 
+          }
+          {this.props.settings.jobStress ? 
+            <TouchableWithoutFeedback onPress={() => this.changeAvatar('jobStress')}>
+              <Image style={styles.avatar} source={require('../../assets/profile/avatars/Avatar_Job_Stress.png')} />
+            </TouchableWithoutFeedback> :
+            <ImageBackground style={styles.lockedBackgroundImage} source={require('../../assets/profile/avatars/Avatar_Job_Stress.png')}>
+              <Image style={styles.lock} source={require('../../assets/profile/avatars/Lock_Icon.png')} />
+            </ImageBackground> 
+          }
+          {this.props.settings.lamb ? 
+            <TouchableWithoutFeedback onPress={() => this.changeAvatar('lamb')}>
+              <Image style={styles.avatar} source={require('../../assets/profile/avatars/Avatar_Lamb.png')} />
+            </TouchableWithoutFeedback> :
+            <ImageBackground style={styles.lockedBackgroundImage} source={require('../../assets/profile/avatars/Avatar_Lamb.png')}>
+              <Image style={styles.lock} source={require('../../assets/profile/avatars/Lock_Icon.png')} />
+            </ImageBackground> 
+          }
+          {this.props.settings.puppy ? 
+            <TouchableWithoutFeedback onPress={() => this.changeAvatar('puppy')}>
+              <Image style={styles.avatar} source={require('../../assets/profile/avatars/Avatar_Puppy.png')} />
+            </TouchableWithoutFeedback> :
+            <ImageBackground style={styles.lockedBackgroundImage} source={require('../../assets/profile/avatars/Avatar_Puppy.png')}>
+              <Image style={styles.lock} source={require('../../assets/profile/avatars/Lock_Icon.png')} />
+            </ImageBackground> 
+          }
+          {this.props.settings.zombie ? 
+            <TouchableWithoutFeedback onPress={() => this.changeAvatar('zombie')}>
+              <Image style={styles.avatar} source={require('../../assets/profile/avatars/Avatar_Zombie_Boy.png')} />
+            </TouchableWithoutFeedback> :
+            <ImageBackground style={styles.lockedBackgroundImage} source={require('../../assets/profile/avatars/Avatar_Zombie_Boy.png')}>
+              <Image style={styles.lock} source={require('../../assets/profile/avatars/Lock_Icon.png')} />
+            </ImageBackground> 
+          }
         </View>
       </View>
     )
@@ -72,6 +120,7 @@ const styles = StyleSheet.create({
   },
   avatarContainer: {
     flexDirection: 'row',
+    flexWrap: 'wrap'
   },
   lockedBackgroundImage: {
     width: 100,
