@@ -13,7 +13,10 @@ const initState = {
   main_background_image: 'wood',
   changeName: false,
   openCloseAvatar: false,
-  avatar: 'pony'
+  avatar: 'pony',
+  pony: true,
+  deathOrange: true,
+  death: false
 }
 
 const settingsReducer = (state = initState, action)=> {
