@@ -143,9 +143,6 @@ module.exports = {
   OPENCLOSEPROFILE,
   openChangeName,
   OPENCHANGENAME,
-  UPDATECOINS,
-  updateCoins,
-  UPDATECOINS,
   updateAvatar,
   UPDATEAVATAR
 }
