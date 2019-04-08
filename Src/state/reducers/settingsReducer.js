@@ -13,8 +13,8 @@ const initState = {
   main_background_image: 'wood',
   changeName: false,
   openCloseAvatar: false,
-  avatar: 'pony',
-  pony: true,
+  avatarBGColor: 'red',
+  avatar: 'puppy',
   deathOrange: true,
   death: false,
   clown: true,
@@ -48,6 +48,12 @@ const settingsReducer = (state = initState, action)=> {
       const updateAvatarState = Object.assign({}, state);
       updateAvatarState.avatar = action.avatar;
     return updateAvatarState;
+    
+    // UPDATE AVATAR BACKGROUND COLOR
+    case types.CHANGEAVATARBGCOLOR:
+      const changeAvatarBGColorState = Object.assign({}, state);
+      changeAvatarBGColorState.avatarBGColor = action.BGColor;
+    return changeAvatarBGColorState;
 
     // OPEN CLOSE AVATAR CHOICES
     case types.OPENCLOSEAVATAR:

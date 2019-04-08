@@ -16,13 +16,14 @@ const cardBackOptions = {
 
 const winningsPercents = {
   2 : .5,
-  3 : .66,
-  4 : .75,
-  5 : .9,
-  6 : 1,
-  7 : 1.2,
-  8 : 1.5,
-  9 : 2
+  3 : .75,
+  4 : 1,
+  5 : 1.5,
+  6 : 2,
+  7 : 2.5,
+  8 : 3,
+  9 : 4,
+  10 : 5
 }
 
 const numberOfHands = {
@@ -34,13 +35,11 @@ const numberOfHands = {
   'seven' : require('../assets/main_menu/number_of_hands/Number_Of_Hands_7.png'),
   'eight' : require('../assets/main_menu/number_of_hands/Number_Of_Hands_8.png'),
   'nine' : require('../assets/main_menu/number_of_hands/Number_Of_Hands_9.png'),
-  'ten' : require('../assets/main_menu/number_of_hands/Number_Of_Hands_10.png'),
+  'ten' : require('../assets/main_menu/number_of_hands/Number_Of_Hands_10.png')
 }
 
 const avatars = {
-  'pony' : require('../assets/profile/avatars/Avatar_Checka.png'),
   'death' : require('../assets/profile/avatars/Avatar_Death.png'),
-  'death-orange' : require('../assets/profile/avatars/Avatar_Death_In_A_Circle.png'),
   'clown' : require('../assets/profile/avatars/Avatar_Clown.png'),
   'cowboy' : require('../assets/profile/avatars/Avatar_Cowboy.png'),
   'jobStress' : require('../assets/profile/avatars/Avatar_Job_Stress.png'),
@@ -49,10 +48,20 @@ const avatars = {
   'zombie' : require('../assets/profile/avatars/Avatar_Zombie_Boy.png')
 }
 
+const avatarBackgroundColors = {
+  'black' : require('../assets/profile/avatars/backgroundColors/Avatar_BG_Black.png'),
+  'blue' : require('../assets/profile/avatars/backgroundColors/Avatar_BG_Blue.png'),
+  'green' : require('../assets/profile/avatars/backgroundColors/Avatar_BG_Green.png'),
+  'orange' : require('../assets/profile/avatars/backgroundColors/Avatar_BG_Orange.png'),
+  'red' : require('../assets/profile/avatars/backgroundColors/Avatar_BG_Red.png'),
+  'white' : require('../assets/profile/avatars/backgroundColors/Avatar_BG_White.png')
+}
+
 export default constants = { 
   backgroundPossibilities,
   cardBackOptions,
   winningsPercents,
   numberOfHands,
-  avatars
+  avatars,
+  avatarBackgroundColors
 }

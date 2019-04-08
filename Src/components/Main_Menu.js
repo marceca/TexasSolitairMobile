@@ -44,12 +44,13 @@ class Main_Menu extends Component {
   render() {
     const numHands = constants.numberOfHands[this.props.game.numOfHands];
     const avatar  = constants.avatars[this.props.settings.avatar];
+    const avatarBGColor = constants.avatarBackgroundColors[this.props.settings.avatarBGColor];
     return (
       <View style={styles.blackModal}>
         <ImageBackground style={styles.mainMenu} source={require('../assets/main_menu/Menu_Screen.png')}>
           <View style={styles.topMenu}>
             <View style={styles.playerContainer}>
-              <ImageBackground style={styles.settingsIcon} source={require("../assets/main_menu/Profile_Pic_Pill.png")}><TouchableWithoutFeedback onPress={() => this.openCloseProfile()}><Image style={[styles.settingsIcon, styles.avatar]} source={avatar} /></TouchableWithoutFeedback></ImageBackground>
+              <ImageBackground style={styles.settingsIcon} source={require("../assets/main_menu/Profile_Pic_Pill.png")}><ImageBackground style={[styles.settingsIcon, styles.avatar]} source={avatarBGColor}><TouchableWithoutFeedback onPress={() => this.openCloseProfile()}><Image style={[styles.settingsIcon, styles.avatar]} source={avatar} /></TouchableWithoutFeedback></ImageBackground></ImageBackground>
               <Text style={styles.playerName}>{this.props.game.name ? this.props.game.name : 'Dead Eyes'}</Text>
             </View>
             <TouchableWithoutFeedback onPress={() => this.openCloseSettings()}><Image style={styles.settingsIcon} source={require("../assets/main_menu/Settings_Icon.png")} /></TouchableWithoutFeedback>
