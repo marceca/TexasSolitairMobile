@@ -160,11 +160,6 @@ class Game extends Component {
 const styles = StyleSheet.create({
   test: {
     zIndex: 10,
-    width: 100,
-    height: 100,
-    position: 'absolute',
-    top: '20%',
-    left: '30%'
   },
   container: {
     width: screenWidth,
