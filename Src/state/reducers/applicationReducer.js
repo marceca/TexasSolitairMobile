@@ -44,7 +44,8 @@ const initState = {
   numberOfWins: null,
   winsInARow: null,
   currentWinningStreak: null,
-  handsPlayed: null
+  handsPlayed: null,
+  ladderWin: false
 }
 
 // Sort user hand by card value
@@ -465,6 +466,7 @@ const applicationReducer = (state = initState, action)=> {
           dbCalls.updateWins(resultsState.numberOfWins);
         } else {
           if(resultsState.ladderNumber < 9) {
+            resultsState.ladderWin = true;
             dbCalls.updateLadder(resultsState.ladderNumber);
             resultsState.ladderNumber += 1;
           }
@@ -504,6 +506,7 @@ const applicationReducer = (state = initState, action)=> {
                 dbCalls.updateWins(resultsState.numberOfWins);
               } else {
                 if(resultsState.ladderNumber < 9) {
+                  resultsState.ladderWin = true;
                   dbCalls.updateLadder(resultsState.ladderNumber);
                   resultsState.ladderNumber += 1;
                 }
@@ -551,6 +554,7 @@ const applicationReducer = (state = initState, action)=> {
                 dbCalls.updateWins(resultsState.numberOfWins);
               } else {
                 if(resultsState.ladderNumber < 9) {
+                  resultsState.ladderWin = true;
                   dbCalls.updateLadder(resultsState.ladderNumber);
                   resultsState.ladderNumber += 1;
                 }
@@ -591,6 +595,7 @@ const applicationReducer = (state = initState, action)=> {
                   dbCalls.updateWins(resultsState.numberOfWins);
                 } else {
                   if(resultsState.ladderNumber < 9) {
+                    resultsState.ladderWin = true;
                     dbCalls.updateLadder(resultsState.ladderNumber);
                     resultsState.ladderNumber += 1;
                   }
@@ -638,6 +643,7 @@ const applicationReducer = (state = initState, action)=> {
             dbCalls.updateWins(resultsState.numberOfWins);
           } else {
             if(resultsState.ladderNumber < 9) {
+              resultsState.ladderWin = true;
               dbCalls.updateLadder(resultsState.ladderNumber);
               resultsState.ladderNumber += 1;
             }
@@ -669,6 +675,7 @@ const applicationReducer = (state = initState, action)=> {
                 dbCalls.updateWins(resultsState.numberOfWins);
               } else {
                 if(resultsState.ladderNumber < 9) {
+                  resultsState.ladderWin = true;
                   dbCalls.updateLadder(resultsState.ladderNumber);
                   resultsState.ladderNumber += 1;
                 }
@@ -715,6 +722,7 @@ const applicationReducer = (state = initState, action)=> {
             dbCalls.updateWins(resultsState.numberOfWins);
           } else {
             if(resultsState.ladderNumber < 9) {
+              resultsState.ladderWin = true;
               dbCalls.updateLadder(resultsState.ladderNumber);
               resultsState.ladderNumber += 1;
             }
@@ -756,6 +764,7 @@ const applicationReducer = (state = initState, action)=> {
             dbCalls.updateWins(resultsState.numberOfWins);
           } else {
             if(resultsState.ladderNumber < 9) {
+              resultsState.ladderWin = true;
               dbCalls.updateLadder(resultsState.ladderNumber);
               resultsState.ladderNumber += 1;
             }
@@ -793,6 +802,7 @@ const applicationReducer = (state = initState, action)=> {
                 dbCalls.updateWins(resultsState.numberOfWins);
               } else {
                 if(resultsState.ladderNumber < 9) {
+                  resultsState.ladderWin = true;
                   dbCalls.updateLadder(resultsState.ladderNumber);
                   resultsState.ladderNumber += 1;
                 }
@@ -840,6 +850,7 @@ const applicationReducer = (state = initState, action)=> {
             dbCalls.updateWins(resultsState.numberOfWins);
           } else {
             if(resultsState.ladderNumber < 9) {
+              resultsState.ladderWin = true;
               dbCalls.updateLadder(resultsState.ladderNumber);
               resultsState.ladderNumber += 1;
             }
@@ -876,6 +887,7 @@ const applicationReducer = (state = initState, action)=> {
               dbCalls.updateWins(resultsState.numberOfWins);
             } else {
               if(resultsState.ladderNumber < 9) {
+                resultsState.ladderWin = true;
                 dbCalls.updateLadder(resultsState.ladderNumber);
                 resultsState.ladderNumber += 1;
               }
@@ -920,6 +932,7 @@ const applicationReducer = (state = initState, action)=> {
             dbCalls.updateWins(resultsState.numberOfWins);
           } else {
             if(resultsState.ladderNumber < 9) {
+              resultsState.ladderWin = true;
               dbCalls.updateLadder(resultsState.ladderNumber);
               resultsState.ladderNumber += 1;
             }
@@ -956,6 +969,7 @@ const applicationReducer = (state = initState, action)=> {
             dbCalls.updateWins(resultsState.numberOfWins);
           } else {
             if(resultsState.ladderNumber < 9) {
+              resultsState.ladderWin = true;
               dbCalls.updateLadder(resultsState.ladderNumber);
               resultsState.ladderNumber += 1;
             }
@@ -999,6 +1013,7 @@ const applicationReducer = (state = initState, action)=> {
             dbCalls.updateWins(resultsState.numberOfWins);
           } else {
             if(resultsState.ladderNumber < 9) {
+              resultsState.ladderWin = true;
               dbCalls.updateLadder(resultsState.ladderNumber);
               resultsState.ladderNumber += 1;
             }
@@ -1055,6 +1070,7 @@ const applicationReducer = (state = initState, action)=> {
       resetState.switch = true;
       resetState.reset = false;
       resetState.winningHand = null;
+      resetState.ladderWin = false;
     return resetState;
 
   default:

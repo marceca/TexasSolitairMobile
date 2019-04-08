@@ -17,6 +17,7 @@ import DismissKeyboard from './DismissKeyboard';
 import User_Hand from './User_Hand';
 import Profile from './Profile';
 import Profile_Image from './profile/Profile_Image';
+import LottieView from 'lottie-react-native';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -89,12 +90,15 @@ class Game extends Component {
       store.dispatch(types.updateBet(num))
     }
   }
-
+  componentDidMount() {
+    // this.animation.play();
+  }
   render() {
     const bg = constants.backgroundPossibilities[this.props.settings.main_background_image]
     return (
       console.log('props ', this.props),
       <ImageBackground style={styles.mainBackgroundImage} source={bg}>
+      {this.props.game.ladderWin ? <LottieView source={require('../assets/animations/Confetti_Animation_Test.json')} style={styles.test} autoPlay loop /> : null }
         <View style={styles.container}>
           <DismissKeyboard>
             <ImageBackground style={styles.tableBackgroundImage} source={require('../assets/tables/Poker_Table.png')}>
@@ -154,6 +158,14 @@ class Game extends Component {
 }
 
 const styles = StyleSheet.create({
+  test: {
+    zIndex: 10,
+    width: 100,
+    height: 100,
+    position: 'absolute',
+    top: '20%',
+    left: '30%'
+  },
   container: {
     width: screenWidth,
     height: screenHeight,
