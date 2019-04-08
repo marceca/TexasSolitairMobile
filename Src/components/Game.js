@@ -16,6 +16,7 @@ import * as dbCalls from '../database/db';
 import DismissKeyboard from './DismissKeyboard';
 import User_Hand from './User_Hand';
 import Profile from './Profile';
+import Profile_Image from './profile/Profile_Image';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -100,6 +101,7 @@ class Game extends Component {
               {this.props.settings.mainMenu ? <Main_Menu /> : null}
               <DismissKeyboard>
                 <View style={styles.settingsContainer}>
+                  <Profile_Image />
                   <View style={styles.scoreContainter}><Text style={styles.coinsText}>Coins: {this.props.game.coins ? this.props.game.coins : 0} </Text></View>
                   <TouchableWithoutFeedback onPress={() => this.openCloseSettings()}>
                     <Image style={styles.settingsIcon} source={require('../assets/icons/settings.png')} />
