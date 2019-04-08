@@ -22,15 +22,15 @@ class Num_Hands extends Component {
   render() {
     return (
       <View style={styles.numHandsContainer}>
-        <TouchableWithoutFeedback onPress={() => this.update_num_hands(2, 'two')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_2.png")} /></TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={() => this.update_num_hands(3, 'three')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_3.png")} /></TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={() => this.update_num_hands(4, 'four')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_4.png")} /></TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={() => this.update_num_hands(5, 'five')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_5.png")} /></TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={() => this.update_num_hands(6, 'six')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_6.png")} /></TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={() => this.update_num_hands(7, 'seven')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_7.png")} /></TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={() => this.update_num_hands(8, 'eight')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_8.png")} /></TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={() => this.update_num_hands(9, 'nine')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_9.png")} /></TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={() => this.update_num_hands(10, 'ten')}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Nmber_10.png")} /></TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => this.update_num_hands(2, 'two')}><View style={styles.numberContainer}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_2.png")} /></View></TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => this.update_num_hands(3, 'three')}><View style={styles.numberContainer}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_3.png")} /></View></TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => this.update_num_hands(4, 'four')}><View style={styles.numberContainer}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_4.png")} /></View></TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => this.update_num_hands(5, 'five')}><View style={styles.numberContainer}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_5.png")} /></View></TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => this.update_num_hands(6, 'six')}><View style={styles.numberContainer}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_6.png")} /></View></TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => this.update_num_hands(7, 'seven')}><View style={styles.numberContainer}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_7.png")} /></View></TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => this.update_num_hands(8, 'eight')}><View style={styles.numberContainer}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_8.png")} /></View></TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => this.update_num_hands(9, 'nine')}><View style={styles.numberContainer}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_9.png")} /></View></TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => this.update_num_hands(10, 'ten')}><View style={styles.numberContainer}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Nmber_10.png")} /></View></TouchableWithoutFeedback>
       </View>
     )
   }
@@ -49,9 +49,13 @@ const styles = StyleSheet.create({
     borderRadius: 65,
     flexDirection: 'row',
   },
-  numbers: {
+  numberContainer: {
     height: screenHeight / 8,
-    width: 20
+    width: screenHeight / 8
+  },
+  numbers: {
+    height: 50,
+    width: 25
   }
 })
 
