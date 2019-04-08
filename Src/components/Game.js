@@ -159,7 +159,10 @@ class Game extends Component {
 
 const styles = StyleSheet.create({
   test: {
-    zIndex: 10,
+    zIndex: 1,
+    height: screenHeight / 1.5,
+    position: 'absolute',
+    left: '20%'
   },
   container: {
     width: screenWidth,
@@ -256,7 +259,8 @@ const styles = StyleSheet.create({
   },
   stickSwitchButtons: {
     height: 75,
-    width: 150
+    width: 150,
+    zIndex: 11
   },
   cantClickButton: {
     opacity: 0.3
