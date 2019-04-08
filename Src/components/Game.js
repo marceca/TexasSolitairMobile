@@ -101,8 +101,10 @@ class Game extends Component {
               {this.props.settings.mainMenu ? <Main_Menu /> : null}
               <DismissKeyboard>
                 <View style={styles.settingsContainer}>
-                  <Profile_Image />
-                  <View style={styles.scoreContainter}><Text style={styles.coinsText}>Coins: {this.props.game.coins ? this.props.game.coins : 0} </Text></View>
+                  <View style={styles.userDataContainer}>
+                    <Profile_Image />
+                    <View style={styles.scoreContainter}><Text style={styles.coinsText}>Coins: {this.props.game.coins ? this.props.game.coins : 0} </Text></View>
+                  </View>
                   <TouchableWithoutFeedback onPress={() => this.openCloseSettings()}>
                     <Image style={styles.settingsIcon} source={require('../assets/icons/settings.png')} />
                   </TouchableWithoutFeedback>
@@ -176,11 +178,18 @@ const styles = StyleSheet.create({
     marginRight: 'auto',
     marginTop: 10
   },
+  userDataContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: screenWidth / 5
+  },
   scoreContainter: {
     backgroundColor: 'white',
     borderRadius: 15,
     justifyContent: 'center',
     alignItems: 'center',
+    height: 25
   },
   coinsText: {
     fontSize: 16,
