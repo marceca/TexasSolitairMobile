@@ -83,6 +83,19 @@ const settingsReducer = (state = initState, action)=> {
       for(const key in action.stats) {
         updateLeaderBoardStatsState.leader_board_stats.push([action.stats[key].nickName, action.stats[key].coins, action.stats[key].ladderNumber])
       }
+      console.log('stats ', updateLeaderBoardStatsState.leader_board_stats)
+      function sortStats(stats) {
+        for(let i = 0; i < stats.length; i++) {
+          // 1 is coins value of each user
+          if(stats[i + 1]){
+            if(stats[i][1] < stats[i + 1][1]) {
+              [stats[i], stats[i + 1]] = [stats[i + 1], stats[i]];
+              sortStats(stats)
+            }
+          }
+        }
+      }
+      sortStats(updateLeaderBoardStatsState.leader_board_stats)
     return updateLeaderBoardStatsState
 
     // SHOW MAIN MENU

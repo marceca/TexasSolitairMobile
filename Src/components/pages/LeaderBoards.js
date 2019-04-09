@@ -25,15 +25,21 @@ class LeaderBoards extends Component {
     for(let i = 0; i < this.props.settings.leader_board_stats.length; i++) {
       stats.push(
         <View key={this.props.settings.leader_board_stats[i][0]} style={styles.statsContainer}>
-          <Text style={styles.stats}>
-            {this.props.settings.leader_board_stats[i][0]}
-          </Text>
-          <Text style={styles.stats}>
-            {this.props.settings.leader_board_stats[i][1]}
-          </Text>
-          <Text style={[styles.stats, styles.alignLeft]}>
-            {this.props.settings.leader_board_stats[i][2]}
-          </Text>
+          <View style={styles.statAlignment}>
+            <Text style={styles.stats}>
+              {this.props.settings.leader_board_stats[i][0]}
+            </Text>
+          </View>
+          <View style={styles.statAlignment}>
+            <Text style={styles.stats}>
+              {this.props.settings.leader_board_stats[i][1]}
+            </Text>
+          </View>
+          <View style={styles.statAlignment}>
+            <Text style={[styles.stats, styles.alignLeft]}>
+              {this.props.settings.leader_board_stats[i][2]}
+            </Text>
+          </View>
         </View>
       )
     }
@@ -82,10 +88,10 @@ const styles = StyleSheet.create({
   stats: {
     color: 'white',
     fontSize: 20,
-    alignItems: 'center'
   },
-  alignLeft: {
-    alignItems: 'flex-start'
+  statAlignment: {
+    justifyContent: 'flex-start',
+    width: width / 2.5
   }
 })
 
