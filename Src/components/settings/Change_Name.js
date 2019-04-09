@@ -34,7 +34,8 @@ class Change_Name extends Component {
 
 const styles = StyleSheet.create({
   changeNameContainer: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    marginLeft: 20
   },
   textBox: {
     width: 200, 

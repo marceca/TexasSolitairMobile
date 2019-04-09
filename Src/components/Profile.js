@@ -33,7 +33,7 @@ class Profile extends Component {
         <ScrollView>
           <View style={styles.topMenu}>
             <View style={styles.playerContainer}>
-            <TouchableWithoutFeedback onPress={() => this.openCloseAvatar()}><Image style={styles.changeName} source={require('../assets/profile/Change_Avatar_Button.png')} /></TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => this.openCloseAvatar()}><Image style={styles.changeAvatar} source={require('../assets/profile/Change_Avatar_Button.png')} /></TouchableWithoutFeedback>
               <Profile_Image />
               <Text style={styles.playerName}>{this.props.game.name ? this.props.game.name : 'Dead Eyes'}</Text>
               <TouchableWithoutFeedback onPress={() => this.changeName()}><Image style={styles.changeName} source={require('../assets/profile/Change_Name_Profile_Page_Button.png')} /></TouchableWithoutFeedback>
@@ -118,7 +118,17 @@ const styles = StyleSheet.create({
   changeName: {
     height: 20,
     width: 20,
-    marginRight: 10
+    position: 'absolute',
+    left: 150,
+    top: 5
+  },
+  changeAvatar: {
+    height: 20,
+    width: 20,
+    position: 'absolute',
+    top: 25,
+    left: 5,
+    zIndex: 10
   },
   blueLineFullWidth: {
     width: '100%'
