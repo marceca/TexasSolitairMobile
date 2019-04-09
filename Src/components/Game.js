@@ -95,7 +95,7 @@ class Game extends Component {
   openCloseLeaderBoards() {
     store.dispatch(types.openCloseLeaderBoards())
   }
-  
+
   render() {
     const bg = constants.backgroundPossibilities[this.props.settings.main_background_image]
     return (
@@ -110,14 +110,18 @@ class Game extends Component {
                 <View style={styles.settingsContainer}>
                   <View style={styles.userDataContainer}>
                     <Profile_Image />
-                    <View style={styles.scoreContainter}><Text style={styles.coinsText}>Coins: {this.props.game.coins ? this.props.game.coins : 0} </Text></View>
+                    <View style={[styles.scoreContainter, styles.adjustTopIcons]}>
+                      <Text style={styles.coinsText}>Coins: {this.props.game.coins ? this.props.game.coins : 0} </Text>
+                    </View>
                   </View>
-                  <TouchableWithoutFeedback onPress={() => this.openCloseLeaderBoards()}>
-                    <Image style={styles.settingsIcon}  source={require('../assets/leader_boards/First_Place_Trophy.png')} />
-                  </TouchableWithoutFeedback>
-                  <TouchableWithoutFeedback onPress={() => this.openCloseSettings()}>
-                    <Image style={styles.settingsIcon} source={require('../assets/icons/settings.png')} />
-                  </TouchableWithoutFeedback>
+                  <View style={styles.topRightIcons}>
+                    <TouchableWithoutFeedback onPress={() => this.openCloseLeaderBoards()}>
+                      <Image style={styles.settingsIcon}  source={require('../assets/leader_boards/First_Place_Trophy.png')} />
+                    </TouchableWithoutFeedback>
+                    <TouchableWithoutFeedback onPress={() => this.openCloseSettings()}>
+                      <Image style={[styles.settingsIcon, styles.adjustTopIcons]} source={require('../assets/icons/settings.png')} />
+                    </TouchableWithoutFeedback>
+                  </View>
                 </View>
               </DismissKeyboard>
               {/* Setting Pages */}
@@ -186,20 +190,29 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   settingsContainer: {
-    width: '90%',
+    width: '95%',
     height: 30,
     alignItems: 'center',
     justifyContent: 'space-between',
     flexDirection: 'row',
     marginLeft: 'auto',
     marginRight: 'auto',
-    marginTop: 10
+    marginTop: 15
   },
   userDataContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     alignItems: 'center',
-    width: screenWidth / 5
+    width: screenWidth / 2.5
+  },
+  topRightIcons: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    width: screenWidth / 2
+  },
+  adjustTopIcons: {
+    marginLeft: 10
   },
   scoreContainter: {
     backgroundColor: 'white',
