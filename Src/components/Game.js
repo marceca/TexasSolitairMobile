@@ -91,9 +91,11 @@ class Game extends Component {
       store.dispatch(types.updateBet(num))
     }
   }
+
   openCloseLeaderBoards() {
     store.dispatch(types.openCloseLeaderBoards())
   }
+  
   render() {
     const bg = constants.backgroundPossibilities[this.props.settings.main_background_image]
     return (

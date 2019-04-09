@@ -80,6 +80,7 @@ const settingsReducer = (state = initState, action)=> {
     // UPDATE LEADER BOARD STATS
     case types.UPDATELEADERBOARDSTATS:
       const updateLeaderBoardStatsState = Object.assign({}, state);
+      updateLeaderBoardStatsState.leader_board_stats = [];
       for(const key in action.stats) {
         updateLeaderBoardStatsState.leader_board_stats.push([action.stats[key].nickName, action.stats[key].coins, action.stats[key].ladderNumber])
       }
