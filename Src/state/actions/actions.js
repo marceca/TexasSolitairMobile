@@ -35,6 +35,8 @@ const OPENCHANGENAME = 'OPENCHANGENAME';
 const UPDATEAVATAR = 'UPDATEAVATAR';
 const OPENCLOSEAVATAR = 'OPENCLOSEAVATAR';
 const CHANGEAVATARBGCOLOR = 'CHANGEAVATARBGCOLOR';
+const OPENCLOSELEADERBOARDS = 'OPENCLOSELEADERBOARDS';
+const UPDATELEADERBOARDSTATS = 'UPDATELEADERBOARDSTATS';
 
 const deal = () => ({type: DEAL});
 const flop = () => ({type: FLOP});
@@ -72,6 +74,9 @@ const openChangeName = () => ({type: OPENCHANGENAME});
 const updateAvatar = (avatar) => ({type: UPDATEAVATAR, avatar});
 const openCloseAvatar = () => ({type: OPENCLOSEAVATAR});
 const changeAvatarBGColor = (BGColor) => ({type: CHANGEAVATARBGCOLOR, BGColor});
+const openCloseLeaderBoards = () => ({type: OPENCLOSELEADERBOARDS});
+const updateLeaderBoardStats = (stats) => ({type: UPDATELEADERBOARDSTATS, stats});
+
 // User updates
 const UPDATEUSER = 'UPDATEUSER';
 
@@ -151,5 +156,9 @@ module.exports = {
   openCloseAvatar,
   OPENCLOSEAVATAR,
   changeAvatarBGColor,
-  CHANGEAVATARBGCOLOR
+  CHANGEAVATARBGCOLOR,
+  openCloseLeaderBoards,
+  OPENCLOSELEADERBOARDS,
+  updateLeaderBoardStats,
+  UPDATELEADERBOARDSTATS
 }

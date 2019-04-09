@@ -11,6 +11,7 @@ import Tutorial from './settings/Tutorial';
 import Main_Menu from './Main_Menu';
 import Settings from './Settings';
 import Stick_Switch_Hands from'./Stick_Switch_Hands';
+import LeaderBoard from './pages/LeaderBoards';
 import constants from '../assets/Constants';
 import * as dbCalls from '../database/db';
 import DismissKeyboard from './DismissKeyboard';
@@ -90,8 +91,8 @@ class Game extends Component {
       store.dispatch(types.updateBet(num))
     }
   }
-  componentDidMount() {
-    // this.animation.play();
+  openCloseLeaderBoards() {
+    store.dispatch(types.openCloseLeaderBoards())
   }
   render() {
     const bg = constants.backgroundPossibilities[this.props.settings.main_background_image]
@@ -109,6 +110,9 @@ class Game extends Component {
                     <Profile_Image />
                     <View style={styles.scoreContainter}><Text style={styles.coinsText}>Coins: {this.props.game.coins ? this.props.game.coins : 0} </Text></View>
                   </View>
+                  <TouchableWithoutFeedback onPress={() => this.openCloseLeaderBoards()}>
+                    <Image style={styles.settingsIcon}  source={require('../assets/leader_boards/First_Place_Trophy.png')} />
+                  </TouchableWithoutFeedback>
                   <TouchableWithoutFeedback onPress={() => this.openCloseSettings()}>
                     <Image style={styles.settingsIcon} source={require('../assets/icons/settings.png')} />
                   </TouchableWithoutFeedback>
@@ -122,6 +126,7 @@ class Game extends Component {
               {this.props.settings.change_card_back ? <Change_Card_Back /> : null}
               {this.props.settings.settings ? <Settings /> : null}
               {this.props.game.profile ? <Profile /> : null}
+              {this.props.settings.leader_boards ? <LeaderBoard /> : null }
               <DismissKeyboard>
                 <View style={styles.cardsContainer}>
                   <View style={styles.playerHandsContainer}>

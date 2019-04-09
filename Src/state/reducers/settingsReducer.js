@@ -7,6 +7,8 @@ const initState = {
   change_card_back: false,
   total_hands: false,
   hand_ranks: false,
+  leader_boards: false,
+  leader_board_stats: [],
   tutorial: false,
   tutorial_page: 1,
   mainMenu: true,
@@ -64,6 +66,24 @@ const settingsReducer = (state = initState, action)=> {
         openCloseAvatarState.openCloseAvatar = false;
       }
     return openCloseAvatarState;
+
+    // OPEN CLOSE LEADER BOARDS
+    case types.OPENCLOSELEADERBOARDS:
+      const openCloseLeaderBoardsState = Object.assign({}, state);
+      if(openCloseLeaderBoardsState.leader_boards === false) {
+        openCloseLeaderBoardsState.leader_boards = true;
+      } else {
+        openCloseLeaderBoardsState.leader_boards = false;
+      }
+    return openCloseLeaderBoardsState
+
+    // UPDATE LEADER BOARD STATS
+    case types.UPDATELEADERBOARDSTATS:
+      const updateLeaderBoardStatsState = Object.assign({}, state);
+      for(const key in action.stats) {
+        updateLeaderBoardStatsState.leader_board_stats.push([action.stats[key].nickName, action.stats[key].coins, action.stats[key].ladderNumber])
+      }
+    return updateLeaderBoardStatsState
 
     // SHOW MAIN MENU
     case types.SHOWMAINMENU:
