@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {View, Image, TouchableWithoutFeedback, StyleSheet} from 'react-native';
+import {View, ScrollView, Image, ImageBackground, Text, TouchableWithoutFeedback, StyleSheet} from 'react-native';
 import store from '../../state/store';
 import * as types from '../../state/actions/actions';
 import constants from '../../assets/Constants';
@@ -20,29 +20,145 @@ class Avatar extends Component {
   closeAvatar() {
     store.dispatch(types.openCloseAvatar())
   }
+  
+  changeAvatarBGColor(BGColor) {
+    store.dispatch(types.changeAvatarBGColor(BGColor))
+  }
 
   render() {
     return(
-      <View style={styles.container}>
-        <View><TouchableWithoutFeedback onPress={() => this.closeAvatar()}><Image source={require('../../assets/settings_page/White_X.png')} /></TouchableWithoutFeedback></View>
-        <TouchableWithoutFeedback onPress={() => this.changeAvatar('pony')}><Image source={require('../../assets/profile/avatars/Avatar_Checka.png')} /></TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={() => this.changeAvatar('death-orange')}><Image source={require('../../assets/profile/avatars/Avatar_Death_In_A_Circle.png')} /></TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={() => this.changeAvatar('death')}><Image source={require('../../assets/profile/avatars/Avatar_Death.png')} /></TouchableWithoutFeedback>
-      </View>
+      <ImageBackground style={styles.container} source={require('../../assets/profile/profile_background.png')}>
+        <ScrollView>
+          <View style={styles.xContainer}>
+            <TouchableWithoutFeedback onPress={() => this.closeAvatar()}>
+              <Image source={require('../../assets/settings_page/White_X.png')} />
+            </TouchableWithoutFeedback>
+          </View>
+          <View style={styles.avatarContainer}>
+            {this.props.settings.death ? 
+              <TouchableWithoutFeedback onPress={() => this.changeAvatar('death')}>
+                <Image style={styles.avatar} source={require('../../assets/profile/avatars/Avatar_Death.png')} />
+              </TouchableWithoutFeedback> :
+              <ImageBackground style={styles.lockedBackgroundImage} source={require('../../assets/profile/avatars/Avatar_Death.png')}>
+                <Image style={styles.lock} source={require('../../assets/profile/avatars/Lock_Icon.png')} />
+              </ImageBackground> 
+            }
+            {this.props.settings.clown ? 
+              <TouchableWithoutFeedback onPress={() => this.changeAvatar('clown')}>
+                <Image style={styles.avatar} source={require('../../assets/profile/avatars/Avatar_Clown.png')} />
+              </TouchableWithoutFeedback> :
+              <ImageBackground style={styles.lockedBackgroundImage} source={require('../../assets/profile/avatars/Avatar_Clown.png')}>
+                <Image style={styles.lock} source={require('../../assets/profile/avatars/Lock_Icon.png')} />
+              </ImageBackground> 
+            }
+            {this.props.settings.cowboy ? 
+              <TouchableWithoutFeedback onPress={() => this.changeAvatar('cowboy')}>
+                <Image style={styles.avatar} source={require('../../assets/profile/avatars/Avatar_Cowboy.png')} />
+              </TouchableWithoutFeedback> :
+              <ImageBackground style={styles.lockedBackgroundImage} source={require('../../assets/profile/avatars/Avatar_Cowboy.png')}>
+                <Image style={styles.lock} source={require('../../assets/profile/avatars/Lock_Icon.png')} />
+              </ImageBackground> 
+            }
+            {this.props.settings.jobStress ? 
+              <TouchableWithoutFeedback onPress={() => this.changeAvatar('jobStress')}>
+                <Image style={styles.avatar} source={require('../../assets/profile/avatars/Avatar_Job_Stress.png')} />
+              </TouchableWithoutFeedback> :
+              <ImageBackground style={styles.lockedBackgroundImage} source={require('../../assets/profile/avatars/Avatar_Job_Stress.png')}>
+                <Image style={styles.lock} source={require('../../assets/profile/avatars/Lock_Icon.png')} />
+              </ImageBackground> 
+            }
+            {this.props.settings.lamb ? 
+              <TouchableWithoutFeedback onPress={() => this.changeAvatar('lamb')}>
+                <Image style={styles.avatar} source={require('../../assets/profile/avatars/Avatar_Lamb.png')} />
+              </TouchableWithoutFeedback> :
+              <ImageBackground style={styles.lockedBackgroundImage} source={require('../../assets/profile/avatars/Avatar_Lamb.png')}>
+                <Image style={styles.lock} source={require('../../assets/profile/avatars/Lock_Icon.png')} />
+              </ImageBackground> 
+            }
+            {this.props.settings.puppy ? 
+              <TouchableWithoutFeedback onPress={() => this.changeAvatar('puppy')}>
+                <Image style={styles.avatar} source={require('../../assets/profile/avatars/Avatar_Puppy.png')} />
+              </TouchableWithoutFeedback> :
+              <ImageBackground style={styles.lockedBackgroundImage} source={require('../../assets/profile/avatars/Avatar_Puppy.png')}>
+                <Image style={styles.lock} source={require('../../assets/profile/avatars/Lock_Icon.png')} />
+              </ImageBackground> 
+            }
+            {this.props.settings.zombie ? 
+              <TouchableWithoutFeedback onPress={() => this.changeAvatar('zombie')}>
+                <Image style={styles.avatar} source={require('../../assets/profile/avatars/Avatar_Zombie_Boy.png')} />
+              </TouchableWithoutFeedback> :
+              <ImageBackground style={styles.lockedBackgroundImage} source={require('../../assets/profile/avatars/Avatar_Zombie_Boy.png')}>
+                <Image style={styles.lock} source={require('../../assets/profile/avatars/Lock_Icon.png')} />
+              </ImageBackground> 
+            }
+          </View>
+          <View style={styles.headerContainer}><Text style={styles.header}>Colors</Text></View>
+          <View style={styles.avatarContainer}>
+            <TouchableWithoutFeedback onPress={() => this.changeAvatarBGColor('black')}>
+              <Image style={styles.avatar} source={require('../../assets/profile/avatars/backgroundColors/Avatar_BG_Black.png')} />
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => this.changeAvatarBGColor('blue')}>
+              <Image style={styles.avatar} source={require('../../assets/profile/avatars/backgroundColors/Avatar_BG_Blue.png')} />
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => this.changeAvatarBGColor('green')}>
+              <Image style={styles.avatar} source={require('../../assets/profile/avatars/backgroundColors/Avatar_BG_Green.png')} />
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => this.changeAvatarBGColor('orange')}>
+              <Image style={styles.avatar} source={require('../../assets/profile/avatars/backgroundColors/Avatar_BG_Orange.png')} />
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => this.changeAvatarBGColor('red')}>
+              <Image style={styles.avatar} source={require('../../assets/profile/avatars/backgroundColors/Avatar_BG_Red.png')} />
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => this.changeAvatarBGColor('white')}>
+              <Image style={styles.avatar} source={require('../../assets/profile/avatars/backgroundColors/Avatar_BG_White.png')} />
+            </TouchableWithoutFeedback>
+          </View>
+        </ScrollView>
+      </ImageBackground>
     )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
+    width: '100%',
+    height: '100%',
+    flexDirection: 'column',
+    zIndex: 10,
+    resizeMode: 'stretch',
+    position: 'absolute',
+  },
+  xContainer: {
+    alignItems: 'flex-end'
+  },
+  avatarContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap'
+  },
+  lockedBackgroundImage: {
+    width: 100,
+    height: 100,
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%',
-    height: '100%'
+    margin: 10
   },
-  text: {
-    color: 'red',
-    fontSize: 20
+  avatar: {
+    width: 100,
+    height: 100,
+    margin: 10
+  },
+  lock: {
+    width: 50,
+    height: 50
+  },
+  headerContainer: {
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  header: {
+    fontSize: 20,
+    color: 'white'
   }
 })
 

@@ -7,13 +7,24 @@ const initState = {
   change_card_back: false,
   total_hands: false,
   hand_ranks: false,
+  leader_boards: false,
+  leader_board_stats: [],
   tutorial: false,
   tutorial_page: 1,
   mainMenu: true,
   main_background_image: 'wood',
   changeName: false,
   openCloseAvatar: false,
-  avatar: 'pony'
+  avatarBGColor: 'red',
+  avatar: 'puppy',
+  deathOrange: true,
+  death: false,
+  clown: true,
+  cowboy: true,
+  jobStress: true,
+  lamb: true,
+  puppy: true,
+  zombie: true
 }
 
 const settingsReducer = (state = initState, action)=> {
@@ -39,6 +50,12 @@ const settingsReducer = (state = initState, action)=> {
       const updateAvatarState = Object.assign({}, state);
       updateAvatarState.avatar = action.avatar;
     return updateAvatarState;
+    
+    // UPDATE AVATAR BACKGROUND COLOR
+    case types.CHANGEAVATARBGCOLOR:
+      const changeAvatarBGColorState = Object.assign({}, state);
+      changeAvatarBGColorState.avatarBGColor = action.BGColor;
+    return changeAvatarBGColorState;
 
     // OPEN CLOSE AVATAR CHOICES
     case types.OPENCLOSEAVATAR:
@@ -49,6 +66,38 @@ const settingsReducer = (state = initState, action)=> {
         openCloseAvatarState.openCloseAvatar = false;
       }
     return openCloseAvatarState;
+
+    // OPEN CLOSE LEADER BOARDS
+    case types.OPENCLOSELEADERBOARDS:
+      const openCloseLeaderBoardsState = Object.assign({}, state);
+      if(openCloseLeaderBoardsState.leader_boards === false) {
+        openCloseLeaderBoardsState.leader_boards = true;
+      } else {
+        openCloseLeaderBoardsState.leader_boards = false;
+      }
+    return openCloseLeaderBoardsState
+
+    // UPDATE LEADER BOARD STATS
+    case types.UPDATELEADERBOARDSTATS:
+      const updateLeaderBoardStatsState = Object.assign({}, state);
+      updateLeaderBoardStatsState.leader_board_stats = [];
+      for(const key in action.stats) {
+        updateLeaderBoardStatsState.leader_board_stats.push([action.stats[key].nickName, action.stats[key].coins, action.stats[key].ladderNumber])
+      }
+      console.log('stats ', updateLeaderBoardStatsState.leader_board_stats)
+      function sortStats(stats) {
+        for(let i = 0; i < stats.length; i++) {
+          // 1 is coins value of each user
+          if(stats[i + 1]){
+            if(stats[i][1] < stats[i + 1][1]) {
+              [stats[i], stats[i + 1]] = [stats[i + 1], stats[i]];
+              sortStats(stats)
+            }
+          }
+        }
+      }
+      sortStats(updateLeaderBoardStatsState.leader_board_stats)
+    return updateLeaderBoardStatsState
 
     // SHOW MAIN MENU
     case types.SHOWMAINMENU:

@@ -4,8 +4,8 @@ import {View, TouchableWithoutFeedback, Image, Text, ImageBackground, StyleSheet
 import * as types from '../state/actions/actions';
 import store from '../state/store';
 import Change_Name from './settings/Change_Name';
-import constants from '../assets/Constants';
 import Avatar from './profile/Avatar';
+import Profile_Image from './profile/Profile_Image';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -18,10 +18,6 @@ const mapStateToProps = (state) => {
 }
 
 class Profile extends Component {
-  openCloseProfile() {
-    store.dispatch(types.openCloseProfile());
-  }
-
   changeName() {
     store.dispatch(types.openChangeName())
   }
@@ -31,15 +27,14 @@ class Profile extends Component {
   }
 
   render() {
-    const avatar  = constants.avatars[this.props.settings.avatar];    
     return (
       <ImageBackground style={styles.image} source={require('../assets/profile/profile_background.png')}>
         {this.props.settings.openCloseAvatar ? <Avatar /> : null}
         <ScrollView>
           <View style={styles.topMenu}>
             <View style={styles.playerContainer}>
-            <TouchableWithoutFeedback onPress={() => this.openCloseAvatar()}><Image style={styles.changeName} source={require('../assets/profile/Change_Avatar_Button.png')} /></TouchableWithoutFeedback>
-              <ImageBackground style={styles.settingsIcon} source={require("../assets/main_menu/Profile_Pic_Pill.png")}><TouchableWithoutFeedback onPress={() => this.openCloseProfile()}><Image style={[styles.settingsIcon, styles.avatar]} source={avatar} /></TouchableWithoutFeedback></ImageBackground>
+            <TouchableWithoutFeedback onPress={() => this.openCloseAvatar()}><Image style={styles.changeAvatar} source={require('../assets/profile/Change_Avatar_Button.png')} /></TouchableWithoutFeedback>
+              <Profile_Image />
               <Text style={styles.playerName}>{this.props.game.name ? this.props.game.name : 'Dead Eyes'}</Text>
               <TouchableWithoutFeedback onPress={() => this.changeName()}><Image style={styles.changeName} source={require('../assets/profile/Change_Name_Profile_Page_Button.png')} /></TouchableWithoutFeedback>
               {this.props.settings.changeName ? <Change_Name /> : null}
@@ -100,7 +95,8 @@ const styles = StyleSheet.create({
     color: 'white',
     justifyContent: 'flex-end',
     fontSize: 20,
-    paddingLeft: 20
+    paddingLeft: 20,
+    marginRight: 10
   },
   settingsIcon:  {
     height: 50,
@@ -121,7 +117,18 @@ const styles = StyleSheet.create({
   },
   changeName: {
     height: 20,
-    width: 20
+    width: 20,
+    position: 'absolute',
+    left: 150,
+    top: 5
+  },
+  changeAvatar: {
+    height: 20,
+    width: 20,
+    position: 'absolute',
+    top: 25,
+    left: 5,
+    zIndex: 10
   },
   blueLineFullWidth: {
     width: '100%'

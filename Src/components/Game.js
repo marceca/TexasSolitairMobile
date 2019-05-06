@@ -11,11 +11,14 @@ import Tutorial from './settings/Tutorial';
 import Main_Menu from './Main_Menu';
 import Settings from './Settings';
 import Stick_Switch_Hands from'./Stick_Switch_Hands';
+import LeaderBoard from './pages/LeaderBoards';
 import constants from '../assets/Constants';
 import * as dbCalls from '../database/db';
 import DismissKeyboard from './DismissKeyboard';
 import User_Hand from './User_Hand';
 import Profile from './Profile';
+import Profile_Image from './profile/Profile_Image';
+import LottieView from 'lottie-react-native';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -89,22 +92,37 @@ class Game extends Component {
     }
   }
 
+  openCloseLeaderBoards() {
+    store.dispatch(types.openCloseLeaderBoards())
+  }
+
   render() {
     const bg = constants.backgroundPossibilities[this.props.settings.main_background_image]
 
     return (
       console.log('props ', this.props),
       <ImageBackground style={styles.mainBackgroundImage} source={bg}>
+      {this.props.game.ladderWin ? <LottieView source={require('../assets/animations/Confetti_Animation_Test.json')} style={styles.test} autoPlay loop /> : null }
         <View style={styles.container}>
           <DismissKeyboard>
             <ImageBackground style={styles.tableBackgroundImage} source={require('../assets/tables/Poker_Table.png')}>
               {this.props.settings.mainMenu ? <Main_Menu /> : null}
               <DismissKeyboard>
                 <View style={styles.settingsContainer}>
-                  <View style={styles.scoreContainter}><Text style={styles.coinsText}>Coins: {this.props.game.coins ? this.props.game.coins : 0} </Text></View>
-                  <TouchableWithoutFeedback onPress={() => this.openCloseSettings()}>
-                    <Image style={styles.settingsIcon} source={require('../assets/icons/settings.png')} />
-                  </TouchableWithoutFeedback>
+                  <View style={styles.userDataContainer}>
+                    <Profile_Image />
+                    <View style={[styles.scoreContainter, styles.adjustTopIcons]}>
+                      <Text style={styles.coinsText}>Coins: {this.props.game.coins ? this.props.game.coins : 0} </Text>
+                    </View>
+                  </View>
+                  <View style={styles.topRightIcons}>
+                    <TouchableWithoutFeedback onPress={() => this.openCloseLeaderBoards()}>
+                      <Image style={styles.settingsIcon}  source={require('../assets/leader_boards/First_Place_Trophy.png')} />
+                    </TouchableWithoutFeedback>
+                    <TouchableWithoutFeedback onPress={() => this.openCloseSettings()}>
+                      <Image style={[styles.settingsIcon, styles.adjustTopIcons]} source={require('../assets/icons/settings.png')} />
+                    </TouchableWithoutFeedback>
+                  </View>
                 </View>
               </DismissKeyboard>
               {/* Setting Pages */}
@@ -115,6 +133,7 @@ class Game extends Component {
               {this.props.settings.change_card_back ? <Change_Card_Back /> : null}
               {this.props.settings.settings ? <Settings /> : null}
               {this.props.game.profile ? <Profile /> : null}
+              {this.props.settings.leader_boards ? <LeaderBoard /> : null }
               <DismissKeyboard>
                 <View style={styles.cardsContainer}>
                   <View style={styles.playerHandsContainer}>
@@ -151,6 +170,12 @@ class Game extends Component {
 }
 
 const styles = StyleSheet.create({
+  test: {
+    zIndex: 1,
+    height: screenHeight / 1.5,
+    position: 'absolute',
+    left: '20%'
+  },
   container: {
     width: screenWidth,
     height: screenHeight,
@@ -166,20 +191,36 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   settingsContainer: {
-    width: '90%',
+    width: '95%',
     height: 30,
     alignItems: 'center',
     justifyContent: 'space-between',
     flexDirection: 'row',
     marginLeft: 'auto',
     marginRight: 'auto',
-    marginTop: 10
+    marginTop: 15
+  },
+  userDataContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    width: screenWidth / 2.5
+  },
+  topRightIcons: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    width: screenWidth / 2
+  },
+  adjustTopIcons: {
+    marginLeft: 10
   },
   scoreContainter: {
     backgroundColor: 'white',
     borderRadius: 15,
     justifyContent: 'center',
     alignItems: 'center',
+    height: 25
   },
   coinsText: {
     fontSize: 16,
@@ -239,7 +280,8 @@ const styles = StyleSheet.create({
   },
   stickSwitchButtons: {
     height: 75,
-    width: 150
+    width: 150,
+    zIndex: 11
   },
   cantClickButton: {
     opacity: 0.3

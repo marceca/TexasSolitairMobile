@@ -82,6 +82,13 @@ function updateWinsInARow(newWinningStreak) {
   })
 }
 
+function getAllInformation() {
+  firebase.database().ref('Users/').once('value', function (snapshot) {
+    console.log('get all information ', snapshot._value)
+    store.dispatch(types.updateLeaderBoardStats(snapshot._value))
+  });
+}
+
 module.exports = {
   writeUserData,
   readUserData,
@@ -92,5 +99,6 @@ module.exports = {
   updateHandsPlayed,
   updateWins,
   updateCurrentWinningStreak,
-  updateWinsInARow
+  updateWinsInARow,
+  getAllInformation
 }
