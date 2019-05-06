@@ -51,7 +51,9 @@ class LeaderBoards extends Component {
     return (
       <ImageBackground style={styles.container} source={require('../../assets/leader_boards/Leaderboard_BG.png')}>
       <View style={styles.mainHeaderContainer}>
-        <Image source={require('../../assets/leader_boards/Leaderboard_Header.png')} />
+        <View style={styles.header}>
+          <Image source={require('../../assets/leader_boards/Leaderboard_Header.png')} />
+        </View>
         <TouchableWithoutFeedback onPress={() => this.openCloseLeaderBoards()}>
           <Image style={styles.settingsIcon} source={require('../../assets/settings_page/White_X.png')} />
         </TouchableWithoutFeedback>
@@ -79,7 +81,10 @@ const styles = StyleSheet.create({
   mainHeaderContainer: {
     width: '100%',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    flexDirection: 'row',
+    paddingLeft: 20,
+    paddingRight: 20
   },
   headerContainer: {
     justifyContent: 'space-between',
@@ -100,6 +105,11 @@ const styles = StyleSheet.create({
   statAlignment: {
     justifyContent: 'flex-start',
     width: width / 2.5
+  },
+  header: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   settingsIcon: {
     width: 30,
