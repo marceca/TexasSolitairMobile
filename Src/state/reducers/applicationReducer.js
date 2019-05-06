@@ -318,10 +318,6 @@ const applicationReducer = (state = initState, action)=> {
       // Add to number of hands played
       resultsState.handsPlayed += 1;
       dbCalls.updateHandsPlayed(resultsState.handsPlayed);
-      // Run ad for every 5 games played
-      if(resultsState.handsPlayed % 5 === 0) {
-        ads.runAd(resultsState);
-      }
 
       // Flip all cards
       for(let i = 0; i <  resultsState.handsDisplay.length - 1; i++) {
@@ -481,6 +477,10 @@ const applicationReducer = (state = initState, action)=> {
             resultsState.ladderNumber += 1;
           }
         }
+        // Run ad for every 20 games won
+        if(resultsState.numberOfWins % 20 === 0) {
+          ads.runAd(resultsState);
+        }
       }
       if(computerResult[0].score > userResult.score) {
         console.log(`Computer hand number ${computerResult[0].computerHand} won`);
@@ -522,6 +522,10 @@ const applicationReducer = (state = initState, action)=> {
                 }
               }
               tie = false;
+              // Run ad for every 20 games won
+              if(resultsState.numberOfWins % 20 === 0) {
+                ads.runAd(resultsState);
+              }
               break;
             }
             if(userResult.bestFiveCards[userResult.bestFiveCards.length - 1 - i] < computerResult[0].bestFiveCards[computerResult[0].bestFiveCards.length - 1 - i]) {
@@ -570,6 +574,10 @@ const applicationReducer = (state = initState, action)=> {
                 }
               }
               tie = false;
+              // Run ad for every 20 games won
+              if(resultsState.numberOfWins % 20 === 0) {
+                ads.runAd(resultsState);
+              }
               break;
             }
             if(userResult.highPairs[userResult.highPairs.length - 1 - i] < computerResult[0].highPairs[computerResult[0].highPairs.length - 1 - i]) {
@@ -611,6 +619,10 @@ const applicationReducer = (state = initState, action)=> {
                   }
                 }
                 tie = false;
+                // Run ad for every 20 games won
+                if(resultsState.numberOfWins % 20 === 0) {
+                  ads.runAd(resultsState);
+                }
                 break;
               }
               if(userResult.bestFiveCards[userResult.bestFiveCards.length - 1 - i] < computerResult[0].bestFiveCards[computerResult[0].bestFiveCards.length - 1 - i]) {
@@ -658,6 +670,10 @@ const applicationReducer = (state = initState, action)=> {
               resultsState.ladderNumber += 1;
             }
           }
+          // Run ad for every 20 games won
+          if(resultsState.numberOfWins % 20 === 0) {
+            ads.runAd(resultsState);
+          }
         }
         if(userResult.highThreeOfAKind[0] < computerResult[0].highThreeOfAKind[0]) {
           console.log(`computer hand number ${computerResult[0].computerHand} won with three of a kind ${computerResult[0].highThreeOfAKind[0]}`)
@@ -691,6 +707,10 @@ const applicationReducer = (state = initState, action)=> {
                 }
               }
               tie = false;
+              // Run ad for every 20 games won
+              if(resultsState.numberOfWins % 20 === 0) {
+                ads.runAd(resultsState);
+              }
               break;
             }
             if(userResult.bestFiveCards[i] < computerResult[0].bestFiveCards[i]) {
@@ -737,6 +757,10 @@ const applicationReducer = (state = initState, action)=> {
               resultsState.ladderNumber += 1;
             }
           }
+          // Run ad for every 20 games won
+          if(resultsState.numberOfWins % 20 === 0) {
+            ads.runAd(resultsState);
+          }
         }
         if(userResult.bestFiveCards[4] < computerResult[0].bestFiveCards[4]) {
           console.log(`Computer wins with straight to the ${computerResult[0].bestFiveCards[4]}`);
@@ -780,6 +804,10 @@ const applicationReducer = (state = initState, action)=> {
             }
           }
           tie = false;
+          // Run ad for every 20 games won
+          if(resultsState.numberOfWins % 20 === 0) {
+            ads.runAd(resultsState);
+          }
         }
         if(userResult.bestFiveCards[4] < computerResult[0].bestFiveCards[4]) {
           console.log(`Computer wins with flush with high card ${computerResult[0].bestFiveCards[4]}`);
@@ -818,6 +846,10 @@ const applicationReducer = (state = initState, action)=> {
                 }
               }
               tie = false;
+              // Run ad for every 20 games won
+              if(resultsState.numberOfWins % 20 === 0) {
+                ads.runAd(resultsState);
+              }
               break;
             }
             if(userResult.bestFiveCards[userResult.bestFiveCards.length - i - 1] < computerResult[0].bestFiveCards[computerResult[0].bestFiveCards.length - i - 1]) {
@@ -866,6 +898,10 @@ const applicationReducer = (state = initState, action)=> {
             }
           }
           tie = false;
+          // Run ad for every 20 games won
+          if(resultsState.numberOfWins % 20 === 0) {
+            ads.runAd(resultsState);
+          }
         }
         if(userResult.highThreeOfAKind[0] < computerResult[0].highThreeOfAKind[0]) {
           console.log(`Computer won with a full house ${computerResult[0].highThreeOfAKind[0]}'s full of ${Math.max(computerResult[0].highPairs)}'s`);
@@ -903,6 +939,10 @@ const applicationReducer = (state = initState, action)=> {
               }
             }
             tie = false;
+            // Run ad for every 20 games won
+            if(resultsState.numberOfWins % 20 === 0) {
+              ads.runAd(resultsState);
+            }
           }
           if(Math.max(userResult.highPairs) < Math.max(computerResult[0].highPairs)) {
             console.log(`Computer won with a full house ${computerResult[0].highThreeOfAKind[0]}'s full of ${Math.max(computerResult[0].highPairs)}'s`);
@@ -948,6 +988,10 @@ const applicationReducer = (state = initState, action)=> {
             }
           }
           tie = false;
+          // Run ad for every 20 games won
+          if(resultsState.numberOfWins % 20 === 0) {
+            ads.runAd(resultsState);
+          }
         }
         if(userResult.highFourOfAKind[0] < computerResult[0].highFourOfAKind[0]) {
           console.log(`Computer wins with a four of a kind ${computerResult[0].highFourOfAKind[0]}'s`);
@@ -963,28 +1007,32 @@ const applicationReducer = (state = initState, action)=> {
         }
         if(tie === true) {
           if(userResult.highCard > computerResult[0].highCard) {
-          console.log(`Player wins with a four of a kind ${userResult.highFourOfAKind[0]}'s`);
-          resultsState.winningHand = resultsState.handObjects.length - 1;
-          if(resultsState.ladder === false) {
-            let newCoins = Math.ceil(resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]));
-            resultsState.coins = newCoins;
-            resultsState.numberOfWins += 1;
-            resultsState.currentWinningStreak += 1;
-            dbCalls.updateCurrentWinningStreak(resultsState.currentWinningStreak);
-            if(resultsState.currentWinningStreak > resultsState.winsInARow) {
-              resultsState.winsInARow += 1;
-              dbCalls.updateWinsInARow(resultsState.currentWinningStreak);
+            console.log(`Player wins with a four of a kind ${userResult.highFourOfAKind[0]}'s`);
+            resultsState.winningHand = resultsState.handObjects.length - 1;
+            if(resultsState.ladder === false) {
+              let newCoins = Math.ceil(resultsState.coins + (resultsState.bet * constants.winningsPercents[resultsState.handsDisplay.length]));
+              resultsState.coins = newCoins;
+              resultsState.numberOfWins += 1;
+              resultsState.currentWinningStreak += 1;
+              dbCalls.updateCurrentWinningStreak(resultsState.currentWinningStreak);
+              if(resultsState.currentWinningStreak > resultsState.winsInARow) {
+                resultsState.winsInARow += 1;
+                dbCalls.updateWinsInARow(resultsState.currentWinningStreak);
+              }
+              dbCalls.updateUserCoins(newCoins);
+              dbCalls.updateWins(resultsState.numberOfWins);
+            } else {
+              if(resultsState.ladderNumber < 9) {
+                resultsState.ladderWin = true;
+                dbCalls.updateLadder(resultsState.ladderNumber);
+                resultsState.ladderNumber += 1;
+              }
             }
-            dbCalls.updateUserCoins(newCoins);
-            dbCalls.updateWins(resultsState.numberOfWins);
-          } else {
-            if(resultsState.ladderNumber < 9) {
-              resultsState.ladderWin = true;
-              dbCalls.updateLadder(resultsState.ladderNumber);
-              resultsState.ladderNumber += 1;
+            tie = false;
+            // Run ad for every 20 games won
+            if(resultsState.numberOfWins % 20 === 0) {
+              ads.runAd(resultsState);
             }
-          }
-          tie = false;
           }
           if(userResult.highCard < computerResult[0].highCard) {
             console.log(`Computer wins with a four of a kind ${computerResult[0].highFourOfAKind[0]}'s`);
@@ -1029,6 +1077,10 @@ const applicationReducer = (state = initState, action)=> {
             }
           }
           tie = false;
+          // Run ad for every 20 games won
+          if(resultsState.numberOfWins % 20 === 0) {
+            ads.runAd(resultsState);
+          }
         }
         if(userResult.highCard < computerResult[0].highCard) {
           console.log(`Computer wins the a straight flush to ${computerResult[0].highCard}`);
