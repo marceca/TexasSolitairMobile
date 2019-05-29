@@ -32,6 +32,7 @@ const initState = {
   switch: true,
   name: null,
   coins: null,
+  tickets: null,
   bet: 50,
   betSize: 50,
   numOfHands: 'six',
@@ -70,6 +71,7 @@ const applicationReducer = (state = initState, action)=> {
       const updateUserState = Object.assign({}, state);
       updateUserState.name = action.userName;
       updateUserState.coins = action.userCoins;
+      updateUserState.tickets = action.userTickets;
       updateUserState.ladderNumber = action.userLadder;
       updateUserState.handsPlayed = action.handsPlayed;
       updateUserState.numberOfWins = action.numberOfWins;

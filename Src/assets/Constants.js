@@ -15,15 +15,27 @@ const cardBackOptions = {
 }
 
 const winningsPercents = {
-  2 : .5,
-  3 : .75,
+  2 : .4,
+  3 : .65,
   4 : 1,
   5 : 1.5,
   6 : 2,
-  7 : 2.5,
-  8 : 3,
-  9 : 4,
-  10 : 5
+  7 : 3,
+  8 : 4,
+  9 : 5.5,
+  10 : 7
+}
+
+const ladderWinningPercents = {
+  2 : .8,
+  3 : 1.3,
+  4 : 2,
+  5 : 3,
+  6 : 4,
+  7 : 6,
+  8 : 8,
+  9 : 11,
+  10 : 14
 }
 
 const numberOfHands = {
