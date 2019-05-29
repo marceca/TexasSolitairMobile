@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {View, ScrollView, Image, ImageBackground, Text, TouchableWithoutFeedback, StyleSheet} from 'react-native';
 import store from '../../state/store';
 import * as types from '../../state/actions/actions';
+import * as dbCalls from '../../database/db';
 import constants from '../../assets/Constants';
 
 const mapStateToProps = (state) => {
@@ -14,15 +15,18 @@ const mapStateToProps = (state) => {
 
 class Avatar extends Component {
   changeAvatar(avatar) {
-    store.dispatch(types.updateAvatar(avatar))
+    store.dispatch(types.updateAvatar(avatar));
+    dbCalls.updateAvatar(avatar);
   }
 
   closeAvatar() {
-    store.dispatch(types.openCloseAvatar())
+    store.dispatch(types.openCloseAvatar());
   }
   
   changeAvatarBGColor(BGColor) {
-    store.dispatch(types.changeAvatarBGColor(BGColor))
+    store.dispatch(types.changeAvatarBGColor(BGColor));
+    dbCalls.updateAvatarBGColor(BGColor);
+
   }
 
   render() {

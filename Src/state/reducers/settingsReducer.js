@@ -15,8 +15,8 @@ const initState = {
   main_background_image: 'wood',
   changeName: false,
   openCloseAvatar: false,
-  avatarBGColor: 'red',
-  avatar: 'puppy',
+  avatarBGColor: null,
+  avatar: null,
   deathOrange: true,
   death: false,
   clown: true,
@@ -29,6 +29,14 @@ const initState = {
 
 const settingsReducer = (state = initState, action)=> {
   switch(action.type) {
+    // ON LOAD UPDATE AVATAR SETTINGS
+    case types.UPDATESETTINGS:
+      const updateSettingsState = Object.assign({}, state);
+      updateSettingsState.avatar = action.avatar;
+      updateSettingsState.avatarBGColor = action.avatarBGColor;
+      console.log('action ',action)
+    return updateSettingsState;
+
     // GAME START
     case types.STARTGAME:
       const startGameState = Object.assign({}, state);
