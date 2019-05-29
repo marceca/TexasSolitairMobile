@@ -104,6 +104,13 @@ function loseLife(newLifeTotal) {
   })
 }
 
+function loseLadder() {
+  firebase.database().ref('Users/' + uniqueID + '/').update({
+    ladderLives: 0,
+    ladderNumber: 1
+  })
+}
+
 module.exports = {
   writeUserData,
   readUserData,
@@ -117,5 +124,6 @@ module.exports = {
   updateWinsInARow,
   getAllInformation,
   ladderUseTicket,
-  loseLife
+  loseLife,
+  loseLadder
 }

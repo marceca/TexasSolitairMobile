@@ -37,8 +37,6 @@ const initState = {
   betSize: 50,
   numOfHands: 'six',
   showCards: true,
-  ladder: false,
-  ladderNumber: null,
   sfx: true,
   winningHand: null,
   profile: false,
@@ -47,6 +45,8 @@ const initState = {
   winsInARow: null,
   currentWinningStreak: null,
   handsPlayed: null,
+  ladder: false,
+  ladderNumber: null,
   ladderWin: false,
   ladderValue: 1000,
   ladderLives: null
@@ -119,7 +119,7 @@ const applicationReducer = (state = initState, action)=> {
         ladderState.ladder = false;
       } else if(ladderState.ladder === false && ladderState.tickets > 0 && ladderState.ladderLives === 0) {
         ladderState.tickets -= 1;
-        ladderState.laddderLives = 3;
+        ladderState.ladderLives = 3;
         dbCalls.ladderUseTicket(ladderState.tickets);
         ladderState.ladder = true;
         let updateHandObject = [];
@@ -515,7 +515,12 @@ const applicationReducer = (state = initState, action)=> {
           dbCalls.updateUserCoins(newCoins);
         } else if(resultsState.ladder === true) {
           resultsState.ladderLives -= 1;
-          dbCalls.loseLife(resultsState.ladderLives);
+          if(resultsState.ladderLives === 0) {
+            dbCalls.loseLadder();
+            resultsState.ladderNumber = 1;
+          } else {
+            dbCalls.loseLife(resultsState.ladderLives);
+          }
         }
       }
 
@@ -567,7 +572,12 @@ const applicationReducer = (state = initState, action)=> {
                 dbCalls.updateUserCoins(newCoins);
               } else if(resultsState.ladder === true) {
                 resultsState.ladderLives -= 1;
-                dbCalls.loseLife(resultsState.ladderLives);
+                if(resultsState.ladderLives === 0) {
+                  dbCalls.loseLadder();
+                  resultsState.ladderNumber = 1;
+                } else {
+                  dbCalls.loseLife(resultsState.ladderLives);
+                }
               }
               tie = false;
               break;
@@ -625,7 +635,12 @@ const applicationReducer = (state = initState, action)=> {
                 dbCalls.updateUserCoins(newCoins);
               } else if(resultsState.ladder === true) {
                 resultsState.ladderLives -= 1;
-                dbCalls.loseLife(resultsState.ladderLives);
+                if(resultsState.ladderLives === 0) {
+                  dbCalls.loseLadder();
+                  resultsState.ladderNumber = 1;
+                } else {
+                  dbCalls.loseLife(resultsState.ladderLives);
+                }
               }
               tie = false;
               break;
@@ -676,7 +691,12 @@ const applicationReducer = (state = initState, action)=> {
                   dbCalls.updateUserCoins(newCoins);
                 } else if(resultsState.ladder === true) {
                   resultsState.ladderLives -= 1;
-                  dbCalls.loseLife(resultsState.ladderLives);
+                  if(resultsState.ladderLives === 0) {
+                    dbCalls.loseLadder();
+                    resultsState.ladderNumber = 1;
+                  } else {
+                    dbCalls.loseLife(resultsState.ladderLives);
+                  }
                 }
                 tie = false;
                 break;
@@ -732,7 +752,12 @@ const applicationReducer = (state = initState, action)=> {
             dbCalls.updateUserCoins(newCoins);
           } else if(resultsState.ladder === true) {
             resultsState.ladderLives -= 1;
-            dbCalls.loseLife(resultsState.ladderLives);
+            if(resultsState.ladderLives === 0) {
+              dbCalls.loseLadder();
+              resultsState.ladderNumber = 1;
+            } else {
+              dbCalls.loseLife(resultsState.ladderLives);
+            }
           }
           tie = false;
           break;
@@ -783,7 +808,12 @@ const applicationReducer = (state = initState, action)=> {
                 dbCalls.updateUserCoins(newCoins);
               } else if(resultsState.ladder === true) {
                 resultsState.ladderLives -= 1;
-                dbCalls.loseLife(resultsState.ladderLives);
+                if(resultsState.ladderLives === 0) {
+                  dbCalls.loseLadder();
+                  resultsState.ladderNumber = 1;
+                } else {
+                  dbCalls.loseLife(resultsState.ladderLives);
+                }
               }
               tie = false;
               break;
@@ -838,7 +868,12 @@ const applicationReducer = (state = initState, action)=> {
             dbCalls.updateUserCoins(newCoins);
           } else if(resultsState.ladder === true) {
             resultsState.ladderLives -= 1;
-            dbCalls.loseLife(resultsState.ladderLives);
+            if(resultsState.ladderLives === 0) {
+              dbCalls.loseLadder();
+              resultsState.ladderNumber = 1;
+            } else {
+              dbCalls.loseLife(resultsState.ladderLives);
+            }
           }
         }
         if(userResult.bestFiveCards[4] === computerResult[0].bestFiveCards[4]) {
@@ -891,7 +926,12 @@ const applicationReducer = (state = initState, action)=> {
             dbCalls.updateUserCoins(newCoins);
           } else if(resultsState.ladder === true) {
             resultsState.ladderLives -= 1;
-            dbCalls.loseLife(resultsState.ladderLives);
+            if(resultsState.ladderLives === 0) {
+              dbCalls.loseLadder();
+              resultsState.ladderNumber = 1;
+            } else {
+              dbCalls.loseLife(resultsState.ladderLives);
+            }
           }
           tie = false;
         }
@@ -940,7 +980,12 @@ const applicationReducer = (state = initState, action)=> {
                 dbCalls.updateUserCoins(newCoins);
               } else if(resultsState.ladder === true) {
                 resultsState.ladderLives -= 1;
-                dbCalls.loseLife(resultsState.ladderLives);
+                if(resultsState.ladderLives === 0) {
+                  dbCalls.loseLadder();
+                  resultsState.ladderNumber = 1;
+                } else {
+                  dbCalls.loseLife(resultsState.ladderLives);
+                }
               }
               tie = false;
               break;
@@ -997,7 +1042,12 @@ const applicationReducer = (state = initState, action)=> {
             dbCalls.updateUserCoins(newCoins);
           } else if(resultsState.ladder === true) {
             resultsState.ladderLives -= 1;
-            dbCalls.loseLife(resultsState.ladderLives);
+            if(resultsState.ladderLives === 0) {
+              dbCalls.loseLadder();
+              resultsState.ladderNumber = 1;
+            } else {
+              dbCalls.loseLife(resultsState.ladderLives);
+            }
           }
           tie = false;
         }
@@ -1044,7 +1094,12 @@ const applicationReducer = (state = initState, action)=> {
               dbCalls.updateUserCoins(newCoins);
             } else if(resultsState.ladder === true) {
               resultsState.ladderLives -= 1;
-              dbCalls.loseLife(resultsState.ladderLives);
+              if(resultsState.ladderLives === 0) {
+                dbCalls.loseLadder();
+                resultsState.ladderNumber = 1;
+              } else {
+                dbCalls.loseLife(resultsState.ladderLives);
+              }
             }
             tie = false;
           }
@@ -1099,7 +1154,12 @@ const applicationReducer = (state = initState, action)=> {
             dbCalls.updateUserCoins(newCoins);
           } else if(resultsState.ladder === true) {
             resultsState.ladderLives -= 1;
-            dbCalls.loseLife(resultsState.ladderLives);
+            if(resultsState.ladderLives === 0) {
+              dbCalls.loseLadder();
+              resultsState.ladderNumber = 1;
+            } else {
+              dbCalls.loseLife(resultsState.ladderLives);
+            }
           }
           tie = false;
         }
@@ -1146,7 +1206,12 @@ const applicationReducer = (state = initState, action)=> {
               dbCalls.updateUserCoins(newCoins);
             } else if(resultsState.ladder === true) {
               resultsState.ladderLives -= 1;
-              dbCalls.loseLife(resultsState.ladderLives);
+              if(resultsState.ladderLives === 0) {
+                dbCalls.loseLadder();
+                resultsState.ladderNumber = 1;
+              } else {
+                dbCalls.loseLife(resultsState.ladderLives);
+              }
             }
             tie = false;
           }
@@ -1200,7 +1265,12 @@ const applicationReducer = (state = initState, action)=> {
             dbCalls.updateUserCoins(newCoins);
           } else if(resultsState.ladder === true) {
             resultsState.ladderLives -= 1;
-            dbCalls.loseLife(resultsState.ladderLives);
+            if(resultsState.ladderLives === 0) {
+              dbCalls.loseLadder();
+              resultsState.ladderNumber = 1;
+            } else {
+              dbCalls.loseLife(resultsState.ladderLives);
+            }
           }
           tie = false;
         }
