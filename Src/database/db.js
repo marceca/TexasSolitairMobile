@@ -12,7 +12,7 @@ var config = {
 
 firebase.initializeApp(config);
 
-function writeUserData(coins, tickets, uniqueID, nickName, ladderNumber, handsPlayed, numberOfWins, currentWinningsStreak, winsInARow){
+function writeUserData(coins, tickets, uniqueID, nickName, ladderNumber, handsPlayed, numberOfWins, currentWinningsStreak, winsInARow, ladderLives){
   firebase.database().ref('Users/' + uniqueID + '/').set({
       coins,
       tickets,
@@ -21,18 +21,19 @@ function writeUserData(coins, tickets, uniqueID, nickName, ladderNumber, handsPl
       handsPlayed,
       numberOfWins,
       currentWinningsStreak,
-      winsInARow
+      winsInARow,
+      ladderLives
   })
 }
 
 function readUserData(user) {
   firebase.database().ref('Users/' + user +'/').once('value', function (snapshot) {
     if(snapshot.val() === null) {
-      writeUserData(1000, 5, uniqueID, 'firstName', 1, 0, 0, 0, 0);
-      store.dispatch(types.updateUser(1000, 5, 'firstName', 1, 0, 0, 0, 0))
+      writeUserData(1000, 5, uniqueID, 'firstName', 1, 0, 0, 0, 0, 0);
+      store.dispatch(types.updateUser(1000, 5, 'firstName', 1, 0, 0, 0, 0, 0))
     } else { 
       console.log('snap shot ',snapshot.val());
-      store.dispatch(types.updateUser(snapshot.val().coins, snapshot.val().tickets, snapshot.val().nickName, snapshot.val().ladderNumber, snapshot.val().handsPlayed, snapshot.val().numberOfWins, snapshot.val().currentWinningsStreak, snapshot.val().winsInARow));
+      store.dispatch(types.updateUser(snapshot.val().coins, snapshot.val().tickets, snapshot.val().nickName, snapshot.val().ladderNumber, snapshot.val().ladderLives, snapshot.val().handsPlayed, snapshot.val().numberOfWins, snapshot.val().currentWinningsStreak, snapshot.val().winsInARow));
     }
   });
 }
@@ -92,7 +93,14 @@ function getAllInformation() {
 
 function ladderUseTicket(newTicketValue) {
   firebase.database().ref('Users/' + uniqueID + '/').update({
-    tickets: newTicketValue
+    tickets: newTicketValue,
+    ladderLives: 3
+  })
+}
+
+function loseLife(newLifeTotal) {
+  firebase.database().ref('Users/' + uniqueID + '/').update({
+    ladderLives: newLifeTotal
   })
 }
 
@@ -108,5 +116,6 @@ module.exports = {
   updateCurrentWinningStreak,
   updateWinsInARow,
   getAllInformation,
-  ladderUseTicket
+  ladderUseTicket,
+  loseLife
 }

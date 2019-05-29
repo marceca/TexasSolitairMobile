@@ -81,7 +81,7 @@ const updateLeaderBoardStats = (stats) => ({type: UPDATELEADERBOARDSTATS, stats}
 const UPDATEUSER = 'UPDATEUSER';
 const UPDATECOINS = 'UPDATECOINS';
 
-const updateUser = (userCoins, userTickets, userName, userLadder, handsPlayed, numberOfWins, currentWinningStreak, winsInARow) => ({type:UPDATEUSER, userCoins, userTickets, userName, userLadder, handsPlayed, numberOfWins, currentWinningStreak, winsInARow})
+const updateUser = (userCoins, userTickets, userName, userLadder, ladderLives, handsPlayed, numberOfWins, currentWinningStreak, winsInARow) => ({type:UPDATEUSER, userCoins, userTickets, userName, userLadder, ladderLives, handsPlayed, numberOfWins, currentWinningStreak, winsInARow})
 const updateCoins = (coins) => ({type: UPDATECOINS, coins})
 
 module.exports = {
