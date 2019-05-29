@@ -90,6 +90,12 @@ function getAllInformation() {
   });
 }
 
+function ladderUseTicket(newTicketValue) {
+  firebase.database().ref('Users/' + uniqueID + '/').update({
+    tickets: newTicketValue
+  })
+}
+
 module.exports = {
   writeUserData,
   readUserData,
@@ -101,5 +107,6 @@ module.exports = {
   updateWins,
   updateCurrentWinningStreak,
   updateWinsInARow,
-  getAllInformation
+  getAllInformation,
+  ladderUseTicket
 }

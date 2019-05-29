@@ -114,7 +114,10 @@ const applicationReducer = (state = initState, action)=> {
       const ladderState = Object.assign({}, state);
       if(ladderState.ladder === true) {
         ladderState.ladder = false;
-      } else {
+      } else if(ladderState.ladder === false && ladderState.tickets > 0) {
+        ladderState.tickets -= 1;
+        console.log('ladder state tickets ',ladderState.tickets)
+        dbCalls.ladderUseTicket(ladderState.tickets);
         ladderState.ladder = true;
         let updateHandObject = [];
         let updateDisplayObject = [];
