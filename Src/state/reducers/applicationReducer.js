@@ -385,7 +385,7 @@ const applicationReducer = (state = initState, action)=> {
       // Changing community card value for testing
       // resultsState.communityCardsValue = [
       //   [{
-      //     value: 1,
+      //     value: 2,
       //     name: 'Four of Clubs',
       //     suit: 'Clubs',
       //     img: '/cards/2C.png'
@@ -393,25 +393,25 @@ const applicationReducer = (state = initState, action)=> {
       //   [{
       //     value: 3,
       //     name: 'Five of Clubs',
-      //     suit: 'Spades',
+      //     suit: 'Clubs',
       //     img: '/cards/3C.png'
       //   }],
       //   [{
-      //     value: 14,
+      //     value: 4,
       //     name: 'Nine of Clubs',
-      //     suit: 'Hearts',
+      //     suit: 'Clubs',
       //     img: '/cards/4C.png'
       //   }],
       //   [{
-      //     value: 9,
+      //     value: 5,
       //     name: 'Fve of Clubs',
-      //     suit: 'Diamonds',
+      //     suit: 'Clubs',
       //     img: '/cards/5C.png'
       //   }],
       //   [{
-      //     value: 7,
+      //     value: 14,
       //     name: 'Six of Clubs',
-      //     suit: 'Spades',
+      //     suit: 'Clubs',
       //     img: '/cards/6C.png'
       //   }]
       // ]
@@ -421,35 +421,35 @@ const applicationReducer = (state = initState, action)=> {
       //   [{
       //     value: 1,
       //     name: 'Two of Clubs',
-      //     suit: 'Clubs',
-      //     img: '/cards/2C.png'
-      //   }],
-      //   [{
-      //     value: 2,
-      //     name: 'Three of Clubs',
-      //     suit: 'Spades',
-      //     img: '/cards/3C.png'
-      //   }],
-      //   [{
-      //     value: 3,
-      //     name: 'Four of Clubs',
       //     suit: 'Hearts',
       //     img: '/cards/2C.png'
       //   }],
       //   [{
-      //     value: 9,
-      //     name: 'Five of Clubs',
+      //     value: 3,
+      //     name: 'Three of Clubs',
       //     suit: 'Diamonds',
       //     img: '/cards/3C.png'
       //   }],
       //   [{
-      //     value: 14,
-      //     name: 'Nine of Clubs',
-      //     suit: 'Spades',
-      //     img: '/cards/4C.png'
+      //     value: 4,
+      //     name: 'Four of Clubs',
+      //     suit: 'Clubs',
+      //     img: '/cards/2C.png'
       //   }],
       //   [{
       //     value: 5,
+      //     name: 'Five of Clubs',
+      //     suit: 'Clubs',
+      //     img: '/cards/3C.png'
+      //   }],
+      //   [{
+      //     value: 8,
+      //     name: 'Nine of Clubs',
+      //     suit: 'Clubs',
+      //     img: '/cards/4C.png'
+      //   }],
+      //   [{
+      //     value: 9,
       //     name: 'Fve of Clubs',
       //     suit: 'Spades',
       //     img: '/cards/5C.png'

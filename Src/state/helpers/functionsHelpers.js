@@ -123,7 +123,8 @@ function getUserResults(userHand) {
     if(userCardCount[key] === 3) {
       pairCount['three'] += 1
       userResult.highThreeOfAKind.push(Number(key));
-      captureThreeOfAKind = Number(key)
+      captureThreeOfAKind = Number(key);
+      userResult.bestFiveCards = [];
       for(let i = 0; i < userResult.wholeHand.length; i++) {
         userResult.bestFiveCards.push(userResult.wholeHand[i])
       }
