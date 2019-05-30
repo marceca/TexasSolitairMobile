@@ -49,7 +49,8 @@ const initState = {
   ladderNumber: null,
   ladderWin: false,
   ladderValue: 1000,
-  ladderLives: null
+  ladderLives: null,
+  ladderPrompt: false
 }
 
 // Sort user hand by card value
@@ -118,9 +119,8 @@ const applicationReducer = (state = initState, action)=> {
       if(ladderState.ladder === true) {
         ladderState.ladder = false;
       } else if(ladderState.ladder === false && ladderState.tickets > 0 && ladderState.ladderLives === 0) {
-        ladderState.tickets -= 1;
-        ladderState.ladderLives = 3;
-        dbCalls.ladderUseTicket(ladderState.tickets);
+        ladderState.ladderPrompt = true;
+      } else if(ladderState.ladder === false && ladderState.ladderLives > 0) {
         ladderState.ladder = true;
         let updateHandObject = [];
         let updateDisplayObject = [];
@@ -128,22 +128,41 @@ const applicationReducer = (state = initState, action)=> {
           updateHandObject.push([]);
           updateDisplayObject.push([]);
         }
-        // ladderState.numOfHands = action.numHandsImage;
-        ladderState.handsDisplay = updateDisplayObject;
-        ladderState.handObjects = updateHandObject;
-      } else if(ladderState.ladder === false && ladderState.tickets > 0 && ladderState.ladderLives > 0) {
-        ladderState.ladder = true;
-        let updateHandObject = [];
-        let updateDisplayObject = [];
-        for(let i = 0; i < ladderState.ladderNumber + 1; i++) {
-          updateHandObject.push([]);
-          updateDisplayObject.push([]);
-        }
-        // ladderState.numOfHands = action.numHandsImage;
         ladderState.handsDisplay = updateDisplayObject;
         ladderState.handObjects = updateHandObject;
       }
     return ladderState;
+
+    case types.SPENDLADDERTICKET:
+      spendLadderTicketState = Object.assign({}, state);
+      spendLadderTicketState.tickets -= 1;
+      spendLadderTicketState.ladderLives = 3;
+      dbCalls.ladderUseTicket(spendLadderTicketState.tickets);
+      spendLadderTicketState.ladder = true;
+      let updateHandObject = [];
+      let updateDisplayObject = [];
+      for(let i = 0; i < spendLadderTicketState.ladderNumber + 1; i++) {
+        updateHandObject.push([]);
+        updateDisplayObject.push([]);
+      }
+      spendLadderTicketState.handsDisplay = updateDisplayObject;
+      spendLadderTicketState.handObjects = updateHandObject;
+      spendLadderTicketState.ladderPrompt = false;
+    return spendLadderTicketState;
+
+    case types.CLOSELADDERPROMPT:
+      const closeLadderPromptState = Object.assign({}, state);
+      closeLadderPromptState.ladderPrompt = false;
+    return closeLadderPromptState;
+
+    case types.LADDERPROMPT:
+      const ladderPromptState = Object.assign({}, state);
+      if(ladderPromptState.ladderPrompt === false) {
+          ladderPromptState.ladderPrompt = true;
+        } else {
+          ladderPromptState.ladderPrompt = false;
+        }
+    return ladderPromptState;
 
     case types.SHOWHIDECARDS:
       const showHideCardsState = Object.assign({}, state);

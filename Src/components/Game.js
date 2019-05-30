@@ -12,6 +12,7 @@ import Main_Menu from './Main_Menu';
 import Settings from './Settings';
 import Stick_Switch_Hands from'./Stick_Switch_Hands';
 import LeaderBoard from './pages/LeaderBoards';
+import LadderPrompt from './prompts/LadderPrompt';
 import constants from '../assets/Constants';
 import * as dbCalls from '../database/db';
 import DismissKeyboard from './DismissKeyboard';
@@ -134,6 +135,7 @@ class Game extends Component {
               {this.props.settings.settings ? <Settings /> : null}
               {this.props.game.profile ? <Profile /> : null}
               {this.props.settings.leader_boards ? <LeaderBoard /> : null }
+              {this.props.game.ladderPrompt ? <LadderPrompt /> : null}
               <DismissKeyboard>
                 <View style={styles.cardsContainer}>
                   <View style={styles.playerHandsContainer}>

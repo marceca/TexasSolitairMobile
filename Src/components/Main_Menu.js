@@ -6,6 +6,7 @@ import * as types from '../state/actions/actions';
 import Num_Hands from './settings/Num_Hands';
 import constants from '../assets/Constants';
 import Profile_Image from './profile/Profile_Image';
+import LadderPrompt from './prompts/LadderPrompt';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
