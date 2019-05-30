@@ -51,9 +51,8 @@ const styles = StyleSheet.create({
     justifyContent:'space-between'
   },
   text: {
-    color: 'red',
     textAlign: 'center',
-    marginTop: '10%',
+    marginTop: '8%',
     fontSize: 20,
     fontWeight: 'bold',
     marginLeft: '10%',
@@ -64,7 +63,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   button: {
-    
+    marginBottom: '1%'
   },
   buttonYes: {
     marginLeft: '10%'
