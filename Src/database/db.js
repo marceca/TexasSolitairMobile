@@ -35,7 +35,7 @@ function readUserData(user) {
       store.dispatch(types.updateUser(1000, 5, 'firstName', 'puppy', 'red', 1, 0, 0, 0, 0, 0))
     } else { 
       console.log('snap shot ',snapshot.val());
-      store.dispatch(types.updateUser(snapshot.val().coins, snapshot.val().tickets, snapshot.val().nickName, snapshot.val().ladderNumber, snapshot.val().ladderLives, snapshot.val().handsPlayed, snapshot.val().numberOfWins, snapshot.val().currentWinningsStreak, snapshot.val().winsInARow));
+      store.dispatch(types.updateUser(snapshot.val().coins, snapshot.val().tickets, snapshot.val().nickName, snapshot.val().ladderNumber, snapshot.val().ladderLives, snapshot.val().currentLadderWinning, snapshot.val().handsPlayed, snapshot.val().numberOfWins, snapshot.val().currentWinningsStreak, snapshot.val().winsInARow));
       store.dispatch(types.updateSettings(snapshot.val().avatar, snapshot.val().avatarBGColor))
     }
   });
@@ -107,10 +107,12 @@ function loseLife(newLifeTotal) {
   })
 }
 
-function loseLadder() {
+function loseLadder(coinWinnings) {
   firebase.database().ref('Users/' + uniqueID + '/').update({
     ladderLives: 0,
-    ladderNumber: 1
+    ladderNumber: 1,
+    coins: coinWinnings,
+    currentLadderWinning: 0
   })
 }
 
@@ -123,6 +125,12 @@ function updateAvatar(newAvatar) {
 function updateAvatarBGColor(newAvatarBGColor) {
   firebase.database().ref('Users/' + uniqueID + '/').update({
     avatarBGColor: newAvatarBGColor
+  })
+}
+
+function currentLadderWinning(newLadderWinnings) {
+  firebase.database().ref('Users/' + uniqueID + '/').update({
+    currentLadderWinning: newLadderWinnings
   })
 }
 
@@ -142,5 +150,6 @@ module.exports = {
   loseLife,
   loseLadder,
   updateAvatar,
-  updateAvatarBGColor
+  updateAvatarBGColor,
+  currentLadderWinning
 }

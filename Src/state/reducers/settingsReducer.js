@@ -11,7 +11,6 @@ const initState = {
   leader_board_stats: [],
   tutorial: false,
   tutorial_page: 1,
-  mainMenu: true,
   main_background_image: 'wood',
   changeName: false,
   openCloseAvatar: false,
@@ -36,12 +35,6 @@ const settingsReducer = (state = initState, action)=> {
       updateSettingsState.avatarBGColor = action.avatarBGColor;
       console.log('action ',action)
     return updateSettingsState;
-
-    // GAME START
-    case types.STARTGAME:
-      const startGameState = Object.assign({}, state);
-      startGameState.mainMenu = false;
-    return startGameState;
 
     //CHANGE USER NAME
     case types.OPENCHANGENAME:
@@ -115,7 +108,6 @@ const settingsReducer = (state = initState, action)=> {
       showMainMenuState.change_card_back = false;
       showMainMenuState.total_hands = false;
       showMainMenuState.hand_ranks = false;
-      showMainMenuState.mainMenu = true;
     return showMainMenuState;
 
     //SETTINGS CONTROLS

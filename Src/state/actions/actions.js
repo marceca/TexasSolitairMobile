@@ -86,7 +86,7 @@ const UPDATEUSER = 'UPDATEUSER';
 const UPDATECOINS = 'UPDATECOINS';
 const UPDATESETTINGS = 'UPDATESETTINGS';
 
-const updateUser = (userCoins, userTickets, userName, userLadder, ladderLives, handsPlayed, numberOfWins, currentWinningStreak, winsInARow) => ({type:UPDATEUSER, userCoins, userTickets, userName, userLadder, ladderLives, handsPlayed, numberOfWins, currentWinningStreak, winsInARow});
+const updateUser = (userCoins, userTickets, userName, userLadder, ladderLives, currentLadderWinning, handsPlayed, numberOfWins, currentWinningStreak, winsInARow) => ({type:UPDATEUSER, userCoins, userTickets, userName, userLadder, ladderLives, currentLadderWinning, handsPlayed, numberOfWins, currentWinningStreak, winsInARow});
 const updateCoins = (coins) => ({type: UPDATECOINS, coins});
 const updateSettings = (avatar, avatarBGColor) => ({type: UPDATESETTINGS, avatar, avatarBGColor})
 

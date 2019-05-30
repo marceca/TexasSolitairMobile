@@ -50,7 +50,9 @@ const initState = {
   ladderWin: false,
   ladderValue: 1000,
   ladderLives: null,
-  ladderPrompt: false
+  ladderPrompt: false,
+  currentLadderWinning: null,
+  mainMenu: true
 }
 
 // Sort user hand by card value
@@ -77,6 +79,7 @@ const applicationReducer = (state = initState, action)=> {
       updateUserState.tickets = action.userTickets;
       updateUserState.ladderNumber = action.userLadder;
       updateUserState.ladderLives = action.ladderLives;
+      updateUserState.currentLadderWinning = action.currentLadderWinning;
       updateUserState.handsPlayed = action.handsPlayed;
       updateUserState.numberOfWins = action.numberOfWins;
       updateUserState.currentWinningStreak = action.currentWinningStreak;
@@ -92,6 +95,17 @@ const applicationReducer = (state = initState, action)=> {
       }
     return openCloseProfileState;
 
+    // GAME START
+    case types.STARTGAME:
+      const startGameState = Object.assign({}, state);
+      startGameState.mainMenu = false;
+    return startGameState;
+
+    case types.SHOWMAINMENU:
+      const showMainMenuState = Object.assign({}, state);
+      showMainMenuState.mainMenu = true;
+    return showMainMenuState;
+      
     // SETTINGS
     case types.CHANGECARDBACK:
       const changeCardBackState =  Object.assign({}, state);
@@ -513,9 +527,9 @@ const applicationReducer = (state = initState, action)=> {
             resultsState.ladderWin = true;
             dbCalls.updateLadder(resultsState.ladderNumber);
             resultsState.ladderNumber += 1;
-            let newCoins = Math.ceil(resultsState.coins + (resultsState.ladderValue * constants.ladderWinningPercents[resultsState.handsDisplay.length]));
-            resultsState.coins = newCoins;
-            dbCalls.updateUserCoins(newCoins);
+            let newLadderWinnings = Math.ceil(resultsState.currentLadderWinning + (resultsState.ladderValue * constants.ladderWinningPercents[resultsState.handsDisplay.length]));
+            resultsState.currentLadderWinning = newLadderWinnings;
+            dbCalls.currentLadderWinning(newLadderWinnings);
           }
         }
         // Run ad for every 20 games won
@@ -535,8 +549,13 @@ const applicationReducer = (state = initState, action)=> {
         } else if(resultsState.ladder === true) {
           resultsState.ladderLives -= 1;
           if(resultsState.ladderLives === 0) {
-            dbCalls.loseLadder();
+            let updateLadderWinCoin = Math.ceil(resultsState.coins + resultsState.currentLadderWinning);
+            resultsState.coins = updateLadderWinCoin;
+            resultsState.currentLadderWinning = 0;
+            dbCalls.loseLadder(updateLadderWinCoin);
             resultsState.ladderNumber = 1;
+            resultsState.mainMenu = true;
+            resultsState.ladder = false;
           } else {
             dbCalls.loseLife(resultsState.ladderLives);
           }
@@ -568,9 +587,9 @@ const applicationReducer = (state = initState, action)=> {
                   resultsState.ladderWin = true;
                   dbCalls.updateLadder(resultsState.ladderNumber);
                   resultsState.ladderNumber += 1;
-                  let newCoins = Math.ceil(resultsState.coins + (resultsState.ladderValue * constants.ladderWinningPercents[resultsState.handsDisplay.length]));
-                  resultsState.coins = newCoins;
-                  dbCalls.updateUserCoins(newCoins);
+                  let newLadderWinnings = Math.ceil(resultsState.currentLadderWinning + (resultsState.ladderValue * constants.ladderWinningPercents[resultsState.handsDisplay.length]));
+                  resultsState.currentLadderWinning = newLadderWinnings;
+                  dbCalls.currentLadderWinning(newLadderWinnings);
                 }
               }
               tie = false;
@@ -592,8 +611,13 @@ const applicationReducer = (state = initState, action)=> {
               } else if(resultsState.ladder === true) {
                 resultsState.ladderLives -= 1;
                 if(resultsState.ladderLives === 0) {
-                  dbCalls.loseLadder();
+                  let updateLadderWinCoin = Math.ceil(resultsState.coins + resultsState.currentLadderWinning);
+                  resultsState.coins = updateLadderWinCoin;
+                  resultsState.currentLadderWinning = 0;
+                  dbCalls.loseLadder(updateLadderWinCoin);
                   resultsState.ladderNumber = 1;
+                  resultsState.mainMenu = true;
+                  resultsState.ladder = false;
                 } else {
                   dbCalls.loseLife(resultsState.ladderLives);
                 }
@@ -631,9 +655,9 @@ const applicationReducer = (state = initState, action)=> {
                   resultsState.ladderWin = true;
                   dbCalls.updateLadder(resultsState.ladderNumber);
                   resultsState.ladderNumber += 1;
-                  let newCoins = Math.ceil(resultsState.coins + (resultsState.ladderValue * constants.ladderWinningPercents[resultsState.handsDisplay.length]));
-                  resultsState.coins = newCoins;
-                  dbCalls.updateUserCoins(newCoins);
+                  let newLadderWinnings = Math.ceil(resultsState.currentLadderWinning + (resultsState.ladderValue * constants.ladderWinningPercents[resultsState.handsDisplay.length]));
+                  resultsState.currentLadderWinning = newLadderWinnings;
+                  dbCalls.currentLadderWinning(newLadderWinnings);
                 }
               }
               tie = false;
@@ -655,8 +679,13 @@ const applicationReducer = (state = initState, action)=> {
               } else if(resultsState.ladder === true) {
                 resultsState.ladderLives -= 1;
                 if(resultsState.ladderLives === 0) {
-                  dbCalls.loseLadder();
+                  let updateLadderWinCoin = Math.ceil(resultsState.coins + resultsState.currentLadderWinning);
+                  resultsState.coins = updateLadderWinCoin;
+                  resultsState.currentLadderWinning = 0;
+                  dbCalls.loseLadder(updateLadderWinCoin);
                   resultsState.ladderNumber = 1;
+                  resultsState.mainMenu = true;
+                  resultsState.ladder = false;
                 } else {
                   dbCalls.loseLife(resultsState.ladderLives);
                 }
@@ -687,9 +716,9 @@ const applicationReducer = (state = initState, action)=> {
                     resultsState.ladderWin = true;
                     dbCalls.updateLadder(resultsState.ladderNumber);
                     resultsState.ladderNumber += 1;
-                    let newCoins = Math.ceil(resultsState.coins + (resultsState.ladderValue * constants.ladderWinningPercents[resultsState.handsDisplay.length]));
-                    resultsState.coins = newCoins;
-                    dbCalls.updateUserCoins(newCoins);
+                    let newLadderWinnings = Math.ceil(resultsState.currentLadderWinning + (resultsState.ladderValue * constants.ladderWinningPercents[resultsState.handsDisplay.length]));
+                    resultsState.currentLadderWinning = newLadderWinnings;
+                    dbCalls.currentLadderWinning(newLadderWinnings);
                   }
                 }
                 tie = false;
@@ -711,8 +740,13 @@ const applicationReducer = (state = initState, action)=> {
                 } else if(resultsState.ladder === true) {
                   resultsState.ladderLives -= 1;
                   if(resultsState.ladderLives === 0) {
-                    dbCalls.loseLadder();
+                    let updateLadderWinCoin = Math.ceil(resultsState.coins + resultsState.currentLadderWinning);
+                    resultsState.coins = updateLadderWinCoin;
+                    resultsState.currentLadderWinning = 0;
+                    dbCalls.loseLadder(updateLadderWinCoin);
                     resultsState.ladderNumber = 1;
+                    resultsState.mainMenu = true;
+                    resultsState.ladder = false;
                   } else {
                     dbCalls.loseLife(resultsState.ladderLives);
                   }
@@ -750,9 +784,9 @@ const applicationReducer = (state = initState, action)=> {
               resultsState.ladderWin = true;
               dbCalls.updateLadder(resultsState.ladderNumber);
               resultsState.ladderNumber += 1;
-              let newCoins = Math.ceil(resultsState.coins + (resultsState.ladderValue * constants.ladderWinningPercents[resultsState.handsDisplay.length]));
-              resultsState.coins = newCoins;
-              dbCalls.updateUserCoins(newCoins);
+              let newLadderWinnings = Math.ceil(resultsState.currentLadderWinning + (resultsState.ladderValue * constants.ladderWinningPercents[resultsState.handsDisplay.length]));
+              resultsState.currentLadderWinning = newLadderWinnings;
+              dbCalls.currentLadderWinning(newLadderWinnings);
             }
           }
           // Run ad for every 20 games won
@@ -772,8 +806,13 @@ const applicationReducer = (state = initState, action)=> {
           } else if(resultsState.ladder === true) {
             resultsState.ladderLives -= 1;
             if(resultsState.ladderLives === 0) {
-              dbCalls.loseLadder();
+              let updateLadderWinCoin = Math.ceil(resultsState.coins + resultsState.currentLadderWinning);
+              resultsState.coins = updateLadderWinCoin;
+              resultsState.currentLadderWinning = 0;
+              dbCalls.loseLadder(updateLadderWinCoin);
               resultsState.ladderNumber = 1;
+              resultsState.mainMenu = true;
+              resultsState.ladder = false;
             } else {
               dbCalls.loseLife(resultsState.ladderLives);
             }
@@ -804,9 +843,9 @@ const applicationReducer = (state = initState, action)=> {
                   resultsState.ladderWin = true;
                   dbCalls.updateLadder(resultsState.ladderNumber);
                   resultsState.ladderNumber += 1;
-                  let newCoins = Math.ceil(resultsState.coins + (resultsState.ladderValue * constants.ladderWinningPercents[resultsState.handsDisplay.length]));
-                  resultsState.coins = newCoins;
-                  dbCalls.updateUserCoins(newCoins);
+                  let newLadderWinnings = Math.ceil(resultsState.currentLadderWinning + (resultsState.ladderValue * constants.ladderWinningPercents[resultsState.handsDisplay.length]));
+                  resultsState.currentLadderWinning = newLadderWinnings;
+                  dbCalls.currentLadderWinning(newLadderWinnings);
                 }
               }
               tie = false;
@@ -828,8 +867,13 @@ const applicationReducer = (state = initState, action)=> {
               } else if(resultsState.ladder === true) {
                 resultsState.ladderLives -= 1;
                 if(resultsState.ladderLives === 0) {
-                  dbCalls.loseLadder();
+                  let updateLadderWinCoin = Math.ceil(resultsState.coins + resultsState.currentLadderWinning);
+                  resultsState.coins = updateLadderWinCoin;
+                  resultsState.currentLadderWinning = 0;
+                  dbCalls.loseLadder(updateLadderWinCoin);
                   resultsState.ladderNumber = 1;
+                  resultsState.mainMenu = true;
+                  resultsState.ladder = false;
                 } else {
                   dbCalls.loseLife(resultsState.ladderLives);
                 }
@@ -866,9 +910,9 @@ const applicationReducer = (state = initState, action)=> {
               resultsState.ladderWin = true;
               dbCalls.updateLadder(resultsState.ladderNumber);
               resultsState.ladderNumber += 1;
-              let newCoins = Math.ceil(resultsState.coins + (resultsState.ladderValue * constants.ladderWinningPercents[resultsState.handsDisplay.length]));
-              resultsState.coins = newCoins;
-              dbCalls.updateUserCoins(newCoins);
+              let newLadderWinnings = Math.ceil(resultsState.currentLadderWinning + (resultsState.ladderValue * constants.ladderWinningPercents[resultsState.handsDisplay.length]));
+              resultsState.currentLadderWinning = newLadderWinnings;
+              dbCalls.currentLadderWinning(newLadderWinnings);
             }
           }
           // Run ad for every 20 games won
@@ -888,8 +932,13 @@ const applicationReducer = (state = initState, action)=> {
           } else if(resultsState.ladder === true) {
             resultsState.ladderLives -= 1;
             if(resultsState.ladderLives === 0) {
-              dbCalls.loseLadder();
+              let updateLadderWinCoin = Math.ceil(resultsState.coins + resultsState.currentLadderWinning);
+              resultsState.coins = updateLadderWinCoin;
+              resultsState.currentLadderWinning = 0;
+              dbCalls.loseLadder(updateLadderWinCoin);
               resultsState.ladderNumber = 1;
+              resultsState.mainMenu = true;
+              resultsState.ladder = false;
             } else {
               dbCalls.loseLife(resultsState.ladderLives);
             }
@@ -923,9 +972,9 @@ const applicationReducer = (state = initState, action)=> {
               resultsState.ladderWin = true;
               dbCalls.updateLadder(resultsState.ladderNumber);
               resultsState.ladderNumber += 1;
-              let newCoins = Math.ceil(resultsState.coins + (resultsState.ladderValue * constants.ladderWinningPercents[resultsState.handsDisplay.length]));
-              resultsState.coins = newCoins;
-              dbCalls.updateUserCoins(newCoins);
+              let newLadderWinnings = Math.ceil(resultsState.currentLadderWinning + (resultsState.ladderValue * constants.ladderWinningPercents[resultsState.handsDisplay.length]));
+              resultsState.currentLadderWinning = newLadderWinnings;
+              dbCalls.currentLadderWinning(newLadderWinnings);
             }
           }
           tie = false;
@@ -946,8 +995,13 @@ const applicationReducer = (state = initState, action)=> {
           } else if(resultsState.ladder === true) {
             resultsState.ladderLives -= 1;
             if(resultsState.ladderLives === 0) {
-              dbCalls.loseLadder();
+              let updateLadderWinCoin = Math.ceil(resultsState.coins + resultsState.currentLadderWinning);
+              resultsState.coins = updateLadderWinCoin;
+              resultsState.currentLadderWinning = 0;
+              dbCalls.loseLadder(updateLadderWinCoin);
               resultsState.ladderNumber = 1;
+              resultsState.mainMenu = true;
+              resultsState.ladder = false;
             } else {
               dbCalls.loseLife(resultsState.ladderLives);
             }
@@ -976,9 +1030,9 @@ const applicationReducer = (state = initState, action)=> {
                   resultsState.ladderWin = true;
                   dbCalls.updateLadder(resultsState.ladderNumber);
                   resultsState.ladderNumber += 1;
-                  let newCoins = Math.ceil(resultsState.coins + (resultsState.ladderValue * constants.ladderWinningPercents[resultsState.handsDisplay.length]));
-                  resultsState.coins = newCoins;
-                  dbCalls.updateUserCoins(newCoins);
+                  let newLadderWinnings = Math.ceil(resultsState.currentLadderWinning + (resultsState.ladderValue * constants.ladderWinningPercents[resultsState.handsDisplay.length]));
+                  resultsState.currentLadderWinning = newLadderWinnings;
+                  dbCalls.currentLadderWinning(newLadderWinnings);
                 }
               }
               tie = false;
@@ -1000,8 +1054,13 @@ const applicationReducer = (state = initState, action)=> {
               } else if(resultsState.ladder === true) {
                 resultsState.ladderLives -= 1;
                 if(resultsState.ladderLives === 0) {
-                  dbCalls.loseLadder();
+                  let updateLadderWinCoin = Math.ceil(resultsState.coins + resultsState.currentLadderWinning);
+                  resultsState.coins = updateLadderWinCoin;
+                  resultsState.currentLadderWinning = 0;
+                  dbCalls.loseLadder(updateLadderWinCoin);
                   resultsState.ladderNumber = 1;
+                  resultsState.mainMenu = true;
+                  resultsState.ladder = false;
                 } else {
                   dbCalls.loseLife(resultsState.ladderLives);
                 }
@@ -1039,9 +1098,9 @@ const applicationReducer = (state = initState, action)=> {
               resultsState.ladderWin = true;
               dbCalls.updateLadder(resultsState.ladderNumber);
               resultsState.ladderNumber += 1;
-              let newCoins = Math.ceil(resultsState.coins + (resultsState.ladderValue * constants.ladderWinningPercents[resultsState.handsDisplay.length]));
-              resultsState.coins = newCoins;
-              dbCalls.updateUserCoins(newCoins);
+              let newLadderWinnings = Math.ceil(resultsState.currentLadderWinning + (resultsState.ladderValue * constants.ladderWinningPercents[resultsState.handsDisplay.length]));
+              resultsState.currentLadderWinning = newLadderWinnings;
+              dbCalls.currentLadderWinning(newLadderWinnings);
             }
           }
           tie = false;
@@ -1062,8 +1121,13 @@ const applicationReducer = (state = initState, action)=> {
           } else if(resultsState.ladder === true) {
             resultsState.ladderLives -= 1;
             if(resultsState.ladderLives === 0) {
-              dbCalls.loseLadder();
+              let updateLadderWinCoin = Math.ceil(resultsState.coins + resultsState.currentLadderWinning);
+              resultsState.coins = updateLadderWinCoin;
+              resultsState.currentLadderWinning = 0;
+              dbCalls.loseLadder(updateLadderWinCoin);
               resultsState.ladderNumber = 1;
+              resultsState.mainMenu = true;
+              resultsState.ladder = false;
             } else {
               dbCalls.loseLife(resultsState.ladderLives);
             }
@@ -1091,9 +1155,9 @@ const applicationReducer = (state = initState, action)=> {
                 resultsState.ladderWin = true;
                 dbCalls.updateLadder(resultsState.ladderNumber);
                 resultsState.ladderNumber += 1;
-                let newCoins = Math.ceil(resultsState.coins + (resultsState.ladderValue * constants.ladderWinningPercents[resultsState.handsDisplay.length]));
-                resultsState.coins = newCoins;
-                dbCalls.updateUserCoins(newCoins);
+                let newLadderWinnings = Math.ceil(resultsState.currentLadderWinning + (resultsState.ladderValue * constants.ladderWinningPercents[resultsState.handsDisplay.length]));
+                resultsState.currentLadderWinning = newLadderWinnings;
+                dbCalls.currentLadderWinning(newLadderWinnings);
               }
             }
             tie = false;
@@ -1114,8 +1178,13 @@ const applicationReducer = (state = initState, action)=> {
             } else if(resultsState.ladder === true) {
               resultsState.ladderLives -= 1;
               if(resultsState.ladderLives === 0) {
-                dbCalls.loseLadder();
+                let updateLadderWinCoin = Math.ceil(resultsState.coins + resultsState.currentLadderWinning);
+                resultsState.coins = updateLadderWinCoin;
+                resultsState.currentLadderWinning = 0;
+                dbCalls.loseLadder(updateLadderWinCoin);
                 resultsState.ladderNumber = 1;
+                resultsState.mainMenu = true;
+                resultsState.ladder = false;
               } else {
                 dbCalls.loseLife(resultsState.ladderLives);
               }
@@ -1151,9 +1220,9 @@ const applicationReducer = (state = initState, action)=> {
               resultsState.ladderWin = true;
               dbCalls.updateLadder(resultsState.ladderNumber);
               resultsState.ladderNumber += 1;
-              let newCoins = Math.ceil(resultsState.coins + (resultsState.ladderValue * constants.ladderWinningPercents[resultsState.handsDisplay.length]));
-              resultsState.coins = newCoins;
-              dbCalls.updateUserCoins(newCoins);
+              let newLadderWinnings = Math.ceil(resultsState.currentLadderWinning + (resultsState.ladderValue * constants.ladderWinningPercents[resultsState.handsDisplay.length]));
+              resultsState.currentLadderWinning = newLadderWinnings;
+              dbCalls.currentLadderWinning(newLadderWinnings);
             }
           }
           tie = false;
@@ -1174,8 +1243,13 @@ const applicationReducer = (state = initState, action)=> {
           } else if(resultsState.ladder === true) {
             resultsState.ladderLives -= 1;
             if(resultsState.ladderLives === 0) {
-              dbCalls.loseLadder();
+              let updateLadderWinCoin = Math.ceil(resultsState.coins + resultsState.currentLadderWinning);
+              resultsState.coins = updateLadderWinCoin;
+              resultsState.currentLadderWinning = 0;
+              dbCalls.loseLadder(updateLadderWinCoin);
               resultsState.ladderNumber = 1;
+              resultsState.mainMenu = true;
+              resultsState.ladder = false;
             } else {
               dbCalls.loseLife(resultsState.ladderLives);
             }
@@ -1203,9 +1277,9 @@ const applicationReducer = (state = initState, action)=> {
                 resultsState.ladderWin = true;
                 dbCalls.updateLadder(resultsState.ladderNumber);
                 resultsState.ladderNumber += 1;
-                let newCoins = Math.ceil(resultsState.coins + (resultsState.ladderValue * constants.ladderWinningPercents[resultsState.handsDisplay.length]));
-                resultsState.coins = newCoins;
-                dbCalls.updateUserCoins(newCoins);
+                let newLadderWinnings = Math.ceil(resultsState.currentLadderWinning + (resultsState.ladderValue * constants.ladderWinningPercents[resultsState.handsDisplay.length]));
+                resultsState.currentLadderWinning = newLadderWinnings;
+                dbCalls.currentLadderWinning(newLadderWinnings);
               }
             }
             tie = false;
@@ -1226,8 +1300,13 @@ const applicationReducer = (state = initState, action)=> {
             } else if(resultsState.ladder === true) {
               resultsState.ladderLives -= 1;
               if(resultsState.ladderLives === 0) {
-                dbCalls.loseLadder();
+                let updateLadderWinCoin = Math.ceil(resultsState.coins + resultsState.currentLadderWinning);
+                resultsState.coins = updateLadderWinCoin;
+                resultsState.currentLadderWinning = 0;
+                dbCalls.loseLadder(updateLadderWinCoin);
                 resultsState.ladderNumber = 1;
+                resultsState.mainMenu = true;
+                resultsState.ladder = false;
               } else {
                 dbCalls.loseLife(resultsState.ladderLives);
               }
@@ -1262,9 +1341,9 @@ const applicationReducer = (state = initState, action)=> {
               resultsState.ladderWin = true;
               dbCalls.updateLadder(resultsState.ladderNumber);
               resultsState.ladderNumber += 1;
-              let newCoins = Math.ceil(resultsState.coins + (resultsState.ladderValue * constants.ladderWinningPercents[resultsState.handsDisplay.length]));
-              resultsState.coins = newCoins;
-              dbCalls.updateUserCoins(newCoins);
+              let newLadderWinnings = Math.ceil(resultsState.currentLadderWinning + (resultsState.ladderValue * constants.ladderWinningPercents[resultsState.handsDisplay.length]));
+              resultsState.currentLadderWinning = newLadderWinnings;
+              dbCalls.currentLadderWinning(newLadderWinnings);
             }
           }
           tie = false;
@@ -1285,8 +1364,13 @@ const applicationReducer = (state = initState, action)=> {
           } else if(resultsState.ladder === true) {
             resultsState.ladderLives -= 1;
             if(resultsState.ladderLives === 0) {
-              dbCalls.loseLadder();
+              let updateLadderWinCoin = Math.ceil(resultsState.coins + resultsState.currentLadderWinning);
+              resultsState.coins = updateLadderWinCoin;
+              resultsState.currentLadderWinning = 0;
+              dbCalls.loseLadder(updateLadderWinCoin);
               resultsState.ladderNumber = 1;
+              resultsState.mainMenu = true;
+              resultsState.ladder = false;
             } else {
               dbCalls.loseLife(resultsState.ladderLives);
             }

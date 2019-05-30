@@ -107,7 +107,7 @@ class Game extends Component {
         <View style={styles.container}>
           <DismissKeyboard>
             <ImageBackground style={styles.tableBackgroundImage} source={require('../assets/tables/Poker_Table.png')}>
-              {this.props.settings.mainMenu ? <Main_Menu /> : null}
+              {this.props.game.mainMenu ? <Main_Menu /> : null}
               <DismissKeyboard>
                 <View style={styles.settingsContainer}>
                   <View style={styles.userDataContainer}>
