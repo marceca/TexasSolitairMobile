@@ -18,6 +18,7 @@ import * as dbCalls from '../database/db';
 import DismissKeyboard from './DismissKeyboard';
 import User_Hand from './User_Hand';
 import Profile from './Profile';
+import The_Shop from './The_Shop';
 import Profile_Image from './profile/Profile_Image';
 import LottieView from 'lottie-react-native';
 
@@ -131,6 +132,7 @@ class Game extends Component {
               {this.props.settings.change_card_back ? <Change_Card_Back /> : null}
               {this.props.settings.settings ? <Settings /> : null}
               {this.props.game.profile ? <Profile /> : null}
+              {this.props.settings.openCloseShop ? <The_Shop /> : null}
               {this.props.settings.leader_boards ? <LeaderBoard /> : null }
               {this.props.game.ladderPrompt ? <LadderPrompt /> : null}
               <DismissKeyboard>

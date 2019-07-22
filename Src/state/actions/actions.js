@@ -39,6 +39,7 @@ const OPENCLOSELEADERBOARDS = 'OPENCLOSELEADERBOARDS';
 const UPDATELEADERBOARDSTATS = 'UPDATELEADERBOARDSTATS';
 const CLOSELADDERPROMPT = 'CLOSELADDERPROMPT';
 const SPENDLADDERTICKET = 'SPENDLADDERTICKET';
+const OPENCLOSESHOP = 'OPENCLOSESHOP';
 
 const deal = () => ({type: DEAL});
 const flop = () => ({type: FLOP});
@@ -78,8 +79,9 @@ const openCloseAvatar = () => ({type: OPENCLOSEAVATAR});
 const changeAvatarBGColor = (BGColor) => ({type: CHANGEAVATARBGCOLOR, BGColor});
 const openCloseLeaderBoards = () => ({type: OPENCLOSELEADERBOARDS});
 const updateLeaderBoardStats = (stats) => ({type: UPDATELEADERBOARDSTATS, stats});
-const closeLadderPrompt = () => ({type: CLOSELADDERPROMPT})
-const spendLadderTicket = () => ({type: SPENDLADDERTICKET})
+const closeLadderPrompt = () => ({type: CLOSELADDERPROMPT});
+const spendLadderTicket = () => ({type: SPENDLADDERTICKET});
+const openCloseShop = () => ({type: OPENCLOSESHOP});
 
 // User updates
 const UPDATEUSER = 'UPDATEUSER';
@@ -176,5 +178,7 @@ module.exports = {
   closeLadderPrompt,
   CLOSELADDERPROMPT,
   spendLadderTicket,
-  SPENDLADDERTICKET
+  SPENDLADDERTICKET,
+  openCloseShop,
+  OPENCLOSESHOP
 }

@@ -43,6 +43,10 @@ class Main_Menu extends Component {
     store.dispatch(types.openCloseLeaderBoards())
   }
 
+  openCloseShop() {
+    store.dispatch(types.openCloseShop())
+  }
+
   render() {
     const numHands = constants.numberOfHands[this.props.game.numOfHands];
     return (
@@ -53,10 +57,15 @@ class Main_Menu extends Component {
               <Profile_Image />
               <Text style={styles.playerName}>{this.props.game.name ? this.props.game.name : 'Dead Eyes'}</Text>
             </View>
-            <TouchableWithoutFeedback onPress={() => this.openCloseLeaderBoards()}>
-              <Image style={styles.settingsIcon}  source={require('../assets/leader_boards/First_Place_Trophy.png')} />
-            </TouchableWithoutFeedback>
-            <TouchableWithoutFeedback onPress={() => this.openCloseSettings()}><Image style={styles.settingsIcon} source={require("../assets/main_menu/Settings_Icon.png")} /></TouchableWithoutFeedback>
+            <View style={styles.row}>
+              <TouchableWithoutFeedback onPress={() => this.openCloseShop()}>
+                <Image style={styles.settingsIcon}  source={require('../assets/buttons/Get_Chips_Button.png')} />
+              </TouchableWithoutFeedback>
+              <TouchableWithoutFeedback onPress={() => this.openCloseLeaderBoards()}>
+                <Image style={styles.settingsIcon}  source={require('../assets/leader_boards/First_Place_Trophy.png')} />
+              </TouchableWithoutFeedback>
+              <TouchableWithoutFeedback onPress={() => this.openCloseSettings()}><Image style={styles.settingsIcon} source={require("../assets/main_menu/Settings_Icon.png")} /></TouchableWithoutFeedback>
+            </View>
           </View>
           <View style={styles.midMainMenu}>
             {this.props.game.numHands ? <Num_Hands /> : <TouchableWithoutFeedback onPress={() => this.start_game()}><Image style={styles.midMainImage} source={require("../assets/main_menu/Play_Button.png")} /></TouchableWithoutFeedback>}
@@ -142,6 +151,9 @@ const styles = StyleSheet.create({
   avatar: {
     height: 49,
     width: 49
+  },
+  row: {
+    flexDirection: 'row'
   }
 })
 
