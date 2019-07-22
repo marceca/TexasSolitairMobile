@@ -61,6 +61,9 @@ class Main_Menu extends Component {
               <TouchableWithoutFeedback onPress={() => this.openCloseShop()}>
                 <Image style={styles.settingsIcon}  source={require('../assets/buttons/Get_Chips_Button.png')} />
               </TouchableWithoutFeedback>
+              <TouchableWithoutFeedback onPress={() => this.openCloseShop()}>
+                <Image style={styles.settingsIcon}  source={require('../assets/buttons/Get_Chips_Button.png')} />
+              </TouchableWithoutFeedback>
               <TouchableWithoutFeedback onPress={() => this.openCloseLeaderBoards()}>
                 <Image style={styles.settingsIcon}  source={require('../assets/leader_boards/First_Place_Trophy.png')} />
               </TouchableWithoutFeedback>
