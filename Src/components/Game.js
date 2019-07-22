@@ -100,7 +100,6 @@ class Game extends Component {
       console.log('props ', this.props),
       <ImageBackground style={styles.mainBackgroundImage} source={bg}>
       {this.props.game.ladderWin ? <LottieView source={require('../assets/animations/Winning_Hand_Animation_Final.json')} style={styles.animation} autoPlay loop /> : null }
-      {this.props.game.ladderWin ? null : <LottieView source={require('../assets/animations/Losing_Hand_Animation_Final.json')} style={styles.animation} autoPlay loop /> }
         <View style={styles.container}>
           <DismissKeyboard>
             <ImageBackground style={styles.tableBackgroundImage} source={require('../assets/tables/Poker_Table.png')}>
