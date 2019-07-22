@@ -30,6 +30,7 @@ class Avatar extends Component {
   }
 
   render() {
+    console.log('props in avatar ', this.props)
     return(
       <ImageBackground style={styles.container} source={require('../../assets/profile/profile_background.png')}>
         <ScrollView>
@@ -49,7 +50,7 @@ class Avatar extends Component {
             }
             {this.props.settings.clown ? 
               <TouchableWithoutFeedback onPress={() => this.changeAvatar('clown')}>
-                <Image style={styles.avatar} source={require('../../assets/profile/avatars/Avatar_Clown.png')} />
+                <Image style={[styles.avatar, this.props.settings.avatar === 'clown' ? styles.selectedAvatar : null]} source={require('../../assets/profile/avatars/Avatar_Clown.png')} />
               </TouchableWithoutFeedback> :
               <ImageBackground style={styles.lockedBackgroundImage} source={require('../../assets/profile/avatars/Avatar_Clown.png')}>
                 <Image style={styles.lock} source={require('../../assets/profile/avatars/Lock_Icon.png')} />
@@ -57,7 +58,7 @@ class Avatar extends Component {
             }
             {this.props.settings.cowboy ? 
               <TouchableWithoutFeedback onPress={() => this.changeAvatar('cowboy')}>
-                <Image style={styles.avatar} source={require('../../assets/profile/avatars/Avatar_Cowboy.png')} />
+                <Image style={[styles.avatar, this.props.settings.avatar === 'cowboy' ? styles.selectedAvatar : null]} source={require('../../assets/profile/avatars/Avatar_Cowboy.png')} />
               </TouchableWithoutFeedback> :
               <ImageBackground style={styles.lockedBackgroundImage} source={require('../../assets/profile/avatars/Avatar_Cowboy.png')}>
                 <Image style={styles.lock} source={require('../../assets/profile/avatars/Lock_Icon.png')} />
@@ -65,7 +66,7 @@ class Avatar extends Component {
             }
             {this.props.settings.jobStress ? 
               <TouchableWithoutFeedback onPress={() => this.changeAvatar('jobStress')}>
-                <Image style={styles.avatar} source={require('../../assets/profile/avatars/Avatar_Job_Stress.png')} />
+                <Image style={[styles.avatar, this.props.settings.avatar === 'jobStress' ? styles.selectedAvatar : null]} source={require('../../assets/profile/avatars/Avatar_Job_Stress.png')} />
               </TouchableWithoutFeedback> :
               <ImageBackground style={styles.lockedBackgroundImage} source={require('../../assets/profile/avatars/Avatar_Job_Stress.png')}>
                 <Image style={styles.lock} source={require('../../assets/profile/avatars/Lock_Icon.png')} />
@@ -73,7 +74,7 @@ class Avatar extends Component {
             }
             {this.props.settings.lamb ? 
               <TouchableWithoutFeedback onPress={() => this.changeAvatar('lamb')}>
-                <Image style={styles.avatar} source={require('../../assets/profile/avatars/Avatar_Lamb.png')} />
+                <Image style={[styles.avatar, this.props.settings.avatar === 'lamb' ? styles.selectedAvatar : null]} source={require('../../assets/profile/avatars/Avatar_Lamb.png')} />
               </TouchableWithoutFeedback> :
               <ImageBackground style={styles.lockedBackgroundImage} source={require('../../assets/profile/avatars/Avatar_Lamb.png')}>
                 <Image style={styles.lock} source={require('../../assets/profile/avatars/Lock_Icon.png')} />
@@ -81,7 +82,7 @@ class Avatar extends Component {
             }
             {this.props.settings.puppy ? 
               <TouchableWithoutFeedback onPress={() => this.changeAvatar('puppy')}>
-                <Image style={styles.avatar} source={require('../../assets/profile/avatars/Avatar_Puppy.png')} />
+                <Image style={[styles.avatar, , this.props.settings.avatar === 'puppy' ? styles.selectedAvatar : null]} source={require('../../assets/profile/avatars/Avatar_Puppy.png')} />
               </TouchableWithoutFeedback> :
               <ImageBackground style={styles.lockedBackgroundImage} source={require('../../assets/profile/avatars/Avatar_Puppy.png')}>
                 <Image style={styles.lock} source={require('../../assets/profile/avatars/Lock_Icon.png')} />
@@ -89,7 +90,7 @@ class Avatar extends Component {
             }
             {this.props.settings.zombie ? 
               <TouchableWithoutFeedback onPress={() => this.changeAvatar('zombie')}>
-                <Image style={styles.avatar} source={require('../../assets/profile/avatars/Avatar_Zombie_Boy.png')} />
+                <Image style={[styles.avatar, this.props.settings.avatar === 'zombie' ? styles.selectedAvatar : null]} source={require('../../assets/profile/avatars/Avatar_Zombie_Boy.png')} />
               </TouchableWithoutFeedback> :
               <ImageBackground style={styles.lockedBackgroundImage} source={require('../../assets/profile/avatars/Avatar_Zombie_Boy.png')}>
                 <Image style={styles.lock} source={require('../../assets/profile/avatars/Lock_Icon.png')} />
@@ -99,22 +100,22 @@ class Avatar extends Component {
           <View style={styles.headerContainer}><Text style={styles.header}>Colors</Text></View>
           <View style={styles.avatarContainer}>
             <TouchableWithoutFeedback onPress={() => this.changeAvatarBGColor('black')}>
-              <Image style={styles.avatar} source={require('../../assets/profile/avatars/backgroundColors/Avatar_BG_Black.png')} />
+              <Image style={[styles.avatar, this.props.settings.avatarBGColor === 'black' ? styles.selectedAvatar : null]} source={require('../../assets/profile/avatars/backgroundColors/Avatar_BG_Black.png')} />
             </TouchableWithoutFeedback>
             <TouchableWithoutFeedback onPress={() => this.changeAvatarBGColor('blue')}>
-              <Image style={styles.avatar} source={require('../../assets/profile/avatars/backgroundColors/Avatar_BG_Blue.png')} />
+              <Image style={[styles.avatar, this.props.settings.avatarBGColor === 'blue' ? styles.selectedAvatar : null]} source={require('../../assets/profile/avatars/backgroundColors/Avatar_BG_Blue.png')} />
             </TouchableWithoutFeedback>
             <TouchableWithoutFeedback onPress={() => this.changeAvatarBGColor('green')}>
-              <Image style={styles.avatar} source={require('../../assets/profile/avatars/backgroundColors/Avatar_BG_Green.png')} />
+              <Image style={[styles.avatar, this.props.settings.avatarBGColor === 'green' ? styles.selectedAvatar : null]} source={require('../../assets/profile/avatars/backgroundColors/Avatar_BG_Green.png')} />
             </TouchableWithoutFeedback>
             <TouchableWithoutFeedback onPress={() => this.changeAvatarBGColor('orange')}>
-              <Image style={styles.avatar} source={require('../../assets/profile/avatars/backgroundColors/Avatar_BG_Orange.png')} />
+              <Image style={[styles.avatar, this.props.settings.avatarBGColor === 'orange' ? styles.selectedAvatar : null]} source={require('../../assets/profile/avatars/backgroundColors/Avatar_BG_Orange.png')} />
             </TouchableWithoutFeedback>
             <TouchableWithoutFeedback onPress={() => this.changeAvatarBGColor('red')}>
-              <Image style={styles.avatar} source={require('../../assets/profile/avatars/backgroundColors/Avatar_BG_Red.png')} />
+              <Image style={[styles.avatar, this.props.settings.avatarBGColor === 'red' ? styles.selectedAvatar : null]} source={require('../../assets/profile/avatars/backgroundColors/Avatar_BG_Red.png')} />
             </TouchableWithoutFeedback>
             <TouchableWithoutFeedback onPress={() => this.changeAvatarBGColor('white')}>
-              <Image style={styles.avatar} source={require('../../assets/profile/avatars/backgroundColors/Avatar_BG_White.png')} />
+              <Image style={[styles.avatar, this.props.settings.avatarBGColor === 'white' ? styles.selectedAvatar : null]} source={require('../../assets/profile/avatars/backgroundColors/Avatar_BG_White.png')} />
             </TouchableWithoutFeedback>
           </View>
         </ScrollView>
@@ -153,6 +154,12 @@ const styles = StyleSheet.create({
     height: 100,
     margin: 10
   },
+  selectedAvatar: {
+    borderColor: 'white',
+    borderWidth: 2,
+    borderRadius: 50
+  },
+  
   lock: {
     width: 50,
     height: 50

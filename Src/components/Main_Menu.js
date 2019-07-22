@@ -39,6 +39,10 @@ class Main_Menu extends Component {
     store.dispatch(types.settings());
   }
 
+  openCloseLeaderBoards() {
+    store.dispatch(types.openCloseLeaderBoards())
+  }
+
   render() {
     const numHands = constants.numberOfHands[this.props.game.numOfHands];
     return (
@@ -49,6 +53,9 @@ class Main_Menu extends Component {
               <Profile_Image />
               <Text style={styles.playerName}>{this.props.game.name ? this.props.game.name : 'Dead Eyes'}</Text>
             </View>
+            <TouchableWithoutFeedback onPress={() => this.openCloseLeaderBoards()}>
+              <Image style={styles.settingsIcon}  source={require('../assets/leader_boards/First_Place_Trophy.png')} />
+            </TouchableWithoutFeedback>
             <TouchableWithoutFeedback onPress={() => this.openCloseSettings()}><Image style={styles.settingsIcon} source={require("../assets/main_menu/Settings_Icon.png")} /></TouchableWithoutFeedback>
           </View>
           <View style={styles.midMainMenu}>

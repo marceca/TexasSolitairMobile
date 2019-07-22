@@ -93,10 +93,6 @@ class Game extends Component {
     }
   }
 
-  openCloseLeaderBoards() {
-    store.dispatch(types.openCloseLeaderBoards())
-  }
-
   render() {
     const bg = constants.backgroundPossibilities[this.props.settings.main_background_image]
 
@@ -113,13 +109,10 @@ class Game extends Component {
                   <View style={styles.userDataContainer}>
                     <Profile_Image />
                     <View style={[styles.scoreContainter, styles.adjustTopIcons]}>
-                      <Text style={styles.coinsText}>Coins: {this.props.game.coins ? this.props.game.coins : 0} </Text>
+                      <Text style={styles.coinsText}>Chips: {this.props.game.coins ? this.props.game.coins : 0} </Text>
                     </View>
                   </View>
                   <View style={styles.topRightIcons}>
-                    <TouchableWithoutFeedback onPress={() => this.openCloseLeaderBoards()}>
-                      <Image style={styles.settingsIcon}  source={require('../assets/leader_boards/First_Place_Trophy.png')} />
-                    </TouchableWithoutFeedback>
                     <TouchableWithoutFeedback onPress={() => this.openCloseSettings()}>
                       <Image style={[styles.settingsIcon, styles.adjustTopIcons]} source={require('../assets/main_menu/Settings_Icon.png')} />
                     </TouchableWithoutFeedback>
