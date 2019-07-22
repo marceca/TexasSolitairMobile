@@ -14,6 +14,7 @@ const initState = {
   main_background_image: 'wood',
   changeName: false,
   openCloseAvatar: false,
+  openCloseShop: false,
   avatarBGColor: null,
   avatar: null,
   deathOrange: true,
@@ -67,6 +68,16 @@ const settingsReducer = (state = initState, action)=> {
         openCloseAvatarState.openCloseAvatar = false;
       }
     return openCloseAvatarState;
+
+    // OPEN CLOSE SHOP
+    case types.OPENCLOSESHOP:
+      const openCloseShopState = Object.assign({}, state);
+      if(openCloseShopState.openCloseShop === false) {
+        openCloseShopState.openCloseShop = true;
+      } else {
+        openCloseShopState.openCloseShop = false;
+      }
+    return openCloseShopState
 
     // OPEN CLOSE LEADER BOARDS
     case types.OPENCLOSELEADERBOARDS:
