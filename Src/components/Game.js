@@ -99,7 +99,8 @@ class Game extends Component {
     return (
       console.log('props ', this.props),
       <ImageBackground style={styles.mainBackgroundImage} source={bg}>
-      {this.props.game.ladderWin ? <LottieView source={require('../assets/animations/Winning_Hand_Animation_Final.json')} style={styles.test} autoPlay loop /> : null }
+      {this.props.game.ladderWin ? <LottieView source={require('../assets/animations/Winning_Hand_Animation_Final.json')} style={styles.animation} autoPlay loop /> : null }
+      {this.props.game.ladderWin ? null : <LottieView source={require('../assets/animations/Losing_Hand_Animation_Final.json')} style={styles.animation} autoPlay loop /> }
         <View style={styles.container}>
           <DismissKeyboard>
             <ImageBackground style={styles.tableBackgroundImage} source={require('../assets/tables/Poker_Table.png')}>
@@ -113,10 +114,10 @@ class Game extends Component {
                     </View>
                   </View>
                   <View style={styles.topRightIcons}>
-                      {this.props.game.ladderLives === 0 ? <TouchableWithoutFeedback><Image style={styles.heart} source={require('../assets/ladder_lives/No_Life_Left.png')} /></TouchableWithoutFeedback> : null}
-                      {this.props.game.ladderLives === 1 ? <TouchableWithoutFeedback><Image style={styles.heart} source={require('../assets/ladder_lives/One_Life_Left.png')} /></TouchableWithoutFeedback> : null}
-                      {this.props.game.ladderLives === 2 ? <TouchableWithoutFeedback><Image style={styles.heart} source={require('../assets/ladder_lives/Two_Lives_Left.png')} /></TouchableWithoutFeedback> : null}
-                      {this.props.game.ladderLives === 3 ? <TouchableWithoutFeedback><Image style={styles.heart} source={require('../assets/ladder_lives/Three_Lives_Left.png')} /></TouchableWithoutFeedback> : null}
+                    {this.props.game.ladderLives === 0 ? <TouchableWithoutFeedback><Image style={styles.heart} source={require('../assets/ladder_lives/No_Life_Left.png')} /></TouchableWithoutFeedback> : null}
+                    {this.props.game.ladderLives === 1 ? <TouchableWithoutFeedback><Image style={styles.heart} source={require('../assets/ladder_lives/One_Life_Left.png')} /></TouchableWithoutFeedback> : null}
+                    {this.props.game.ladderLives === 2 ? <TouchableWithoutFeedback><Image style={styles.heart} source={require('../assets/ladder_lives/Two_Lives_Left.png')} /></TouchableWithoutFeedback> : null}
+                    {this.props.game.ladderLives === 3 ? <TouchableWithoutFeedback><Image style={styles.heart} source={require('../assets/ladder_lives/Three_Lives_Left.png')} /></TouchableWithoutFeedback> : null}
                     <TouchableWithoutFeedback onPress={() => this.openCloseSettings()}>
                       <Image style={[styles.settingsIcon, styles.adjustTopIcons]} source={require('../assets/main_menu/Settings_Icon.png')} />
                     </TouchableWithoutFeedback>
@@ -169,6 +170,14 @@ class Game extends Component {
 }
 
 const styles = StyleSheet.create({
+  animation: {
+    zIndex: 1,
+    height: screenHeight / 1,
+    position: 'absolute',
+    left: '0%',
+    top: '0%',
+    bottom: '0%'
+  },
   container: {
     width: screenWidth,
     height: screenHeight,
