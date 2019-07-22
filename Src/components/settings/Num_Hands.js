@@ -30,7 +30,7 @@ class Num_Hands extends Component {
         <TouchableWithoutFeedback onPress={() => this.update_num_hands(7, 'seven')}><View style={styles.numberContainer}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_7.png")} /></View></TouchableWithoutFeedback>
         <TouchableWithoutFeedback onPress={() => this.update_num_hands(8, 'eight')}><View style={styles.numberContainer}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_8.png")} /></View></TouchableWithoutFeedback>
         <TouchableWithoutFeedback onPress={() => this.update_num_hands(9, 'nine')}><View style={styles.numberContainer}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_9.png")} /></View></TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={() => this.update_num_hands(10, 'ten')}><View style={styles.numberContainer}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Nmber_10.png")} /></View></TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => this.update_num_hands(10, 'ten')}><View style={styles.numberContainer}><Image style={styles.numbers} source={require("../../assets/main_menu/individual_numbers/Number_10_Redo.png")} /></View></TouchableWithoutFeedback>
       </View>
     )
   }
@@ -40,9 +40,11 @@ const styles = StyleSheet.create({
   numHandsContainer: {
     justifyContent: 'space-evenly',
     alignItems: 'center',
-    width: '95%',
+    width: '90%',
     height: '50%',
     margin: 'auto',
+    paddingLeft: 18,
+    paddingTop: 5,
     marginRight: 0,
     marginLeft: 0,
     backgroundColor: 'white',

@@ -64,7 +64,6 @@ class Profile extends Component {
             </View>
             <Image style={styles.blueLineShort} source={require('../assets/profile/Horizontal_Blue_Line.png')} />
           </View>
-          <Image style={styles.blueLineFullWidth} source={require('../assets/profile/Horizontal_Blue_Line.png')} />
           <View style={styles.headers}><Image source={require('../assets/profile/Challenges_Header.png')} /></View>
         </ScrollView>
       </ImageBackground>
@@ -119,19 +118,20 @@ const styles = StyleSheet.create({
     height: 20,
     width: 20,
     position: 'absolute',
-    left: 150,
-    top: 5
+    left: 60,
+    top: 4
   },
   changeAvatar: {
     height: 20,
     width: 20,
     position: 'absolute',
-    top: 25,
+    top: 30,
     left: 5,
     zIndex: 10
   },
   blueLineFullWidth: {
-    width: '100%'
+    width: '100%',
+    paddingTop: 40
   },
   blueLineShort: {
     width: '90%'
@@ -139,7 +139,8 @@ const styles = StyleSheet.create({
   headers: {
     width: '100%',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    paddingTop: 10
   },
   statsContainer: {
     width: '100%',

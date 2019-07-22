@@ -103,7 +103,7 @@ class Game extends Component {
     return (
       console.log('props ', this.props),
       <ImageBackground style={styles.mainBackgroundImage} source={bg}>
-      {this.props.game.ladderWin ? <LottieView source={require('../assets/animations/Confetti_Animation_Test.json')} style={styles.test} autoPlay loop /> : null }
+      {this.props.game.ladderWin ? <LottieView source={require('../assets/animations/Winning_Hand_Animation_Final.json')} style={styles.test} autoPlay loop /> : null }
         <View style={styles.container}>
           <DismissKeyboard>
             <ImageBackground style={styles.tableBackgroundImage} source={require('../assets/tables/Poker_Table.png')}>
@@ -121,7 +121,7 @@ class Game extends Component {
                       <Image style={styles.settingsIcon}  source={require('../assets/leader_boards/First_Place_Trophy.png')} />
                     </TouchableWithoutFeedback>
                     <TouchableWithoutFeedback onPress={() => this.openCloseSettings()}>
-                      <Image style={[styles.settingsIcon, styles.adjustTopIcons]} source={require('../assets/icons/settings.png')} />
+                      <Image style={[styles.settingsIcon, styles.adjustTopIcons]} source={require('../assets/main_menu/Settings_Icon.png')} />
                     </TouchableWithoutFeedback>
                   </View>
                 </View>
@@ -174,9 +174,11 @@ class Game extends Component {
 const styles = StyleSheet.create({
   test: {
     zIndex: 1,
-    height: screenHeight / 1.5,
+    height: screenHeight / 1,
     position: 'absolute',
-    left: '20%'
+    left: '0%',
+    top: '0%',
+    bottom: '0%'
   },
   container: {
     width: screenWidth,
@@ -232,8 +234,8 @@ const styles = StyleSheet.create({
     paddingBottom: 5
   },
   settingsIcon: {
-    width: 30,
-    height: 30,
+    width: 40,
+    height: 40,
     alignItems: 'flex-end'
   },
   cardsContainer: {
@@ -278,7 +280,8 @@ const styles = StyleSheet.create({
   },
   stickSwitchButtonsContainer: {
     justifyContent: 'space-around',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    paddingLeft: 50,
   },
   stickSwitchButtons: {
     height: 75,
@@ -286,8 +289,11 @@ const styles = StyleSheet.create({
     zIndex: 11
   },
   cantClickButton: {
-    opacity: 0.3
+    opacity: 0,
+    paddingLeft: 180
+
   }
+  
 })
 
 

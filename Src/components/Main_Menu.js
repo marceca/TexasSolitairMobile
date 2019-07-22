@@ -93,7 +93,8 @@ const styles = StyleSheet.create({
     width: screenWidth / 2,
     flexDirection: 'row',
     paddingRight: 10,
-    paddingLeft: 10
+    paddingLeft: 10,
+    marginBottom: 20
   },
   playerName: {
     color: 'white',
@@ -115,9 +116,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     resizeMode: 'contain',
     paddingLeft: 10,
+    paddingBottom: 0,
     paddingRight: 10,
   },
   bottomMainMenuImages: {
+    marginBottom: 0,
     width: screenWidth / 3.8,
     resizeMode: 'contain',
     marginBottom: 20
@@ -126,7 +129,8 @@ const styles = StyleSheet.create({
     height: 50,
     width: 50,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginBottom: 20
   },
   avatar: {
     height: 49,

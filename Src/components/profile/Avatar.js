@@ -133,7 +133,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   xContainer: {
-    alignItems: 'flex-end'
+    alignItems: 'flex-end',
+    paddingRight: 30,
+    paddingTop: 20
   },
   avatarContainer: {
     flexDirection: 'row',

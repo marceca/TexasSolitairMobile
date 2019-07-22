@@ -40,7 +40,7 @@ class LadderPrompt extends Component {
 const styles = StyleSheet.create({
   view: {
     position: 'absolute',
-    right: '30%',
+    right: '25%',
     top: '25%'
   },
   mainImage: {
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     marginTop: '8%',
-    fontSize: 20,
+    fontSize: 30,
     fontWeight: 'bold',
     marginLeft: '10%',
     marginRight: '10%'
