@@ -38,6 +38,7 @@ class Background_Image_Selection extends Component {
             <TouchableWithoutFeedback onPress={() => this.updateBackgroundImage('light_rays')}><Image  style={styles.backgroundImage} source={require("../../assets/backgrounds/Light_Rays.png")} /></TouchableWithoutFeedback>
             <TouchableWithoutFeedback onPress={() => this.updateBackgroundImage('ocean')}><Image  style={styles.backgroundImage} source={require("../../assets/backgrounds/Ocean.jpg")} /></TouchableWithoutFeedback>
             <TouchableWithoutFeedback onPress={() => this.updateBackgroundImage('peadceful_lake')}><Image  style={styles.backgroundImage} source={require("../../assets/backgrounds/Peaceful_Lake.jpg")} /></TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => this.updateBackgroundImage('abstract_painting')}><Image  style={styles.backgroundImage} source={require("../../assets/backgrounds/Abstract_Painting.jpg")} /></TouchableWithoutFeedback>
           </View>
         </ImageBackground>
       </ScrollView>
