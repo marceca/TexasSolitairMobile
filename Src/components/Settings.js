@@ -54,6 +54,7 @@ class Settings extends Component {
       <ImageBackground style={styles.settingsContainer} source={require('../assets/settings_page/Settings_BG.png')}>
         <ScrollView>
           <View style={styles.settingsIcons}><Text style={styles.settingsText}>Settings</Text><TouchableWithoutFeedback onPress={() => this.closeSettings()}><Image source={require("../assets/settings_page/White_X.png")} /></TouchableWithoutFeedback></View>
+          <TouchableWithoutFeedback onPress={() => this.show_main_menu()}><View style={styles.settingsIcons}><Text style={styles.settingsText}>Menu Screen</Text><Image source={require("../assets/settings_page/Blue_Arrow_Button.png")} /></View></TouchableWithoutFeedback>
           <TouchableWithoutFeedback onPress={() => this.onOffSFX()}><View style={styles.settingsIcons}><Text style={styles.settingsText}>SFX</Text>{this.props.game.sfx ? <Image source={require("../assets/settings_page/On_Toggle.png")} /> : <Image source={require("../assets/settings_page/Off_Toggle.png")} />}</View></TouchableWithoutFeedback>
           <TouchableWithoutFeedback onPress={() => this.showCards()}><View style={styles.settingsIcons}><Text style={styles.settingsText}>Show Cards</Text>{this.props.game.showCards ? <Image source={require("../assets/settings_page/On_Toggle.png")} /> : <Image source={require("../assets/settings_page/Off_Toggle.png")} />}</View></TouchableWithoutFeedback>
           <TouchableWithoutFeedback onPress={() => this.open_total_number_of_hands()}><View style={styles.settingsIcons}><Text style={styles.settingsText}>Number of Hands</Text><Image source={require("../assets/settings_page/Blue_Arrow_Button.png")} /></View></TouchableWithoutFeedback>
@@ -63,7 +64,6 @@ class Settings extends Component {
           <TouchableWithoutFeedback><View style={styles.settingsIcons}><Text style={styles.settingsText}>Contact Us</Text><Image source={require("../assets/settings_page/Blue_Arrow_Button.png")} /></View></TouchableWithoutFeedback>
           <TouchableWithoutFeedback onPress={() => this.open_tutorial()}><View style={styles.settingsIcons}><Text style={styles.settingsText}>Tutorial</Text><Image source={require("../assets/settings_page/Blue_Arrow_Button.png")} /></View></TouchableWithoutFeedback>
           <TouchableWithoutFeedback><View style={styles.settingsIcons}><Text style={styles.settingsText}>Website</Text><Image source={require("../assets/settings_page/Blue_Arrow_Button.png")} /></View></TouchableWithoutFeedback>
-          <TouchableWithoutFeedback onPress={() => this.show_main_menu()}><View style={styles.settingsIcons}><Text style={styles.settingsText}>Menu Screen</Text><Image source={require("../assets/settings_page/Blue_Arrow_Button.png")} /></View></TouchableWithoutFeedback>
         </ScrollView>
       </ImageBackground>
     )

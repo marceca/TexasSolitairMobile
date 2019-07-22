@@ -26,6 +26,10 @@ class Profile extends Component {
     store.dispatch(types.openCloseAvatar())
   }
 
+  openCloseProfile() {
+    store.dispatch(types.openCloseProfile());
+  }
+
   render() {
     return (
       <ImageBackground style={styles.image} source={require('../assets/profile/profile_background.png')}>
@@ -39,6 +43,7 @@ class Profile extends Component {
               <TouchableWithoutFeedback onPress={() => this.changeName()}><Image style={styles.changeName} source={require('../assets/profile/Change_Name_Profile_Page_Button.png')} /></TouchableWithoutFeedback>
               {this.props.settings.changeName ? <Change_Name /> : null}
             </View>
+            <View><TouchableWithoutFeedback onPress={() => this.openCloseProfile()}><Image source={require("../assets/settings_page/White_X.png")} /></TouchableWithoutFeedback></View>
           </View>
           <Image style={styles.blueLineFullWidth} source={require('../assets/profile/Horizontal_Blue_Line.png')} />
           <View style={styles.headers}><Image source={require('../assets/profile/Stats_Header.png')} /></View>
