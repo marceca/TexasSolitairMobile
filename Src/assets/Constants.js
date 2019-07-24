@@ -5,6 +5,7 @@ const backgroundPossibilities = {
   'light_rays' : require('../assets/backgrounds/Light_Rays.png'),
   'ocean' : require('../assets/backgrounds/Ocean.jpg'),
   'peadceful_lake' : require('../assets/backgrounds/Peaceful_Lake.jpg'),
+  'abstract_painting' : require('../assets/backgrounds/Abstract_Painting.jpg')
 }
 
 const cardBackOptions = {
