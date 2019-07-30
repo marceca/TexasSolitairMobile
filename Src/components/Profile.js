@@ -49,6 +49,16 @@ class Profile extends Component {
           <View style={styles.headers}><Image source={require('../assets/profile/Stats_Header.png')} /></View>
           <View style={styles.statsContainer}>
             <View style={styles.individualStats}>
+              <Text style={styles.statsText}>Current Chips: </Text>
+              <Text style={styles.statsText}>{this.props.game.coins}</Text>
+            </View>
+            <Image style={styles.blueLineShort} source={require('../assets/profile/Horizontal_Blue_Line.png')} />
+            <View style={styles.individualStats}>
+              <Text style={styles.statsText}>Current Tickets: </Text>
+              <Text style={styles.statsText}>{this.props.game.tickets}</Text>
+            </View>
+            <Image style={styles.blueLineShort} source={require('../assets/profile/Horizontal_Blue_Line.png')} />
+            <View style={styles.individualStats}>
               <Text style={styles.statsText}>Hands Played: </Text>
               <Text style={styles.statsText}>{this.props.game.handsPlayed}</Text>
             </View>
