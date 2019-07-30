@@ -47,6 +47,21 @@ class Main_Menu extends Component {
     store.dispatch(types.openCloseShop())
   }
 
+  chipsCommas(chips) {
+    let commaChips = chips.toString().split('');
+    let returnChips = ''
+    for(let i = 0; i < commaChips.length; i++) {
+      if(i % 3 === 0 && i != 0) {
+        returnChips += ','
+        returnChips += commaChips[commaChips.length - i - 1];
+      } else {
+        returnChips += commaChips[commaChips.length - i - 1];
+      }
+    }
+    returnChips = returnChips.split('').reverse().join('')
+    return returnChips;
+  }
+
   render() {
     const numHands = constants.numberOfHands[this.props.game.numOfHands];
     return (
@@ -56,6 +71,9 @@ class Main_Menu extends Component {
             <View style={styles.playerContainer}>
               <Profile_Image />
               <Text style={styles.playerName}>{this.props.game.name ? this.props.game.name : 'Dead Eyes'}</Text>
+              <View style={styles.scoreContainter}>
+                <Text style={styles.coinsText}>Chips: {this.props.game.coins ? this.chipsCommas(this.props.game.coins) : 0} </Text>
+              </View>
             </View>
             <View style={styles.row}>
               <TouchableWithoutFeedback onPress={() => this.openCloseShop()}>
@@ -119,7 +137,23 @@ const styles = StyleSheet.create({
     color: 'white',
     justifyContent: 'flex-end',
     fontSize: 20,
-    paddingLeft: 20
+    paddingLeft: 20,
+    paddingRight: '1%'
+  },
+  scoreContainter: {
+    backgroundColor: 'white',
+    borderRadius: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 25
+  },
+  coinsText: {
+    fontSize: 16,
+    paddingLeft: 5,
+    paddingRight: 5,
+    paddingTop: 5,
+    paddingBottom: 5,
+
   },
   midMainMenu: {
     height: screenHeight / 1.5,
