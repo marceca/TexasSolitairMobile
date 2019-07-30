@@ -12,7 +12,7 @@ var config = {
 
 firebase.initializeApp(config);
 
-function writeUserData(coins, tickets, uniqueID, nickName, ladderNumber, handsPlayed, numberOfWins, currentWinningsStreak, winsInARow, ladderLives){
+function writeUserData(coins, tickets, uniqueID, nickName, avatar, avatarBGColor, ladderNumber, handsPlayed, numberOfWins, currentWinningsStreak, winsInARow, ladderLives){
   firebase.database().ref('Users/' + uniqueID + '/').set({
       coins,
       tickets,

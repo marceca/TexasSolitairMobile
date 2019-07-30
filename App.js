@@ -14,7 +14,7 @@ export default class App extends React.Component {
     this.state = {};
   }
 
-  async componentDidMount() {
+  async componentWillMount() {
     // TODO: You: Do firebase things
     // const { user } = await firebase.auth().signInAnonymously();
     // console.warn('User -> ', user.toJSON());
