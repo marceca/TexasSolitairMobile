@@ -94,6 +94,25 @@ class Game extends Component {
     }
   }
 
+  chipsCommas(chips) {
+    let commaChips = chips.toString().split('');
+    let returnChips = ''
+    // console.log('iterations ', Math.floor(commaChips.length / 3))
+    for(let i = 0; i < commaChips.length; i++) {
+      // console.log('modulo ', ((commaChips.length - i - 1) % 3))
+      if((i) % 3 === 0 && i != 0) {
+        console.log('i ', i)
+        returnChips += ','
+        returnChips += commaChips[commaChips.length - i - 1];
+      } else {
+        returnChips += commaChips[commaChips.length - i - 1];
+      }
+    }
+    returnChips = returnChips.split('').reverse().join('')
+    console.log('return chips ', returnChips)
+    return returnChips;
+  }
+
   render() {
     const bg = constants.backgroundPossibilities[this.props.settings.main_background_image]
 
@@ -110,7 +129,7 @@ class Game extends Component {
                   <View style={styles.userDataContainer}>
                     <Profile_Image />
                     <View style={[styles.scoreContainter, styles.adjustTopIcons]}>
-                      <Text style={styles.coinsText}>Chips: {this.props.game.coins ? this.props.game.coins : 0} </Text>
+                      <Text style={styles.coinsText}>Chips: {this.props.game.coins ? this.chipsCommas(this.props.game.coins) : 0} </Text>
                     </View>
                   </View>
                   <View style={styles.topRightIcons}>
