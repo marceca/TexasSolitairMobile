@@ -28,8 +28,8 @@ class LadderPrompt extends Component {
         <ImageBackground style={styles.mainImage} source={require('../../assets/prompts/Wooden_Pill.png')}>
           <Text style={styles.text}>Would you like to spend a ticket on Ladder?</Text>
           <View style={styles.buttonContainer}>
-            <TouchableWithoutFeedback onPress={() => this.spendTicket()}><Image style={[styles.button, styles.buttonYes]} source={require('../../assets/prompts/Yes_Button.png')} /></TouchableWithoutFeedback>
             <TouchableWithoutFeedback onPress={() => this.closePrompt()}><Image style={[styles.button, styles.buttonNo]} source={require('../../assets/prompts/No_Button.png')} /></TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => this.spendTicket()}><Image style={[styles.button, styles.buttonYes]} source={require('../../assets/prompts/Yes_Button.png')} /></TouchableWithoutFeedback>
           </View>
         </ImageBackground>
       </View>
@@ -66,10 +66,10 @@ const styles = StyleSheet.create({
     marginBottom: '1%'
   },
   buttonYes: {
-    marginLeft: '10%'
+    marginRight: '10%'
   },
   buttonNo: {
-    marginRight: '10%'
+    marginLeft: '10%'
   }
 })
 
