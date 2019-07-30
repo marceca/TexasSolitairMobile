@@ -39,6 +39,7 @@ class Avatar extends Component {
               <Image source={require('../../assets/settings_page/White_X.png')} />
             </TouchableWithoutFeedback>
           </View>
+          <View style={styles.headerContainer}><Text style={styles.header}>Avatars</Text></View>
           <View style={styles.avatarContainer}>
             {this.props.settings.death ? 
               <TouchableWithoutFeedback onPress={() => this.changeAvatar('death')}>
