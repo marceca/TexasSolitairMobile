@@ -171,8 +171,8 @@ class Game extends Component {
                     <User_Hand />
                   </View>
                   <View style={styles.stickSwitchButtonsContainer}>
+                    {this.props.game.switch ? <TouchableWithoutFeedback onPress={(e) => this.switch(e,this.props)}><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Switch_Button_White_2.png')} /></TouchableWithoutFeedback> : <Image style={[styles.stickSwitchButtons,styles.cantClickButton]} source={require('../assets/buttons/Switch_Button_White_2.png')} />}
                     {this.props.game.stick ? <TouchableWithoutFeedback id="game-button" onPress={(e) => this.deal(e,this.props)} ><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Stick_Button_White_2.png')} /></TouchableWithoutFeedback> : <Image style={[styles.stickSwitchButtons, styles.cantClickButton]} source={require('../assets/buttons/Stick_Button_White_2.png')} />}
-                    {this.props.game.switch ? <TouchableWithoutFeedback onPress={(e) => this.switch(e,this.props)}><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Switch_Button_White_2.png')} /></TouchableWithoutFeedback> : <Image style={[styles.stickSwitchButtons, styles.cantClickButton]} source={require('../assets/buttons/Switch_Button_White_2.png')} />}
                     {this.props.game.reset ? <TouchableWithoutFeedback onPress={(e) => this.reset(e)}><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Next_Hand_White_2.png')} /></TouchableWithoutFeedback> : <Image style={[styles.stickSwitchButtons, styles.cantClickButton]} source={require('../assets/buttons/Next_Hand_White_2.png')} />}
                   </View>
                 </View>

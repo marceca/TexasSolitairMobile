@@ -6,7 +6,6 @@ import * as types from '../state/actions/actions';
 import Num_Hands from './settings/Num_Hands';
 import constants from '../assets/Constants';
 import Profile_Image from './profile/Profile_Image';
-import LadderPrompt from './prompts/LadderPrompt';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -31,8 +30,11 @@ class Main_Menu extends Component {
     store.dispatch(types.showHideCards());
   }
 
-  ladderState() {
+  ladderState(ladderLives, ladderStateCheck) {
     store.dispatch(types.ladder());
+    if(ladderLives > 0 && ladderStateCheck === false) {
+      store.dispatch(types.startGame());
+    }
   }
 
   openCloseSettings() {
@@ -79,11 +81,11 @@ class Main_Menu extends Component {
               <TouchableWithoutFeedback onPress={() => this.openCloseShop()}>
                 <Image style={styles.settingsIcon}  source={require('../assets/buttons/Get_Chips_Button.png')} />
               </TouchableWithoutFeedback>
-              <TouchableWithoutFeedback onPress={() => this.openCloseShop()}>
-                <Image style={styles.settingsIcon}  source={require('../assets/buttons/Get_Chips_Button.png')} />
-              </TouchableWithoutFeedback>
               <TouchableWithoutFeedback onPress={() => this.openCloseLeaderBoards()}>
                 <Image style={styles.settingsIcon}  source={require('../assets/leader_boards/First_Place_Trophy.png')} />
+              </TouchableWithoutFeedback>
+              <TouchableWithoutFeedback onPress={() => this.openCloseShop()}>
+                <Image style={styles.settingsIcon}  source={require('../assets/buttons/Get_Chips_Button.png')} />
               </TouchableWithoutFeedback>
               <TouchableWithoutFeedback onPress={() => this.openCloseSettings()}><Image style={styles.settingsIcon} source={require("../assets/main_menu/Settings_Icon.png")} /></TouchableWithoutFeedback>
             </View>
@@ -94,7 +96,7 @@ class Main_Menu extends Component {
           <View style={styles.bottomMainMenu}>
             <TouchableWithoutFeedback onPress={() => this.showHideCards()}>{this.props.game.showCards ? <Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Show_Cards_Button.png")} /> : <Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Hide_Cards_Button.png")} />}</TouchableWithoutFeedback>
             <TouchableWithoutFeedback onPress={() => this.number_of_hands()}><Image style={styles.bottomMainMenuImages} source={numHands} /></TouchableWithoutFeedback>
-            <TouchableWithoutFeedback onPress={() => this.ladderState()}>{this.props.game.ladder ? <Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Ladder_Button.png")} /> : <Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Ladder_Locked_Button.png")} />}</TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => this.ladderState(this.props.game.ladderLives, this.props.game.ladder)}>{this.props.game.ladder ? <Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Ladder_Button.png")} /> : <Image style={styles.bottomMainMenuImages} source={require("../assets/main_menu/Ladder_Locked_Button.png")} />}</TouchableWithoutFeedback>
           </View>
         </ImageBackground>
       </View>

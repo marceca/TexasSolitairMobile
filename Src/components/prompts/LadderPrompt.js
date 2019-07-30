@@ -20,6 +20,7 @@ class LadderPrompt extends Component {
 
   spendTicket() {
     store.dispatch(types.spendLadderTicket())
+    store.dispatch(types.startGame());
   }
 
   render() {
