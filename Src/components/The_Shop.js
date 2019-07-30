@@ -3,9 +3,8 @@ import {connect} from 'react-redux';
 import {View, TouchableWithoutFeedback, Image, Text, ImageBackground, StyleSheet, Dimensions, ScrollView} from 'react-native';
 import * as types from '../state/actions/actions';
 import store from '../state/store';
-import Change_Name from './settings/Change_Name';
 import Avatar from './profile/Avatar';
-import Profile_Image from './profile/Profile_Image';
+import LottieView from 'lottie-react-native';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -38,7 +37,8 @@ class TheShop extends Component {
           <View style={styles.xButton}>
             <TouchableWithoutFeedback onPress={() => this.openCloseShop()}><Image source={require("../assets/settings_page/White_X.png")} /></TouchableWithoutFeedback>
           </View>
-          <View style={styles.row}>
+          <LottieView source={require('../assets/animations/the_shop_title.json')} style={styles.animation} autoPlay loop />
+          <View style={styles.options}>
             <View style={styles.buyingOptionsContainer}>
               <View style={styles.buyingOptionsRowContainer}>
                 <View style={styles.choiceContainer}><Image style={styles.option} source={require('../assets/the_shop/chips_small_stack.png')} /></View>
@@ -102,9 +102,10 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: 'contain'
   },
-  row: {
+  options: {
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    top: '5%'
   }
 })
 
