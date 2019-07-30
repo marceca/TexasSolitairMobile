@@ -72,6 +72,7 @@ const settingsReducer = (state = initState, action)=> {
     // OPEN CLOSE SHOP
     case types.OPENCLOSESHOP:
       const openCloseShopState = Object.assign({}, state);
+      console.log('in the reducersssss')
       if(openCloseShopState.openCloseShop === false) {
         openCloseShopState.openCloseShop = true;
       } else {
