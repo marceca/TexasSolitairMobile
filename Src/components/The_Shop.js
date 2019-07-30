@@ -34,27 +34,29 @@ class TheShop extends Component {
       <ImageBackground style={styles.image} source={require('../assets/profile/profile_background.png')}>
         {this.props.settings.openCloseAvatar ? <Avatar /> : null}
         <View style={styles.mainContainer}>
-          <View style={styles.xButton}>
-            <TouchableWithoutFeedback onPress={() => this.openCloseShop()}><Image source={require("../assets/settings_page/White_X.png")} /></TouchableWithoutFeedback>
-          </View>
-          <LottieView source={require('../assets/animations/the_shop_title.json')} style={styles.animation} autoPlay loop />
-          <View style={styles.options}>
-            <View style={styles.buyingOptionsContainer}>
-              <View style={styles.buyingOptionsRowContainer}>
-                <View style={styles.choiceContainer}><Image style={styles.option} source={require('../assets/the_shop/chips_small_stack.png')} /></View>
-                <View style={styles.choiceContainer}><Image style={styles.option} source={require('../assets/the_shop/chips_average_stack.png')} /></View>
-                <View style={styles.choiceContainer}><Image style={styles.option} source={require('../assets/the_shop/chips_big_stack.png')} /></View>
+          <ImageBackground style={styles.blueBox} source={require('../assets/the_shop/blue_border_shop.png')}>
+            <View style={styles.xButton}>
+              <TouchableWithoutFeedback onPress={() => this.openCloseShop()}><Image source={require("../assets/settings_page/White_X.png")} /></TouchableWithoutFeedback>
+            </View>
+            <LottieView source={require('../assets/animations/the_shop_title.json')} style={styles.animation} autoPlay loop />
+            <View style={styles.options}>
+              <View style={styles.buyingOptionsContainer}>
+                <View style={styles.buyingOptionsRowContainer}>
+                  <View style={styles.choiceContainer}><Image style={styles.option} source={require('../assets/the_shop/chips_small_stack.png')} /></View>
+                  <View style={styles.choiceContainer}><Image style={styles.option} source={require('../assets/the_shop/chips_average_stack.png')} /></View>
+                  <View style={styles.choiceContainer}><Image style={styles.option} source={require('../assets/the_shop/chips_big_stack.png')} /></View>
+                </View>
+                <View style={styles.buyingOptionsRowContainer}>
+                  <View style={styles.choiceContainer}><Image style={styles.option} source={require('../assets/the_shop/tickets_small_stack.png')} /></View>
+                  <View style={styles.choiceContainer}><Image style={styles.option} source={require('../assets/the_shop/tickets_average_stack.png')} /></View>
+                  <View style={styles.choiceContainer}><Image style={styles.option} source={require('../assets/the_shop/tickets_big_stack.png')} /></View>
+                </View>
               </View>
-              <View style={styles.buyingOptionsRowContainer}>
-                <View style={styles.choiceContainer}><Image style={styles.option} source={require('../assets/the_shop/tickets_small_stack.png')} /></View>
-                <View style={styles.choiceContainer}><Image style={styles.option} source={require('../assets/the_shop/tickets_average_stack.png')} /></View>
-                <View style={styles.choiceContainer}><Image style={styles.option} source={require('../assets/the_shop/tickets_big_stack.png')} /></View>
+              <View style={styles.bundleOptionContainer}>
+                <Image style={styles.option} source={require('../assets/the_shop/bundle.png')} />
               </View>
             </View>
-            <View style={styles.bundleOptionContainer}>
-              <Image style={styles.option} source={require('../assets/the_shop/bundle.png')} />
-            </View>
-          </View>
+          </ImageBackground>
         </View>
       </ImageBackground>
     )
@@ -68,6 +70,12 @@ const styles = StyleSheet.create({
     zIndex: 10,
     resizeMode: 'stretch',
     position: 'absolute',
+  },
+  blueBox: {
+    height: '96%',
+    width: '100%',
+    zIndex: 100,
+    position: 'absolute'
   },
   mainContainer: {
     width: '100%',

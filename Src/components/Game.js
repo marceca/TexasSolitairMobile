@@ -78,6 +78,7 @@ class Game extends Component {
 
   reset() {
     store.dispatch(types.reset())
+    store.dispatch(types.deal())
   }
 
   incrementBet() {
@@ -171,9 +172,10 @@ class Game extends Component {
                     <User_Hand />
                   </View>
                   <View style={styles.stickSwitchButtonsContainer}>
-                    {this.props.game.switch ? <TouchableWithoutFeedback onPress={(e) => this.switch(e,this.props)}><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Switch_Button_White_2.png')} /></TouchableWithoutFeedback> : <Image style={[styles.stickSwitchButtons,styles.cantClickButton]} source={require('../assets/buttons/Switch_Button_White_2.png')} />}
-                    {!this.props.game.dealt ? <TouchableWithoutFeedback id="game-button" onPress={(e) => this.deal(e,this.props)} ><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/deal_button.png')} /></TouchableWithoutFeedback> : <TouchableWithoutFeedback id="game-button" onPress={(e) => this.deal(e,this.props)} ><Image style={[styles.stickSwitchButtons, styles.cantClickButton]} source={require('../assets/buttons/Stick_Button_White_2.png')} /></TouchableWithoutFeedback>}
-                    {this.props.game.reset ? <TouchableWithoutFeedback onPress={(e) => this.reset(e)}><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Next_Hand_White_2.png')} /></TouchableWithoutFeedback> : <Image style={[styles.stickSwitchButtons, styles.cantClickButton]} source={require('../assets/buttons/Next_Hand_White_2.png')} />}
+                    {this.props.game.switch && this.props.game.dealt === true ? <TouchableWithoutFeedback onPress={(e) => this.switch(e,this.props)}><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Switch_Button_White_2.png')} /></TouchableWithoutFeedback> : null}
+                    {!this.props.game.dealt ? null : <TouchableWithoutFeedback id="game-button" onPress={(e) => this.deal(e,this.props)} ><Image style={[styles.stickSwitchButtons, styles.cantClickButton]} source={require('../assets/buttons/Stick_Button_White_2.png')} /></TouchableWithoutFeedback>}
+                    {this.props.game.dealt === false && this.props.game.reset === false ? <TouchableWithoutFeedback id="game-button" onPress={(e) => this.deal(e,this.props)} ><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/deal_button.png')} /></TouchableWithoutFeedback> : null }
+                    {this.props.game.reset ? <TouchableWithoutFeedback onPress={(e) => this.reset()}><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Next_Hand_White_2.png')} /></TouchableWithoutFeedback> : null}
                   </View>
                 </View>
               </DismissKeyboard>
