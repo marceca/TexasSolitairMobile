@@ -97,11 +97,8 @@ class Game extends Component {
   chipsCommas(chips) {
     let commaChips = chips.toString().split('');
     let returnChips = ''
-    // console.log('iterations ', Math.floor(commaChips.length / 3))
     for(let i = 0; i < commaChips.length; i++) {
-      // console.log('modulo ', ((commaChips.length - i - 1) % 3))
-      if((i) % 3 === 0 && i != 0) {
-        console.log('i ', i)
+      if(i % 3 === 0 && i != 0) {
         returnChips += ','
         returnChips += commaChips[commaChips.length - i - 1];
       } else {
@@ -109,7 +106,6 @@ class Game extends Component {
       }
     }
     returnChips = returnChips.split('').reverse().join('')
-    console.log('return chips ', returnChips)
     return returnChips;
   }
 
