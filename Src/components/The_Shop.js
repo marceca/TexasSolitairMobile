@@ -27,7 +27,6 @@ class TheShop extends Component {
   }
 
   openCloseShop() {
-    console.log('open close')
     store.dispatch(types.openCloseShop());
   }
 

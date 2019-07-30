@@ -72,7 +72,6 @@ const settingsReducer = (state = initState, action)=> {
     // OPEN CLOSE SHOP
     case types.OPENCLOSESHOP:
       const openCloseShopState = Object.assign({}, state);
-      console.log('in the reducersssss')
       if(openCloseShopState.openCloseShop === false) {
         openCloseShopState.openCloseShop = true;
       } else {
@@ -97,7 +96,6 @@ const settingsReducer = (state = initState, action)=> {
       for(const key in action.stats) {
         updateLeaderBoardStatsState.leader_board_stats.push([action.stats[key].nickName, action.stats[key].coins, action.stats[key].ladderNumber])
       }
-      console.log('stats ', updateLeaderBoardStatsState.leader_board_stats)
       function sortStats(stats) {
         for(let i = 0; i < stats.length; i++) {
           // 1 is coins value of each user
