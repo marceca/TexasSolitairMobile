@@ -39,7 +39,7 @@ class Game extends Component {
   }
 
   deal(el, props) {
-    if(props.game.play === 1) {
+    if(props.game.play === 1 && !props.game.dealt) {
       store.dispatch(types.deal())
     }
     if(props.game.play === 2 && props.game.chosenHand != false) {
@@ -51,7 +51,7 @@ class Game extends Component {
     if(props.game.play === 4) {
       store.dispatch(types.river());
     }
-    if(props.game.play === 5) {
+    if(props.game.play === 5 && props.game.dealt) {
       store.dispatch(types.results());
     }
   }
@@ -129,10 +129,10 @@ class Game extends Component {
                     </View>
                   </View>
                   <View style={styles.topRightIcons}>
-                    {this.props.game.ladderLives === 0 ? <TouchableWithoutFeedback><Image style={styles.heart} source={require('../assets/ladder_lives/No_Life_Left.png')} /></TouchableWithoutFeedback> : null}
-                    {this.props.game.ladderLives === 1 ? <TouchableWithoutFeedback><Image style={styles.heart} source={require('../assets/ladder_lives/One_Life_Left.png')} /></TouchableWithoutFeedback> : null}
-                    {this.props.game.ladderLives === 2 ? <TouchableWithoutFeedback><Image style={styles.heart} source={require('../assets/ladder_lives/Two_Lives_Left.png')} /></TouchableWithoutFeedback> : null}
-                    {this.props.game.ladderLives === 3 ? <TouchableWithoutFeedback><Image style={styles.heart} source={require('../assets/ladder_lives/Three_Lives_Left.png')} /></TouchableWithoutFeedback> : null}
+                    {this.props.game.ladderLives === 0 && this.props.game.ladder ? <TouchableWithoutFeedback><Image style={styles.heart} source={require('../assets/ladder_lives/No_Life_Left.png')} /></TouchableWithoutFeedback> : null}
+                    {this.props.game.ladderLives === 1 && this.props.game.ladder ? <TouchableWithoutFeedback><Image style={styles.heart} source={require('../assets/ladder_lives/One_Life_Left.png')} /></TouchableWithoutFeedback> : null}
+                    {this.props.game.ladderLives === 2 && this.props.game.ladder ? <TouchableWithoutFeedback><Image style={styles.heart} source={require('../assets/ladder_lives/Two_Lives_Left.png')} /></TouchableWithoutFeedback> : null}
+                    {this.props.game.ladderLives === 3 && this.props.game.ladder ? <TouchableWithoutFeedback><Image style={styles.heart} source={require('../assets/ladder_lives/Three_Lives_Left.png')} /></TouchableWithoutFeedback> : null}
                     <TouchableWithoutFeedback onPress={() => this.openCloseSettings()}>
                       <Image style={[styles.settingsIcon, styles.adjustTopIcons]} source={require('../assets/main_menu/Settings_Icon.png')} />
                     </TouchableWithoutFeedback>
@@ -172,7 +172,7 @@ class Game extends Component {
                   </View>
                   <View style={styles.stickSwitchButtonsContainer}>
                     {this.props.game.switch ? <TouchableWithoutFeedback onPress={(e) => this.switch(e,this.props)}><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Switch_Button_White_2.png')} /></TouchableWithoutFeedback> : <Image style={[styles.stickSwitchButtons,styles.cantClickButton]} source={require('../assets/buttons/Switch_Button_White_2.png')} />}
-                    {this.props.game.stick ? <TouchableWithoutFeedback id="game-button" onPress={(e) => this.deal(e,this.props)} ><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Stick_Button_White_2.png')} /></TouchableWithoutFeedback> : <Image style={[styles.stickSwitchButtons, styles.cantClickButton]} source={require('../assets/buttons/Stick_Button_White_2.png')} />}
+                    {!this.props.game.dealt ? <TouchableWithoutFeedback id="game-button" onPress={(e) => this.deal(e,this.props)} ><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/deal_button.png')} /></TouchableWithoutFeedback> : <TouchableWithoutFeedback id="game-button" onPress={(e) => this.deal(e,this.props)} ><Image style={[styles.stickSwitchButtons, styles.cantClickButton]} source={require('../assets/buttons/Stick_Button_White_2.png')} /></TouchableWithoutFeedback>}
                     {this.props.game.reset ? <TouchableWithoutFeedback onPress={(e) => this.reset(e)}><Image style={styles.stickSwitchButtons} source={require('../assets/buttons/Next_Hand_White_2.png')} /></TouchableWithoutFeedback> : <Image style={[styles.stickSwitchButtons, styles.cantClickButton]} source={require('../assets/buttons/Next_Hand_White_2.png')} />}
                   </View>
                 </View>
@@ -303,9 +303,7 @@ const styles = StyleSheet.create({
     zIndex: 11
   },
   cantClickButton: {
-    opacity: 0,
-    paddingLeft: 180
-
+    
   },
   heart: {
     width: 50,
