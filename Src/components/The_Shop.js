@@ -83,6 +83,8 @@ const styles = StyleSheet.create({
   xButton: {
     position: 'absolute',
     right: 0,
+    marginRight: 20,
+    marginTop: 10,
     zIndex: 99
   },
   buyingOptionsContainer: {
