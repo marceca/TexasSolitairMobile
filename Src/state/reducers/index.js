@@ -1,10 +1,14 @@
 import { combineReducers } from 'redux';
+
+// V2 settings reducer
+import settingsReducer from '../v2/reducers/settingsReducer';
+
+// Existing reducers
 import applicationReducer from './applicationReducer';
-import settingsReducer  from './settingsReducer';
 
 const reducers = combineReducers({
   application: applicationReducer,
-  settings: settingsReducer
-})
+  settings: settingsReducer,
+});
 
 export default reducers;
